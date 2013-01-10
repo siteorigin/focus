@@ -6,6 +6,25 @@
  * @since focus 1.0
  */
 
+define( 'SITEORIGIN_THEME_VERSION', 'trunk' );
+define( 'SITEORIGIN_THEME_ENDPOINT', 'http://siteorigin.dynalias.com' );
+
+if(file_exists(get_template_directory().'/premium/functions.php')){
+	include get_template_directory().'/premium/functions.php';
+}
+
+include get_template_directory().'/inc/video.php';
+include get_template_directory().'/inc/settings.php';
+
+if(!defined('SITEORIGIN_IS_PREMIUM')){
+	include get_template_directory().'/upgrade/content.php';
+}
+
+// Include SiteOrigin extras
+include get_template_directory().'/extras/premium/premium.php';
+include get_template_directory().'/extras/settings/settings.php';
+include get_template_directory().'/extras/update.php';
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
@@ -25,6 +44,8 @@ if ( ! function_exists( 'focus_setup' ) ) :
  * @since focus 1.0
  */
 function focus_setup() {
+	// Use SiteOrigin theme settings
+	siteorigin_settings_init();
 
 	/**
 	 * Custom template tags for this theme.
@@ -65,11 +86,14 @@ function focus_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'focus' ),
 	) );
-
+	
+	
 	/**
-	 * Add support for the Aside Post Formats
+	 * Add custom image sizes
 	 */
-	add_theme_support( 'post-formats', array( 'aside', ) );
+	add_image_size('slider', 1280, 768, true);
+	
+	set_post_thumbnail_size(297, 160, true);
 }
 endif; // focus_setup
 add_action( 'after_setup_theme', 'focus_setup' );
@@ -95,10 +119,13 @@ add_action( 'widgets_init', 'focus_widgets_init' );
  * Enqueue scripts and styles
  */
 function focus_scripts() {
-	wp_enqueue_style( 'style', get_stylesheet_uri() );
-
-	wp_enqueue_script( 'small-menu', get_template_directory_uri() . '/js/small-menu.js', array( 'jquery' ), '20120206', true );
-
+	wp_enqueue_style( 'style', get_stylesheet_uri() , array() , SITEORIGIN_THEME_VERSION);
+	
+	wp_enqueue_script('flexslider', get_template_directory_uri().'/js/jquery.flexslider.js', array('jquery'), '2.1');
+	wp_enqueue_script('fitvids', get_template_directory_uri().'/js/jquery.fitvids.js', array('jquery'), '1.0');
+	
+	wp_enqueue_script('focus', get_template_directory_uri().'/js/focus.js', array('jquery'), SITEORIGIN_THEME_VERSION);
+	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -110,6 +137,45 @@ function focus_scripts() {
 add_action( 'wp_enqueue_scripts', 'focus_scripts' );
 
 /**
- * Implement the Custom Header feature
+ * @return WP_Query
  */
-//require( get_template_directory() . '/inc/custom-header.php' );
+function focus_get_slider_posts(){
+	return new WP_Query(apply_filters('focus_slider_posts_query', array(
+		'post_type' => 'post',
+		'post_status' => 'publish',
+		'numberposts' => siteorigin_setting('slider_post_count'),
+		'orderby' => 'post_date',
+		'order' => 'DESC',
+	)));
+}
+
+function focus_admin_footer_text($text){
+	return '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://wordpress.org/">WordPress</a> and <a href="http://siteorigin.com/theme/focus/">Focus</a>.', focus ) . '</span>';
+}
+add_filter('admin_footer_text', 'focus_admin_footer_text');
+
+function focus_display_footer_cta(){
+	$args = array(
+		'text' => siteorigin_setting('cta_text'),
+		'button_text' => siteorigin_setting('cta_button_text'),
+		'button_url' => siteorigin_setting('cta_button_url'),
+	);
+	$args['button_url'] = do_shortcode($args['button_url']);
+	$args = apply_filters('focus_cta_args', $args);
+	
+	if(empty($args['text']) && empty($args['button_text']) && empty($args['button_url'])) return;
+	
+	?>
+	<div id="footer-cta">
+		<div class="container">
+			<?php if(!empty($args['text'])) : ?><h3><?php echo $args['text'] ?></h3><?php endif ?>
+			<?php if(!empty($args['button_text'])) : ?>
+				<a href="<?php echo esc_url($args['button_url']) ?>">
+					<?php echo esc_html($args['button_text']) ?>
+				</a>
+			<?php endif; ?>
+		</div>
+	</div>
+	<?php
+}
+add_action('before_footer', 'focus_display_footer_cta');
