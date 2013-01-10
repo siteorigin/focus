@@ -11,12 +11,19 @@
 
 	</div><!-- #main .site-main -->
 
+	<?php do_action('before_footer'); ?>
+
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<?php do_action( 'focus_credits' ); ?>
-			<?php printf( __( 'Theme By %2$s.', 'focus' ), 'focus', '<a href="http://siteorigin.com/" rel="designer">SiteOrigin</a>' ); ?>
-		</div><!-- .site-info -->
+		<div class="container">
+			<div class="site-info">
+				<?php do_action( 'focus_credits' ); ?>
+			</div><!-- .site-info -->
+			
+		</div><!-- .container -->
 	</footer><!-- #colophon .site-footer -->
+
+	<?php do_action('after_footer'); ?>
+
 </div><!-- #page .hfeed .site -->
 
 <?php wp_footer(); ?>
