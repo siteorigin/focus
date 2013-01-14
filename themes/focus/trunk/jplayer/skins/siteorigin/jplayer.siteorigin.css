@@ -8,6 +8,10 @@
 	position: relative;
 }
 
+.jp-video .jp-type-single{
+	height: 540px;
+}
+
 /* @group GUI */
 
 .jp-video .jp-gui{
@@ -178,4 +182,8 @@
 	
 	width: 97px;
 	height: 97px;
+}
+
+.jp-video .jp-gui{
+	display: none;
 }

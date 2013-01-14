@@ -4,6 +4,8 @@ define('SITEORIGIN_IS_PREMIUM', true);
 
 include get_template_directory().'/premium/settings.php';
 
+include get_template_directory().'/extras/mobilenav/mobilenav.php';
+
 function focus_premium_filter_video_embed_code($code){
 	if(siteorigin_setting('video_autoplay') || siteorigin_setting('video_hide_related')) {
 		$code = preg_replace_callback('/src="([^"]*)"/', 'focus_premium_video_change_autoplay_callback', $code);
@@ -20,6 +22,9 @@ function focus_premium_video_change_autoplay_callback($matches){
 	if(siteorigin_setting('video_hide_related')){
 		$url = add_query_arg('rel', 0, $url);
 	}
+	if(siteorigin_setting('video_default_hd')){
+		$url = add_query_arg('hd', 1, $url);
+	}
 	
 	return 'src="' .$url. '"';
 }
@@ -27,7 +32,9 @@ function focus_premium_video_change_autoplay_callback($matches){
 function focus_premium_set_video_type($type, $video, $id){
 	$cap = siteorigin_setting('video_premium_access');
 	
-	if(!empty($cap) && current_user_can($cap) && isset($video['premium'])){
+	if(empty($video['premium'])) return $type;
+	
+	if(!empty($cap) && current_user_can($cap) && !empty($video['premium'][$video['premium']['type']])){
 		$type = 'premium';
 	}
 	
@@ -77,3 +84,32 @@ function focus_premium_before_menu(){
 	}
 }
 add_action('before_menu', 'focus_premium_before_menu');
+
+function focus_premium_enqueue_scripts(){
+	if(siteorigin_setting('layout_responsive')){
+		wp_enqueue_script('fitvids', get_template_directory_uri().'/premium/js/jquery.fitvids.js', array('jquery'), '1.0');
+		wp_enqueue_script('fittext', get_template_directory_uri().'/premium/js/jquery.fittext.js', array('jquery'), '1.1');
+		wp_enqueue_style('siteorigin-responsive', get_template_directory_uri().'/premium/responsive.css', array(), SITEORIGIN_THEME_VERSION);
+	}
+}
+add_action('wp_enqueue_scripts', 'focus_premium_enqueue_scripts', 12);
+
+function focus_premium_filter_cta_args($args){
+	if(siteorigin_setting('cta_hide')){
+		$caps = explode(',', siteorigin_setting('cta_hide'));
+		$caps = array_map('trim', $caps);
+		
+		// If the user has any of these capabilities, clear the cta args
+		foreach($caps as $cap) if (current_user_can($cap)) return array();
+	}
+	
+	return $args;
+}
+add_filter('focus_cta_args', 'focus_premium_filter_cta_args');
+
+function focus_premium_responsive_head(){
+	if(siteorigin_setting('layout_responsive')){
+		?><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale = 1.0, user-scalable=0' /><?php
+	}
+}
+add_action('wp_head', 'focus_premium_responsive_head');

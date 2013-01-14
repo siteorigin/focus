@@ -1,7 +1,16 @@
 jQuery(function($){
 
     // Set up fitvids
-    $('#single-header .video' ).fitVids();
+    if( typeof $.fn.fitVids != 'undefined') $('#single-header .video' ).fitVids();
+    if( typeof $.fn.fitText != 'undefined') {
+        $('.post-heading h1' ).fitText(1.2, {
+            minFontSize: '16px', maxFontSize: '48px'
+        });
+
+        $('.post-heading p' ).fitText(1.2, {
+            minFontSize: '14px', maxFontSize: '20px'
+        });
+    }
     
     // Set up the flexslider
     var flexslider = $('.slider' ).flexslider({
@@ -36,6 +45,7 @@ jQuery(function($){
     });
     
     // Load the jPlayer
+    console.log(mobile);
     if($("#jquery_jplayer_1" ).length){
         $("#jquery_jplayer_1").jPlayer({
             ready: function(){
@@ -45,24 +55,25 @@ jQuery(function($){
                     m4v : $("#jquery_jplayer_1" ).attr('data-video'),
                     poster: jplayerSettings.videoPoster
                 } );
-                
+                if(focus.mobile){
+                    $$.find('jp-gui' ).hide();
+                }
+
                 if($$.attr('data-autoplay') == 1){
                     $$.jPlayer("play");
                 }
-                
-                $$.find('.jp-play' ).click(function(){
-                    $$.jPlayer('play');
-                });
                 
                 $(window ).resize();
             },
             solution: "flash, html",
             supplied : "m4v",
             swfPath : jplayerSettings.swfPath,
-            autohide : {restored: true},
+            autohide : {
+                restored: !focus.mobile
+            },
             size: {
-                width: "960px",
-                height: "540px"
+                width: "100%",
+                height: "100%"
             },
             cssSelectorAncestor: "#jp_interface_1"
         });

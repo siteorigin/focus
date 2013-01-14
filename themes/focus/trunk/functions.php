@@ -81,6 +81,11 @@ function focus_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	/**
+	 * Add the movile navigation menu if its enabled.
+	 */
+	if(siteorigin_setting('layout_responsive')) add_theme_support('siteorigin-mobilenav');
+
+	/**
 	 * This theme uses wp_nav_menu() in one location.
 	 */
 	register_nav_menus( array(
@@ -122,9 +127,11 @@ function focus_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() , array() , SITEORIGIN_THEME_VERSION);
 	
 	wp_enqueue_script('flexslider', get_template_directory_uri().'/js/jquery.flexslider.js', array('jquery'), '2.1');
-	wp_enqueue_script('fitvids', get_template_directory_uri().'/js/jquery.fitvids.js', array('jquery'), '1.0');
 	
 	wp_enqueue_script('focus', get_template_directory_uri().'/js/focus.js', array('jquery'), SITEORIGIN_THEME_VERSION);
+	wp_localize_script('focus', 'focus', array(
+		'mobile' => wp_is_mobile(),
+	));
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -179,3 +186,14 @@ function focus_display_footer_cta(){
 	<?php
 }
 add_action('before_footer', 'focus_display_footer_cta');
+
+/**
+ * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
+ *
+ * @since focus 1.0
+ */
+function focus_page_menu_args( $args ) {
+	$args['show_home'] = siteorigin_setting('menu_home');
+	return $args;
+}
+add_filter( 'wp_page_menu_args', 'focus_page_menu_args' );

@@ -2,8 +2,11 @@
 
 function focus_premium_init_settings(){
 	// Activate all the teaser settings
+	siteorigin_settings_add_field('general', 'ajax_comments', 'checkbox');
+	
 	siteorigin_settings_add_field('video', 'autoplay', 'checkbox');
 	siteorigin_settings_add_field('video', 'hide_related', 'checkbox');
+	siteorigin_settings_add_field('video', 'default_hd', 'checkbox');
 	siteorigin_settings_add_field('video', 'play_button', 'media');
 	siteorigin_settings_add_field('video', 'premium_access', 'text', null, array(
 		'options' => array(
@@ -51,10 +54,14 @@ function focus_premium_init_settings(){
 	siteorigin_settings_add_field('menu', 'search', 'checkbox', null, array(
 		'label' => __('Enabled', 'focus')
 	));
+
+	siteorigin_settings_add_field('layout', 'responsive', 'checkbox');
 }
 add_action('admin_init', 'focus_premium_init_settings', 11);
 
 function focus_premium_setting_defaults($defaults){
+	$defaults['general_ajax_comments'] = false;
+	
 	$defaults['slider_post_cat'] = '';
 	$defaults['slider_post_orderby'] = 'date';
 	
@@ -62,5 +69,9 @@ function focus_premium_setting_defaults($defaults){
 	$defaults['video_hide_related'] = false;
 	
 	$defaults['menu_search'] = false;
+	
+	$defaults['layout_responsive'] = false;
+	
+	return $defaults;
 }
 add_filter('siteorigin_theme_default_settings', 'focus_premium_setting_defaults');
