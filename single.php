@@ -10,22 +10,19 @@ get_header(); the_post(); ?>
 
 <div id="primary" class="content-area">
 	
-	
-	<div id="single-header" class="slider">
+	<div id="single-header">
 		<?php if(has_post_thumbnail()) : ?>
 			<?php the_post_thumbnail('slider') ?>
 			<div class="overlay"></div>
 		<?php endif; ?>
-		<div class="slide-text">
-			<h1><?php the_title() ?></h1>
-			<?php if(has_excerpt()) : ?><p><?php the_excerpt() ?></p><?php endif; ?>
-		</div>
-		
+
 		<div class="container">
+			<div class="post-heading">
+				<h1><?php the_title() ?></h1>
+				<?php if(has_excerpt()) : ?><p><?php the_excerpt() ?></p><?php endif; ?>
+			</div>
 			<div class="video">
-				
 				<?php focus_post_video() ?>
-				<!-- <iframe width="560" height="315" src="http://www.youtube.com/embed/TEHWDA_6e3M?autoplay=1" frameborder="0" allowfullscreen></iframe> -->
 			</div>
 		</div>
 	</div>

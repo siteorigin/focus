@@ -32,7 +32,7 @@
 				<!-- <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2> -->
 			</hgroup>
 	
-			<nav role="navigation" class="site-navigation main-navigation">
+			<nav role="navigation" id="main-navigation" class="site-navigation primary">
 				<h1 class="assistive-text"><?php _e( 'Menu', 'focus' ); ?></h1>
 				<div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'focus' ); ?>"><?php _e( 'Skip to content', 'focus' ); ?></a></div>
 				
