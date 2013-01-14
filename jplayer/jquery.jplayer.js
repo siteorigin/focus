@@ -1386,6 +1386,11 @@
 			} else {
 				this._urlNotSetError("play");
 			}
+            
+            var s = this;
+            setTimeout(function(){
+            }, 1000);
+            
 		},
 		videoPlay: function(e) { // Handles clicks on the play button over the video poster
 			this.play();

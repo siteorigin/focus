@@ -45,6 +45,10 @@ function focus_theme_settings(){
 		'description' => __('Hides related videos after a YouTube or Vimeo Plus video finishes.', 'focus')
 	));
 
+	siteorigin_settings_add_teaser('video', 'default_hd', __('Play Videos in HD', 'focus'), array(
+		'description' => __('Play YouTube oEmbed videos in HD. Vimeo HD playback is controlled on Vimeo itself.', 'focus')
+	));
+
 	siteorigin_settings_add_teaser('video', 'play_button', __('Play Button', 'focus'), array(
 		'description' => __('Add a custom play button to self hosted video.', 'focus')
 	));
@@ -57,7 +61,7 @@ function focus_theme_settings(){
 	 * Page Layout
 	 */
 
-	siteorigin_settings_add_field('layout', 'page_width', 'select', __('Overlay Color', 'focus'), array(
+	siteorigin_settings_add_field('layout', 'page_width', 'select', __('Page Width', 'focus'), array(
 		'description' => __('The overlay placed over the video background.', 'focus'),
 		'options' => array(
 			720 => '720px',
@@ -91,7 +95,7 @@ function focus_theme_settings(){
 	 * Main Menu
 	 */
 
-	siteorigin_settings_add_field('menu', 'Home', 'checkbox', __('Home Link', 'focus'), array(
+	siteorigin_settings_add_field('menu', 'home', 'checkbox', __('Home Link', 'focus'), array(
 		'description' => __('Add a home link to your menu bar.', 'focus')
 	));
 
@@ -109,12 +113,14 @@ function focus_theme_settings(){
 	siteorigin_settings_add_field('cta', 'button_url', 'text', __('CTA Button URL', 'focus'));
 
 	siteorigin_settings_add_teaser('cta', 'hide', __('Hide CTA', 'focus'), array(
-		'description' => __('Hide CTA from certain users. Like current members.', 'focus')
+		'description' => __('Comma separated list of capabilities from which to hide the CTA.', 'focus')
 	));
 }
 add_action('admin_init', 'focus_theme_settings');
 
 function focus_theme_setting_defaults($defaults){
+	$defaults['menu_home'] = true;
 	
+	return $defaults;
 }
 add_filter('siteorigin_theme_default_settings', 'focus_theme_setting_defaults');
