@@ -21,9 +21,12 @@ get_header(); the_post(); ?>
 				<h1><?php the_title() ?></h1>
 				<?php if(has_excerpt()) : ?><p><?php the_excerpt() ?></p><?php endif; ?>
 			</div>
-			<div class="video">
-				<?php focus_post_video() ?>
-			</div>
+			
+			<?php if(focus_post_has_video()) : ?>
+				<div class="video">
+					<?php focus_post_video() ?>
+				</div>
+			<?php endif; ?>
 		</div>
 	</div>
 	
@@ -39,13 +42,14 @@ get_header(); the_post(); ?>
 				
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template
-					// if ( comments_open() || '0' != get_comments_number() ) comments_template( '', true );
+					if ( comments_open() || '0' != get_comments_number() ) comments_template( '', true );
 				?>
 			</div><!-- #content .site-content.content-container -->
 
+			<?php get_sidebar(); ?>
+			
 			<div class="clear"></div>
 		</div>
-		
 	</div>
 </div><!-- #primary .content-area -->
 

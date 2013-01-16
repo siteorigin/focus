@@ -15,6 +15,7 @@ if(file_exists(get_template_directory().'/premium/functions.php')){
 
 include get_template_directory().'/inc/video.php';
 include get_template_directory().'/inc/settings.php';
+include get_template_directory().'/inc/widgets.php';
 
 if(!defined('SITEORIGIN_IS_PREMIUM')){
 	include get_template_directory().'/upgrade/content.php';
@@ -110,8 +111,17 @@ add_action( 'after_setup_theme', 'focus_setup' );
  */
 function focus_widgets_init() {
 	register_sidebar( array(
-		'name' => __( 'Sidebar', 'focus' ),
-		'id' => 'sidebar-1',
+		'name' => __( 'Post Sidebar', 'focus' ),
+		'id' => 'sidebar-post',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name' => __( 'Page Sidebar', 'focus' ),
+		'id' => 'sidebar-page',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => '</aside>',
 		'before_title' => '<h1 class="widget-title">',
@@ -177,7 +187,7 @@ function focus_display_footer_cta(){
 		<div class="container">
 			<?php if(!empty($args['text'])) : ?><h3><?php echo $args['text'] ?></h3><?php endif ?>
 			<?php if(!empty($args['button_text'])) : ?>
-				<a href="<?php echo esc_url($args['button_url']) ?>">
+				<a href="<?php echo esc_url($args['button_url']) ?>" class="button">
 					<?php echo esc_html($args['button_text']) ?>
 				</a>
 			<?php endif; ?>
@@ -197,3 +207,11 @@ function focus_page_menu_args( $args ) {
 	return $args;
 }
 add_filter( 'wp_page_menu_args', 'focus_page_menu_args' );
+
+function focus_post_author_info(){
+	if(!is_single()) return false;
+	if(!siteorigin_setting('general_display_author')) return;
+	
+	the_widget('Focus_Post_Author_Widget');
+}
+add_action('before_sidebar', 'focus_post_author_info');
