@@ -4,11 +4,7 @@ jQuery(function($){
     if( typeof $.fn.fitVids != 'undefined') $('#single-header .video' ).fitVids();
     if( typeof $.fn.fitText != 'undefined') {
         $('.post-heading h1' ).fitText(1.2, {
-            minFontSize: '16px', maxFontSize: '48px'
-        });
-
-        $('.post-heading p' ).fitText(1.2, {
-            minFontSize: '14px', maxFontSize: '20px'
+            minFontSize: '26px', maxFontSize: '48px'
         });
     }
     
@@ -45,7 +41,6 @@ jQuery(function($){
     });
     
     // Load the jPlayer
-    console.log(mobile);
     if($("#jquery_jplayer_1" ).length){
         $("#jquery_jplayer_1").jPlayer({
             ready: function(){

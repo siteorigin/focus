@@ -13,6 +13,10 @@ function focus_theme_settings(){
 	 * General Settings
 	 */
 
+	siteorigin_settings_add_field('general', 'display_author', 'checkbox',__('Display Post Author', 'focus'), array(
+		'description' => __('Displays post author information on a post page.', 'focus')
+	));
+	
 	siteorigin_settings_add_teaser('general', 'ajax_comments', __('Ajax Comments', 'focus'), array(
 		'description' => __('Lets your users post comments without interrupting video play.', 'focus')
 	));
@@ -119,6 +123,7 @@ function focus_theme_settings(){
 add_action('admin_init', 'focus_theme_settings');
 
 function focus_theme_setting_defaults($defaults){
+	$defaults['general_display_author'] = true;
 	$defaults['menu_home'] = true;
 	
 	return $defaults;

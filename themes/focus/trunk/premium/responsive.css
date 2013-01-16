@@ -45,7 +45,7 @@ a.mobilenav{
 		width: 50%;
 	}
 		
-	#footer-cta a{
+	#footer-cta a.button{
 		display: block;
 		position: static;
 		margin-top: 1em;
@@ -73,4 +73,6 @@ a.mobilenav{
 		width: auto;
 		float: none;
 	}
+	
+	
 }
