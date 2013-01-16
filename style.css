@@ -1,12 +1,11 @@
-/* @override 
-	http://wpdev.dynalias.com/focus/wp-content/themes/focus/style.css?ver=trunk */
+/* @override http://wpdev.dynalias.com/focus/wp-content/themes/focus/style.css?ver=trunk */
 
 /*
-Theme Name: focus
+Theme Name: Focus
 Theme URI: http://siteorigin.com/
-Author: Greg Priday
+Author: SiteOrigin
 Author URI: http://siteorigin.com/
-Description: Description
+Description: A video theme
 Version: 1.0
 License: GNU General Public License 2.0
 License URI: license.txt
@@ -234,31 +233,42 @@ input {
 	line-height: normal; /* Addresses FF3/4 setting line-height using !important in the UA stylesheet */
 	*overflow: visible;  /* Corrects inner spacing displayed oddly in IE6/7 */
 }
+
 button,
 html input[type="button"],
 input[type="reset"],
-input[type="submit"] {
-	border: 1px solid #ccc;
-	border-color: #ccc #ccc #bbb #ccc;
-	background: #e6e6e6;
-	color: rgba(0,0,0,.8);
-	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
+input[type="submit"]{
 	-webkit-appearance: button; /* Corrects inability to style clickable 'input' types in iOS */
-	font-size: 12px;
-	font-size: 1.4rem;
-	line-height: 1;
-	padding: 1.12em 1.5em 1em;
-	text-shadow: 0 1px 0 rgba(255,255,255,.8);
 }
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"],
+a.button,
+a.button:visited {
+	background: #2D2F33;
+	border: none;
+	color: #FFF;
+	cursor: pointer; /* Improves usability and consistency of cursor style between image-type 'input' and others */
+	
+	text-decoration: none;
+	font-weight: 200;
+	font-size: 14px;
+	padding: 12px 35px;
+	
+	border-radius: 3px;
+}
+
 button:hover,
 html input[type="button"]:hover,
 input[type="reset"]:hover,
-input[type="submit"]:hover {
-	border-color: #ccc #bbb #aaa #bbb;
-	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), inset 0 15px 17px rgba(255,255,255,0.8), inset 0 -5px 12px rgba(0,0,0,0.02);
-	-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), inset 0 15px 17px rgba(255,255,255,0.8), inset 0 -5px 12px rgba(0,0,0,0.02);
-	box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), inset 0 15px 17px rgba(255,255,255,0.8), inset 0 -5px 12px rgba(0,0,0,0.02);
+input[type="submit"]:hover ,
+a.button:hover{
+	color: #F0F0F0;
+	background: #37393e;
 }
+
 button:focus,
 html input[type="button"]:focus,
 input[type="reset"]:focus,
@@ -267,11 +277,9 @@ button:active,
 html input[type="button"]:active,
 input[type="reset"]:active,
 input[type="submit"]:active {
-	border-color: #aaa #bbb #bbb #bbb;
-	-webkit-box-shadow: inset 0 -1px 0 rgba(255,255,255,0.5), inset 0 2px 5px rgba(0,0,0,0.15);
-	-moz-box-shadow: inset 0 -1px 0 rgba(255,255,255,0.5), inset 0 2px 5px rgba(0,0,0,0.15);
-	box-shadow: inset 0 -1px 0 rgba(255,255,255,0.5), inset 0 2px 5px rgba(0,0,0,0.15);
+
 }
+
 input[type="checkbox"],
 input[type="radio"] {
 	box-sizing: border-box; /* Addresses box sizing set to content-box in IE8/9 */
@@ -356,8 +364,6 @@ a:active {
 
 
 /* @end */
-
-
 
 /* @end */
 
@@ -947,7 +953,7 @@ body{
 
 .content-container {
 	position: relative;
-	padding: 15px;
+	padding: 16px;
 	background: #FFF;
 	border: 1px solid #CCC;
 }
@@ -999,10 +1005,6 @@ h2.archive-title{
 	transition: opacity 0.175s ease-in-out;
 }
 
-.loop-container article.post:hover img.attachment-post-thumbnail{
-	opacity: 0.15;
-}
-
 .loop-container article.post .thumbnail-wrapper{
 	display: block;
 	background: #1a1c1f;
@@ -1010,33 +1012,82 @@ h2.archive-title{
 }
 
 .loop-container article.post .entry-title{
-	font-size: 18px;
+	font-size: 15px;
 	position: absolute;
-	top: -10%;
+	bottom: 0;
 	left: 0;
 	width: 100%;
 	text-align: center;
 	margin-top: -0.5em;
 	font-weight: 200;
 	color: #FFF;
+	padding: 0 6px;
+	
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 	
 	-webkit-transition: top 0.175s ease-in-out;
 	-moz-transition: top 0.175s ease-in-out;
 	-o-transition: top 0.175s ease-in-out;
 	transition: top 0.175s ease-in-out;
+	line-height: 1.5em;
 }
 
-.loop-container article.post:hover .entry-title{
-	top: 50%;
+.loop-container article.post .entry-title span{
+	background: #1a1c1f;
+	background: rgba(26,28,31, 0.9);
+	
+	padding: 10px;
+	display: block;
+}
+
+.loop-container article.post .time{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #FFF;
+	
+	background: #1a1c1f;
+	background: rgba(26,28,31, 0.8);
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 1;
+	padding: 4px 5px;
+	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 
 /* @end */
 
 /* @group Single */
 
+.single .content-container,
+.page .content-container{
+	margin-top: -25px;
+}
+
+.single .container-decoration{
+	position: absolute;
+	top: -7px;
+	left: 0;
+	width: 100%;
+	height: 7px;
+	background: #000;
+	opacity: 0.5;
+}
+
+.single #content{
+	width: 70%;
+	float: left;
+}
+
+/* @group Single Header */
+
 #single-header {
 	position: relative;
-	height: 280px;
 	margin-bottom: 0;
 	overflow: hidden;
 	background: #1c1c1c;
@@ -1060,32 +1111,13 @@ h2.archive-title{
 	height: auto;
 }
 
-.single .content-container{
-	margin-top: -25px;
-}
-
-.single .container-decoration{
-	position: absolute;
-	top: -7px;
-	left: 0;
-	width: 100%;
-	height: 7px;
-	background: #000;
-	opacity: 0.5;
-}
-
-.single #content{
-	width: 70%;
-	float: left;
-}
-
 #single-header{
 	height: auto;
 }
 
 #single-header .container{
 	margin-top: 30px;
-	padding-bottom: 50px;
+	padding-bottom: 30px;
 }
 
 #single-header .overlay{
@@ -1102,6 +1134,10 @@ h2.archive-title{
 	margin-bottom: 30px;
 }
 
+#single-header .video{
+	margin-bottom: 25px;
+}
+
 #single-header h1{
 	text-shadow: 0 2px 1px rgba(0,0,0,0.3);
 	margin: 0 0 20px 0;
@@ -1113,6 +1149,8 @@ h2.archive-title{
 	font-size: 18px;
 	color: #E5E5E5;
 }
+
+/* @end */
 
 /* @end */
 
@@ -1138,19 +1176,11 @@ h2.archive-title{
 	color: #2D3033;
 }
 
-#footer-cta a{
-	background: #2D2F33;
-	color: #FFF;
+#footer-cta a.button{
 	position: absolute;
-	text-decoration: none;
-	font-weight: 200;
-	font-size: 14px;
 	top: 50%;
 	right: 0;
-	padding: 12px 35px;
 	margin-top: -21px;
-	
-	border-radius: 3px;
 }
 
 /* @end */
@@ -1385,3 +1415,267 @@ h2.archive-title{
 /* @end */
 
 /* @end */
+
+/* @group Comments */
+
+#comments {
+	margin-top: 20px;
+}
+
+#comments h2,
+#comments h3{
+	margin: 30px 0;
+	font-size: 1.5em;
+	font-weight: 200;
+}
+
+#comments h3{
+	font-size: 1.4em;
+}
+
+#comments .commentlist{
+	list-style: none;
+	margin: 0;
+}
+
+#comments .commentlist li{
+	margin: 0;
+	padding: 0;
+}
+
+/* @group Comment Form */
+
+#commentform p{
+	margin-bottom: 4px;
+	position: relative;
+}
+
+#commentform p input[type=text]{
+	width: 40%;
+	
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#commentform p input[type=text],
+#commentform p textarea{
+	border: 1px solid #DDDDDD;
+	border-radius: 2px;
+	padding: 5px 8px;
+}
+
+#commentform p label{
+	position: absolute;
+	top: 50%;
+	margin-top: -0.5em;
+	line-height: 1;
+	left: 42%;
+	color: #4E4E4E;
+	font-weight: 500;
+}
+
+#commentform .required{
+	color: red;
+}
+
+#commentform p.comment-form-comment label{
+	display: none;
+}
+
+#commentform .form-allowed-tags{
+	color: #4E4E4E;
+	font-size: 10px;
+}
+
+#commentform .form-allowed-tags code{
+	color: inherit;
+	font-size: inherit;
+}
+
+#commentform .comment-notes,
+#commentform .logged-in-as{
+	font-size: 10px;
+	color: #999;
+}
+
+#commentform .comment-notes a,
+#commentform .logged-in-as a{
+	color: #666;
+}
+
+/* @end */
+
+/* @group Comment List */
+
+.commentlist .comment{
+	margin: 25px 0;
+	min-height: 60px;
+}
+
+.commentlist .children{
+	list-style: none;
+	margin-left: 80px;
+}
+
+.commentlist .comment-author{
+	float: left;
+}
+
+.commentlist .comment-text-area{
+	margin-left: 80px;
+}
+
+.commentlist .children .comment-text-area,
+.commentlist .children .children{
+	margin-left: 55px;
+}
+
+.commentlist .comment-meta{
+	margin-bottom: 6px;	
+	line-height: 1;
+}
+
+.commentlist .comment-meta a{
+	text-decoration: none;
+	color: inherit;
+}
+
+.commentlist .comment-meta cite{
+	color: #333;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.commentlist .comment-text-area-right{
+	float: right;
+}
+
+.commentlist .comment-links{
+	color: #999;
+}
+
+.commentlist .comment-permalink,
+.commentlist .comment-permalink time{
+	color: #AAA;
+}
+
+/* @end */
+
+/* @end */
+
+#secondary {
+	float: right;
+	width: 30%;
+	
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-left: 30px;
+}
+
+/* @group Widgets */
+
+#secondary .widget{
+	margin-bottom: 30px;
+}
+
+#secondary .widget:last-child{
+	margin-bottom: 0;
+}
+
+.widget .widget-title{
+	font-size: 14px;
+	font-weight: 500;
+	color: #393939;
+	margin-bottom: 10px;
+}
+
+.widget ul,
+.widget ol{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.widget ul li,
+.widget ol li{
+	line-height: 1;
+	margin-bottom: 4px;
+}
+
+.widget ul li a,
+.widget ol li a{
+	color: #333;
+	text-decoration: none;
+}
+
+/* @group Post Author */
+
+.widget_focus_post_author_widget .avatar{
+	float: left;
+}
+
+.widget_focus_post_author_widget .author-text{
+	margin-left: 55px;
+}
+
+.widget_focus_post_author_widget .author-text .title{
+	line-height: 1;
+	font-size: 13px;
+	font-weight: 500;
+	color: #4B4B4B;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.widget_focus_post_author_widget .author-text .author{
+	line-height: 1;
+	font-size: 18px;
+	font-weight: 500;
+	color: #373737;
+}
+
+.widget_focus_post_author_widget .post-info{
+	font-size: 11px;
+	color: #6F6F6F;
+	margin-top: 10px;
+	line-height: 1.3em;
+}
+
+.widget_focus_post_author_widget .post-info a{
+	color: #474747;
+}
+
+/* @end */
+
+/* @group Search Widget */
+
+.widget_search input{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.widget_search input.field{
+	display: inline-block;
+	width: 67%;
+}
+
+.widget_search input[type=submit]{
+	display: block;
+	float: right;
+	padding: 5px 0;
+	font-size: 12px;
+	line-height: 12px;
+	width: 30%;
+}
+
+/* @end */
+
+/* @end */
+
+.page #content{
+	width: 70%;
+	float: left;
+}

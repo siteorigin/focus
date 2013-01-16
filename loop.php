@@ -10,9 +10,10 @@
 			<?php while ( have_posts() ) : the_post(); ?>
 	
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<a href="<?php the_permalink() ?>"><h2 class="entry-title"><?php the_title() ?></h2></a>
+					<a href="<?php the_permalink() ?>"><h2 class="entry-title"><span><?php the_title() ?></span></h2></a>
 					
 					<a href="<?php the_permalink() ?>" class="thumbnail-wrapper">
+						<div class="time">3:45</div>
 						<?php if(has_post_thumbnail()) : ?>
 							<?php the_post_thumbnail() ?>
 						<?php endif; ?>

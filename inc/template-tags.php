@@ -82,32 +82,42 @@ function focus_comment( $comment, $args, $depth ) {
 	?>
 	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
 		<article id="comment-<?php comment_ID(); ?>" class="comment">
-			<footer>
-				<div class="comment-author vcard">
-					<?php echo get_avatar( $comment, 40 ); ?>
-					<?php printf( __( '%s <span class="says">says:</span>', 'focus' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
-				</div><!-- .comment-author .vcard -->
-				<?php if ( $comment->comment_approved == '0' ) : ?>
-					<em><?php _e( 'Your comment is awaiting moderation.', 'focus' ); ?></em>
-					<br />
-				<?php endif; ?>
+			<div class="comment-author vcard">
+				<?php echo get_avatar( $comment, $depth == 1 ? 60 : 35 ); ?>
+			</div><!-- .comment-author .vcard -->
+			
+			<?php if ( $comment->comment_approved == '0' ) : ?>
+				<em><?php _e( 'Your comment is awaiting moderation.', 'focus' ); ?></em>
+				<br />
+			<?php endif; ?>
 
+			<div class="comment-text-area">
 				<div class="comment-meta commentmetadata">
-					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><time pubdate datetime="<?php comment_time( 'c' ); ?>">
-					<?php
-						/* translators: 1: date, 2: time */
-						printf( __( '%1$s at %2$s', 'focus' ), get_comment_date(), get_comment_time() ); ?>
-					</time></a>
-					<?php edit_comment_link( __( '(Edit)', 'focus' ), ' ' );
-					?>
+					<cite class="fn"><?php comment_author_link() ?></cite>
+					
+					<div class="comment-text-area-right">
+						<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>" class="comment-permalink"><time pubdate datetime="<?php comment_time( 'c' ); ?>">
+							<?php
+							/* translators: 1: date, 2: time */
+							echo get_comment_date(); ?>
+						</time></a>
+						
+						<?php if(current_user_can( 'edit_comment', $comment->comment_ID ) || ($depth != 0 && $args['max_depth'] > $depth) ) : ?>
+							<span class="comment-links">
+								-
+								<?php
+								edit_comment_link( __( 'Edit', 'focus' ), '' , ' ');
+								comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
+								?>
+							</span><!-- .comment-links -->
+						<?php endif ?>
+					</div><!-- .comment-text-area-right -->
 				</div><!-- .comment-meta .commentmetadata -->
-			</footer>
-
-			<div class="comment-content"><?php comment_text(); ?></div>
-
-			<div class="reply">
-				<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-			</div><!-- .reply -->
+				
+				<div class="comment-content entry-content">
+					<?php comment_text(); ?>
+				</div>
+			</div>
 		</article><!-- #comment-## -->
 
 	<?php

@@ -86,6 +86,20 @@ function focus_video_save($post_id){
 }
 add_action('save_post', 'focus_video_save');
 
+function focus_post_has_video($id = null, $type = null){
+	if(empty($id)) $id = get_the_ID();
+	if(empty($type)) $type = 'public';
+
+	$video = get_post_meta(get_the_ID(), 'focus_video', true);
+
+	// Gives child themes a chance to change the video type being displayed
+	$type = apply_filters('focus_video_type', $type, $video, $id);
+
+	if(empty($video[$type]['type'])) return flase;
+	if(empty($video[$type][$video[$type]['type']])) return false;
+	return true;
+}
+
 function focus_post_video($id = null, $type = null){
 	if(empty($id)) $id = get_the_ID();
 	if(empty($type)) $type = 'public';
