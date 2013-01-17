@@ -8,6 +8,7 @@
 
 get_header(); the_post(); ?>
 
+<a name="wrapper"></a>
 <div id="primary" class="content-area">
 	
 	<div id="single-header">
@@ -38,7 +39,10 @@ get_header(); the_post(); ?>
 	
 				<div class="entry-content">
 					<?php the_content() ?>
+					<?php wp_link_pages(array('before' => '<div class="clear"></div>'.'<p>' . __('Pages:', 'focus'))) ?>
 				</div>
+
+				<div class="clear"></div>
 				
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template
@@ -50,6 +54,7 @@ get_header(); the_post(); ?>
 			
 			<div class="clear"></div>
 		</div>
+		<?php if(siteorigin_setting('general_posts_nav')) focus_content_nav('posts-nav') ?>
 	</div>
 </div><!-- #primary .content-area -->
 

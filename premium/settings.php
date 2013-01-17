@@ -10,11 +10,11 @@ function focus_premium_init_settings(){
 	siteorigin_settings_add_field('video', 'play_button', 'media');
 	siteorigin_settings_add_field('video', 'premium_access', 'text', null, array(
 		'options' => array(
-			's2member_level4' => __('S2Member - Level 4 Members'),
-			's2member_level3' => __('S2Member - Level 3 Members'),
-			's2member_level2' => __('S2Member - Level 2 Members'),
-			's2member_level1' => __('S2Member - Level 1 Members'),
-			's2member_level0' => __('S2Member - Free Subscribers'),
+			's2member_level4' => __('S2Member - Level 4 Members', 'focus'),
+			's2member_level3' => __('S2Member - Level 3 Members', 'focus'),
+			's2member_level2' => __('S2Member - Level 2 Members', 'focus'),
+			's2member_level1' => __('S2Member - Level 1 Members', 'focus'),
+			's2member_level0' => __('S2Member - Free Subscribers', 'focus'),
 		)
 	));
 
@@ -43,11 +43,11 @@ function focus_premium_init_settings(){
 
 	siteorigin_settings_add_field('cta', 'hide', 'text', null, array(
 		'options' => array(
-			's2member_level4' => __('S2Member - Level 4 Members'),
-			's2member_level3' => __('S2Member - Level 3 Members'),
-			's2member_level2' => __('S2Member - Level 2 Members'),
-			's2member_level1' => __('S2Member - Level 1 Members'),
-			's2member_level0' => __('S2Member - Free Subscribers'),
+			's2member_level4' => __('S2Member - Level 4 Members', 'focus'),
+			's2member_level3' => __('S2Member - Level 3 Members', 'focus'),
+			's2member_level2' => __('S2Member - Level 2 Members', 'focus'),
+			's2member_level1' => __('S2Member - Level 1 Members', 'focus'),
+			's2member_level0' => __('S2Member - Free Subscribers', 'focus'),
 		)
 	));
 

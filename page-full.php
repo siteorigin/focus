@@ -1,10 +1,14 @@
 <?php
 /**
- * The Template for displaying all single posts.
+ * The template for displaying full width pages.
  *
  * @package focus
  * @since focus 1.0
  */
+
+/*
+Template Name: Full Width
+*/
 
 get_header(); the_post(); ?>
 
@@ -40,12 +44,8 @@ get_header(); the_post(); ?>
 					?>
 				</div><!-- #content .site-content.content-container -->
 
-				<?php get_sidebar(); ?>
-				
 				<div class="clear"></div>
 			</div>
-			
-			<?php get_sidebar(); ?>
 
 		</div>
 	</div><!-- #primary .content-area -->

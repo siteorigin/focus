@@ -17,14 +17,8 @@ include get_template_directory().'/inc/video.php';
 include get_template_directory().'/inc/settings.php';
 include get_template_directory().'/inc/widgets.php';
 
-if(!defined('SITEORIGIN_IS_PREMIUM')){
-	include get_template_directory().'/upgrade/content.php';
-}
-
 // Include SiteOrigin extras
-include get_template_directory().'/extras/premium/premium.php';
 include get_template_directory().'/extras/settings/settings.php';
-include get_template_directory().'/extras/update.php';
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -32,7 +26,7 @@ include get_template_directory().'/extras/update.php';
  * @since focus 1.0
  */
 if ( ! isset( $content_width ) )
-	$content_width = 640; /* pixels */
+	$content_width = 648; /* pixels */
 
 if ( ! function_exists( 'focus_setup' ) ) :
 /**
@@ -127,6 +121,15 @@ function focus_widgets_init() {
 		'before_title' => '<h1 class="widget-title">',
 		'after_title' => '</h1>',
 	) );
+
+	register_sidebar( array(
+		'name' => __( 'Footer Widgets', 'focus' ),
+		'id' => 'sidebar-footer',
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h1 class="widget-title">',
+		'after_title' => '</h1>',
+	) );
 }
 add_action( 'widgets_init', 'focus_widgets_init' );
 
@@ -215,3 +218,37 @@ function focus_post_author_info(){
 	the_widget('Focus_Post_Author_Widget');
 }
 add_action('before_sidebar', 'focus_post_author_info');
+
+function focus_footer_widget_style(){
+	$widgets = wp_get_sidebars_widgets();
+	if(empty($widgets['sidebar-footer'])) return;
+	
+	$count = count($widgets['sidebar-footer']);
+	?> <style type="text/css"> #footer-widgets aside { width : <?php echo round(100/$count,3) ?>%; } </style> <?php
+}
+add_action('before_footer', 'focus_footer_widget_style');
+
+function focus_comment_form_defaults($defaults){
+	
+	if(siteorigin_setting('comments_hide_allowed_tags')){
+		unset($defaults['comment_notes_after']);
+	}
+	
+	return $defaults;
+}
+add_filter('comment_form_defaults', 'focus_comment_form_defaults', 5);
+
+function focus_credits(){
+	echo siteorigin_setting('text_footer_copyright');
+}
+add_action('focus_credits', 'focus_credits');
+
+function focus_theme_credit(){
+	if (siteorigin_setting('text_footer_copyright')) echo ' - ';
+	printf(__('Theme By <a href="%s">SiteOrigin</a>', 'focus'), 'http://siteorigin.com');
+}
+add_action('focus_credits', 'focus_theme_credit');
+
+function focus_default_post_thumbnail(){
+	return '<img src="'.get_template_directory_uri().'/images/thumbnail.jpg" width="297" height="160" class="attachment-post-thumbnail wp-post-image" />';
+}

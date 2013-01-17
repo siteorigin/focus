@@ -124,15 +124,15 @@ function focus_post_video($id = null, $type = null){
 					<?php do_action('focus_video_play_button') ?>
 					<div class="jp-gui">
 						<ul class="jp-controls">
-							<li><a href="#" class="jp-play" tabindex="1">play</a></li>
-							<li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
-							<li><a href="#" class="jp-stop" tabindex="1">stop</a></li>
+							<li><a href="#" class="jp-play" tabindex="1"><?php esc_html_e('play', 'focus') ?></a></li>
+							<li><a href="#" class="jp-pause" tabindex="1"><?php esc_html_e('pause', 'focus') ?></a></li>
+							<li><a href="#" class="jp-stop" tabindex="1"><?php esc_html_e('stop', 'focus') ?></a></li>
 							
-							<li><a href="#" class="jp-full-screen" tabindex="1">full screen</a></li>
-							<li><a href="#" class="jp-restore-screen" tabindex="1">restore screen</a></li>
+							<li><a href="#" class="jp-full-screen" tabindex="1"><?php esc_html_e('full screen', 'focus') ?></a></li>
+							<li><a href="#" class="jp-restore-screen" tabindex="1"><?php esc_html_e('restore screen', 'focus') ?></a></li>
 							
-							<li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
-							<li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
+							<li><a href="#" class="jp-mute" tabindex="1"><?php esc_html_e('mute', 'focus') ?></a></li>
+							<li><a href="#" class="jp-unmute" tabindex="1"><?php esc_html_e('unmute', 'focus') ?></a></li>
 						</ul>
 						
 						<div class="sep jp-controls-sep"></div>
