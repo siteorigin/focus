@@ -2,22 +2,12 @@
 
 /*
 Theme Name: Focus
-Theme URI: http://siteorigin.com/
 Author: SiteOrigin
 Author URI: http://siteorigin.com/
-Description: A video theme
+Description: A theme for displaying videos.
 Version: 1.0
 License: GNU General Public License 2.0
 License URI: license.txt
-Tags:
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
-
-Resetting and rebuilding styles have been helped along thanks to the fine work of
-Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
-along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
-and Blueprint http://www.blueprintcss.org/
 */
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
@@ -257,6 +247,8 @@ a.button:visited {
 	font-size: 14px;
 	padding: 12px 35px;
 	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
 	border-radius: 3px;
 }
 
@@ -721,6 +713,8 @@ body{
 	border-color: transparent;
 	color: transparent;
 	
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	
 	outline: none;
@@ -1444,6 +1438,8 @@ footer .site-info a{
 	border: 1px solid #E0E0E0;
 	padding: 10px;
 	
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.09);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.09);
 	box-shadow: 0 1px 2px rgba(0,0,0,0.09);
 }
 
@@ -1502,6 +1498,9 @@ footer .site-info a{
 	margin: 5px 0 30px 0;
 	border: 1px solid #E0E0E0;
 	padding: 8px;
+	
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.09);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.09);
 	box-shadow: 0 1px 2px rgba(0,0,0,0.09);
 	
 	-moz-box-sizing:border-box;
@@ -1671,6 +1670,8 @@ footer .site-info a{
 #commentform p input[type=text],
 #commentform p textarea{
 	border: 1px solid #DDDDDD;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
 	border-radius: 2px;
 	padding: 5px 8px;
 }

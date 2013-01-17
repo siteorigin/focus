@@ -19,6 +19,7 @@ include get_template_directory().'/inc/widgets.php';
 
 // Include SiteOrigin extras
 include get_template_directory().'/extras/settings/settings.php';
+include get_template_directory().'/extras/premium/premium.php';
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -170,7 +171,7 @@ function focus_get_slider_posts(){
 }
 
 function focus_admin_footer_text($text){
-	return '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://wordpress.org/">WordPress</a> and <a href="http://siteorigin.com/theme/focus/">Focus</a>.', focus ) . '</span>';
+	return '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://wordpress.org/">WordPress</a> and <a href="http://siteorigin.com/theme/focus/">Focus</a>.', 'focus' ) . '</span>';
 }
 add_filter('admin_footer_text', 'focus_admin_footer_text');
 

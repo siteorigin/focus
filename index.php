@@ -21,7 +21,7 @@ get_header(); ?>
 		
 		<div class="container">
 			
-			<h2 class="archive-title"><?php echo siteorigin_setting('latest_posts', __("Latest Videos", 'focus')) ?></h2>
+			<h2 class="archive-title"><?php echo siteorigin_setting('text_latest_posts', __("Latest Videos", 'focus')) ?></h2>
 			
 			<?php get_template_part('loop') ?>
 			

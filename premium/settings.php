@@ -58,20 +58,3 @@ function focus_premium_init_settings(){
 	siteorigin_settings_add_field('layout', 'responsive', 'checkbox');
 }
 add_action('admin_init', 'focus_premium_init_settings', 11);
-
-function focus_premium_setting_defaults($defaults){
-	$defaults['general_ajax_comments'] = false;
-	
-	$defaults['slider_post_cat'] = '';
-	$defaults['slider_post_orderby'] = 'date';
-	
-	$defaults['video_autoplay'] = false;
-	$defaults['video_hide_related'] = false;
-	
-	$defaults['menu_search'] = false;
-	
-	$defaults['layout_responsive'] = false;
-	
-	return $defaults;
-}
-add_filter('siteorigin_theme_default_settings', 'focus_premium_setting_defaults');
