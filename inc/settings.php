@@ -134,12 +134,40 @@ function focus_theme_settings(){
 add_action('admin_init', 'focus_theme_settings');
 
 function focus_theme_setting_defaults($defaults){
+	$defaults['general_ajax_comments'] = false;
 	$defaults['general_display_author'] = true;
 	$defaults['general_posts_nav'] = true;
+	
 	$defaults['menu_home'] = true;
+	$defaults['menu_search'] = false;
+	
+	$defaults['text_not_found'] = false;
+	$defaults['text_no_results'] = false;
+	$defaults['text_latest_posts'] = false;
+	$defaults['text_footer_copyright'] = false;
+	
+	$defaults['cta_text'] = '';
+	$defaults['cta_button_url'] = '';
+	$defaults['cta_button_text'] = '';
+	$defaults['cta_hide'] = '';
+
+	// The slider
+	$defaults['slider_post_count'] = 5;
+	$defaults['slider_post_cat'] = '';
+	$defaults['slider_post_orderby'] = 'date';
+	
+	// The Video
+	$defaults['video_premium_access'] = '';
+	$defaults['video_play_button'] = false;
+	$defaults['video_default_hd'] = false;
+	$defaults['video_autoplay'] = false;
+	$defaults['video_hide_related'] = false;
 	
 	// Comments
 	$defaults['comments_page_hide'] = false;
+	$defaults['comments_hide_allowed_tags'] = false;
+
+	$defaults['layout_responsive'] = false;
 	
 	return $defaults;
 }
