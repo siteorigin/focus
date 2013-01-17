@@ -12,7 +12,7 @@
 							<h1><?php the_title() ?></h1>
 							<?php if(has_excerpt()) : ?><p><?php the_excerpt() ?></p><?php endif; ?>
 						</div>
-						<a href="<?php the_permalink() ?>" class="play">Play</a>
+						<a href="<?php the_permalink() ?>" class="play"><?php esc_html_e('Play', 'focus') ?></a>
 					</li>
 				<?php endif; ?>
 			<?php endwhile ?>

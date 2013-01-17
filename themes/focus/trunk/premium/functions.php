@@ -3,6 +3,7 @@
 define('SITEORIGIN_IS_PREMIUM', true);
 
 include get_template_directory().'/premium/settings.php';
+include get_template_directory().'/premium/widgets.php';
 
 include get_template_directory().'/extras/mobilenav/mobilenav.php';
 

@@ -7,7 +7,7 @@ class Focus_Post_Author_Widget extends WP_Widget {
 		parent::__construct(
 			'focus_post_author_widget', // Base ID
 			'Focus_Post_Author_Widget', // Name
-			array( 'description' => __( 'Displays the post author.', 'Focus' ), ) // Args
+			array( 'description' => __( 'Displays the post author.', 'focus' ), ) // Args
 		);
 	}
 
@@ -35,16 +35,7 @@ class Focus_Post_Author_Widget extends WP_Widget {
 			<div class="author"><?php the_author_meta('display_name') ?></div>
 		</div>
 		<div class="clear"></div>
-		<div class="post-info">
-			<?php
-			printf(
-				__('Posted On %s in %s with %s', 'focus'),
-				get_the_date(),
-				get_the_category_list(', '),
-				sprintf(_n( 'One Comment', '%s Comments', get_comments_number(), 'focus' ), get_comments_number())
-			)
-			?>
-		</div>
+		<div class="post-info"><?php focus_posted_on() ?></div>
 		<?php
 		echo $args['after_widget'];
 		

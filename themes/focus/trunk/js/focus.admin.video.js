@@ -12,7 +12,6 @@ jQuery(function($){
     
     
     var restoreSendAttachment = function(){
-        console.log(restoreSendAttachment.original);
         if(restoreSendAttachment.original != null){
             // Restore the media_send_attachment value
             wp.media.editor.send.attachment = restoreSendAttachment.original;
