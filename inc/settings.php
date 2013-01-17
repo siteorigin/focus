@@ -2,12 +2,13 @@
 
 function focus_theme_settings(){
 	siteorigin_settings_add_section('general', __('General', 'focus'));
-	siteorigin_settings_add_section('slider', __('Home Page Slider', 'focus'));
-	siteorigin_settings_add_section('video', __('Video Player', 'focus'));
+	siteorigin_settings_add_section('slider', __('Slider', 'focus'));
+	siteorigin_settings_add_section('video', __('Video', 'focus'));
 	siteorigin_settings_add_section('layout', __('Layout', 'focus'));
-	siteorigin_settings_add_section('text', __('Site Text', 'focus'));
+	siteorigin_settings_add_section('text', __('Text', 'focus'));
 	siteorigin_settings_add_section('menu', __('Main Menu', 'focus'));
 	siteorigin_settings_add_section('cta', __('Call To Action', 'focus'));
+	siteorigin_settings_add_section('comments', __('Comments', 'focus'));
 
 	/**
 	 * General Settings
@@ -15,6 +16,10 @@ function focus_theme_settings(){
 
 	siteorigin_settings_add_field('general', 'display_author', 'checkbox',__('Display Post Author', 'focus'), array(
 		'description' => __('Displays post author information on a post page.', 'focus')
+	));
+
+	siteorigin_settings_add_field('general', 'posts_nav', 'checkbox',__('Display Post Navigation', 'focus'), array(
+		'description' => __('Display next and previous post links on post single pages.', 'focus')
 	));
 	
 	siteorigin_settings_add_teaser('general', 'ajax_comments', __('Ajax Comments', 'focus'), array(
@@ -65,14 +70,6 @@ function focus_theme_settings(){
 	 * Page Layout
 	 */
 
-	siteorigin_settings_add_field('layout', 'page_width', 'select', __('Page Width', 'focus'), array(
-		'description' => __('The overlay placed over the video background.', 'focus'),
-		'options' => array(
-			720 => '720px',
-			960 => '960px',
-		)
-	));
-	
 	siteorigin_settings_add_teaser('layout', 'responsive', __('Responsive Layout', 'focus'), array(
 		'description' => __('Make your video site responsive.', 'focus')
 	));
@@ -93,7 +90,7 @@ function focus_theme_settings(){
 		'description' => __('Text in your site footer.', 'focus')
 	));
 
-	siteorigin_settings_add_field('text', 'latest_headline', 'text', __('Latest Posts Headline', 'focus'));
+	siteorigin_settings_add_field('text', 'latest_posts', 'text', __('Latest Posts Headline', 'focus'));
 	
 	/**
 	 * Main Menu
@@ -119,12 +116,30 @@ function focus_theme_settings(){
 	siteorigin_settings_add_teaser('cta', 'hide', __('Hide CTA', 'focus'), array(
 		'description' => __('Comma separated list of capabilities from which to hide the CTA.', 'focus')
 	));
+	
+	/**
+	 * Comments
+	 */
+
+	siteorigin_settings_add_field('comments', 'page_hide', 'checkbox',__('Hide Page Comments', 'focus'), array(
+		'description' => __('Automatically hides the comments and comment form on pages.', 'focus'),
+		'label' => __('Hide', 'focus'),
+	));
+
+	siteorigin_settings_add_field('comments', 'hide_allowed_tags', 'checkbox',__('Hide Allowed Tags', 'focus'), array(
+		'description' => __('Hides allowed tags from the comment form.', 'focus'),
+		'label' => __('Hide', 'focus'),
+	));
 }
 add_action('admin_init', 'focus_theme_settings');
 
 function focus_theme_setting_defaults($defaults){
 	$defaults['general_display_author'] = true;
+	$defaults['general_posts_nav'] = true;
 	$defaults['menu_home'] = true;
+	
+	// Comments
+	$defaults['comments_page_hide'] = false;
 	
 	return $defaults;
 }

@@ -15,6 +15,11 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="container">
+			<div id="footer-widgets">
+				<?php dynamic_sidebar('sidebar-footer') ?>
+			</div>
+			<div class="clear"></div>
+			
 			<div class="site-info">
 				<?php do_action( 'focus_credits' ); ?>
 			</div><!-- .site-info -->

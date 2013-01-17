@@ -40,29 +40,35 @@ function focus_enhanced_image_navigation( $url, $id ) {
 }
 add_filter( 'attachment_link', 'focus_enhanced_image_navigation', 10, 2 );
 
+if(!function_exists('focus_wp_title')) :
 /**
- * Filters wp_title to print a neat <title> tag based on what is being viewed.
+ * Filter the title
+ * @param $title
+ * @param $sep
+ * @param $seplocation
+ * @return string
  *
- * @since focus 1.1
+ * @filter wp_title
  */
-function focus_wp_title( $title, $sep ) {
-	global $page, $paged;
+function focus_wp_title($title, $sep, $seplocation){
+	if(trim($sep) != ''){
+		if(!empty($title)) {
+			$title_array = explode($sep, $title);
+		}
+		else $title_array = array();
 
-	if ( is_feed() )
-		return $title;
+		$title_array[] = get_bloginfo('title');
+		if(is_home()) $title_array[] = get_bloginfo('description');
 
-	// Add the blog name
-	$title .= get_bloginfo( 'name' );
+		$title_array = array_map('trim', $title_array);
+		$title_array = array_filter($title_array);
 
-	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		$title .= " $sep $site_description";
+		if($seplocation == 'left') $title_array = array_reverse($title_array);
 
-	// Add a page number if necessary:
-	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $sep " . sprintf( __( 'Page %s', 'focus' ), max( $paged, $page ) );
+		$title = implode( " $sep ", $title_array );
+	}
 
 	return $title;
 }
-add_filter( 'wp_title', 'focus_wp_title', 10, 2 );
+endif;
+add_filter('wp_title', 'focus_wp_title', 10, 3);
