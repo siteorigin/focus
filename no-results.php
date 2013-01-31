@@ -16,7 +16,7 @@
 
 	<?php else : ?>
 
-		<p><?php echo siteorigin_setting('text_no_results', __("We couldn't find any results for your query.", 'focus')) ?></p>
+		<p><?php echo wp_kses_post(siteorigin_setting('text_no_results', __("We couldn't find any results for your query.", 'focus'))) ?></p>
 		<?php get_search_form(); ?>
 
 	<?php endif; ?>

@@ -25,7 +25,7 @@ get_header(); ?>
 				<div id="content" class="site-content" role="main">
 					<div class="entry-content">
 
-						<p><?php echo siteorigin_setting('text_not_found', __("We couldn't find the page you were looking for.", 'focus')) ?></p>
+						<p><?php echo wp_kses_post(siteorigin_setting('text_not_found', __("We couldn't find the page you were looking for.", 'focus'))) ?></p>
 						
 						<?php get_search_form(); ?>
 	
