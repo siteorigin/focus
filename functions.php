@@ -20,6 +20,10 @@ include get_template_directory().'/inc/widgets.php';
 // Include SiteOrigin extras
 include get_template_directory().'/extras/settings/settings.php';
 include get_template_directory().'/extras/premium/premium.php';
+include get_template_directory().'/extras/panels/panels.php';
+include get_template_directory().'/extras/widgets/widgets.php';
+
+add_action('widgets_init', 'siteorigin_widgets_init');
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -76,10 +80,7 @@ function focus_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	/**
-	 * Add the movile navigation menu if its enabled.
-	 */
-	if(siteorigin_setting('layout_responsive')) add_theme_support('siteorigin-mobilenav');
+	add_theme_support('siteorigin-panels');
 
 	/**
 	 * This theme uses wp_nav_menu() in one location.
@@ -215,6 +216,7 @@ add_filter( 'wp_page_menu_args', 'focus_page_menu_args' );
 function focus_post_author_info(){
 	if(!is_single()) return false;
 	if(!siteorigin_setting('general_display_author')) return;
+	if(get_post_type() != 'post') return;
 	
 	the_widget('Focus_Post_Author_Widget');
 }
@@ -232,7 +234,7 @@ add_action('before_footer', 'focus_footer_widget_style');
 function focus_comment_form_defaults($defaults){
 	
 	if(siteorigin_setting('comments_hide_allowed_tags')){
-		unset($defaults['comment_notes_after']);
+		$defaults['comment_notes_after'] = null;
 	}
 	
 	return $defaults;
@@ -240,7 +242,7 @@ function focus_comment_form_defaults($defaults){
 add_filter('comment_form_defaults', 'focus_comment_form_defaults', 5);
 
 function focus_credits(){
-	echo siteorigin_setting('text_footer_copyright');
+	echo wp_kses_post(siteorigin_setting('text_footer_copyright'));
 }
 add_action('focus_credits', 'focus_credits');
 
