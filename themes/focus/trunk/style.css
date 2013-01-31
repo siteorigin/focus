@@ -5,7 +5,7 @@ Theme Name: Focus
 Author: SiteOrigin
 Author URI: http://siteorigin.com/
 Description: A theme for displaying videos.
-Version: 1.0
+Version: trunk
 License: GNU General Public License 2.0
 License URI: license.txt
 Tags: gray, right-sidebar, two-columns, full-width-template,  featured-images, translation-ready, threaded-comments, theme-options
@@ -1828,3 +1828,41 @@ footer .site-info a{
 #posts-nav .nav-previous{
 	float: left;
 }
+
+/* @group Panels */
+
+.panel-grid{
+    margin: 0 -15px 30px -15px;
+}
+
+.panel-grid-cell{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    padding: 0 15px;
+}
+
+.panel-grid-cell .panel{
+    margin-bottom: 30px;
+}
+
+.panel-grid-cell .panel:last-child{
+    margin-bottom: 0;
+}
+
+.panel {
+    min-height: 1em;
+    margin-bottom: 15px;
+}
+
+.panel.panel-last-child{
+    margin-bottom: 0;
+}
+
+.panel h3.widget-title{
+    margin-bottom: 15px;
+    font-size: 115%;
+}
+
+/* @end */

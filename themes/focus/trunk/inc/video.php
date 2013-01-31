@@ -2,16 +2,18 @@
 
 function focus_admin_scripts($prefix){
 	if($prefix == 'post.php' || $prefix == 'post-new.php'){
-		wp_enqueue_script('siteorigin-jquery-media');
 		wp_enqueue_script('focus-admin-video', get_template_directory_uri().'/js/focus.admin.video.js', array('jquery'), SITEORIGIN_THEME_VERSION);
 		wp_localize_script('focus-admin-video', 'focusVideoSettings', array(
 			'button' => __('Set Video', 'focus')
 		));
-
-		siteorigin_premium_enqueue_teaser();
 	}
 }
 add_action('admin_enqueue_scripts', 'focus_admin_scripts');
+
+function focus_video_premium_teaser_post_types($types){
+	$types[] = 'post';
+}
+add_filter('siteorigin_premium_teaser_post_types', 'focus_video_premium_teaser_post_types');
 
 function focus_add_metabox(){
 	add_meta_box('focus-video', __('Video', 'focus'), 'focus_video_metabox_render', 'post');
@@ -95,7 +97,7 @@ function focus_post_has_video($id = null, $type = null){
 	// Gives child themes a chance to change the video type being displayed
 	$type = apply_filters('focus_video_type', $type, $video, $id);
 
-	if(empty($video[$type]['type'])) return flase;
+	if(empty($video[$type]['type'])) return false;
 	if(empty($video[$type][$video[$type]['type']])) return false;
 	return true;
 }

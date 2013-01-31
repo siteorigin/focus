@@ -5,7 +5,16 @@ define('SITEORIGIN_IS_PREMIUM', true);
 include get_template_directory().'/premium/settings.php';
 include get_template_directory().'/premium/widgets.php';
 
-include get_template_directory().'/extras/mobilenav/mobilenav.php';
+include get_template_directory().'/premium/extras/mobilenav/mobilenav.php';
+
+function focus_premium_theme_init(){
+	/**
+	 * Add the movile navigation menu if its enabled.
+	 */
+	if(siteorigin_setting('layout_responsive')) add_theme_support('siteorigin-mobilenav');
+}
+add_action('theme_init', 'focus_premium_theme_init');
+
 
 function focus_premium_filter_video_embed_code($code){
 	if(siteorigin_setting('video_autoplay') || siteorigin_setting('video_hide_related')) {

@@ -13,7 +13,7 @@
 					</span></h2></a>
 					
 					<a href="<?php the_permalink() ?>" class="thumbnail-wrapper">
-						<div class="time">3:45</div>
+						<!-- <div class="time"></div> -->
 						<?php echo has_post_thumbnail() ? get_the_post_thumbnail() : focus_default_post_thumbnail();  ?>
 					</a>
 				</article>
