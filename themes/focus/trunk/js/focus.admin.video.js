@@ -1,3 +1,10 @@
+/**
+ * Focus video admin
+ *
+ * Copyright 2013, Greg Priday
+ * Released under GPL 2.0 - see http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 jQuery(function($){
     $('.focus-video-table' ).each(function(i, el){
         var $$ = $(el);
