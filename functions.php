@@ -103,7 +103,6 @@ function focus_setup() {
 		'primary' => __( 'Primary Menu', 'focus' ),
 	) );
 	
-	
 	/**
 	 * Add custom image sizes
 	 */
