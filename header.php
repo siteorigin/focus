@@ -27,11 +27,7 @@
 			<hgroup>
 				<h1 class="site-title <?php echo siteorigin_setting('general_logo') ? 'image-logo' : 'text-logo' ?>">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-						<?php if(!siteorigin_setting('general_logo')) : ?>
-							<?php  ?>
-						<?php else : ?>
-							<?php focus_display_logo(); ?>
-						<?php endif; ?>
+						<?php focus_display_logo(); ?>
 					</a>
 				</h1>
 			</hgroup>
