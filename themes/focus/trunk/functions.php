@@ -282,7 +282,7 @@ function focus_display_logo(){
 	$image = wp_get_attachment_image_src($logo, 'full');
 	
 	if(siteorigin_setting('general_logo_scale')){
-		$height = min($image[2], 28);
+		$height = min($image[2], 26);
 		$width = $height/$image[1] * $image[2];
 	}
 	else{
