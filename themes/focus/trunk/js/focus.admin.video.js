@@ -14,50 +14,50 @@ jQuery(function($){
             $$.find('.field' ).hide();
             $$.find('.field-' + $(this ).val() ).show();
         } ).change();
-    });
-    
-    
-    
-    var restoreSendAttachment = function(){
-        if(restoreSendAttachment.original != null){
-            // Restore the media_send_attachment value
-            wp.media.editor.send.attachment = restoreSendAttachment.original;
-            wp.media.view.l10n.insertIntoPost = restoreSendAttachment.buttonText;
-            $('.media-modal .media-button-insert' ).html(wp.media.view.l10n.insertIntoPost);
-            
-            restoreSendAttachment.original = null;
-        }
-    }
-    
-    // Restore the original attachment function when we escape the modal
-    wp.media.view.Modal.prototype.bind('escape', restoreSendAttachment);
-    
-    // Enable custom media handling
-    $('.focus-add-video' ).each(function(){
-        var $$ = $(this);
         
-        $$.click(function(event){
+        $$.find('.focus-add-video' ).click(function(event){
+            var $b = $(this);
             event.preventDefault();
             
-            // Open the media editor
-            restoreSendAttachment.original = wp.media.editor.send.attachment;
-            restoreSendAttachment.buttonText = wp.media.view.l10n.insertIntoPost;
-            
-            
-            wp.media.editor.send.attachment = function(props, attachment){
-                var $f = $('.focus-video-table .field-' + $$.attr('data-video-type') + '-self');
-                $f.find('strong' ).html(attachment.title);
-                $f.find('.field-video-self' ).val(attachment.id);
+            var frame = $b.data('frame');
+            if(! frame){
+                frame = wp.media({
+                    title: $b.data('choose'),
+                    // Tell the modal to show only images.
+                    library: {
+                        type: 'video'
+                    },
+                    button: {
+                        text: $b.data('choose'),
+                        close: false
+                    }
+                });
                 
-                // Restore the original send attachment function
-                restoreSendAttachment();
-            };
-            wp.media.view.l10n.insertIntoPost = focusVideoSettings.button;
+                frame.on('select', function(){
+                    // Grab the selected attachment.
+                    var attachment = frame.state().get('selection').first().attributes;
+                    var $f = $$.find(' .field-' + $b.data('video-type') + '-self');
+                    
+                    console.log(attachment);
+                    console.log($f.length);
+                    console.log( $b.data('video-type'));
+                    
+                    $f.find('strong' ).html(attachment.title);
+                    $f.find('.field-video-self' ).val(attachment.id);
+                    frame.close();
+                });
+            }
             
-            wp.media.editor.open('content');
-            $('.media-modal .media-button-insert' ).html(wp.media.view.l10n.insertIntoPost);
-            
+            frame.open();
             return false;
         });
+        
+        $$.find('.focus-remove-video' ).click(function(event){
+            event.preventDefault();
+            $$.find('.video-name' ).html('');
+            $$.find('.field-video-self' ).val('');
+            
+            return false;
+        })
     });
-})
+});
