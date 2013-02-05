@@ -1,7 +1,9 @@
 <?php
 
 function focus_admin_scripts($prefix){
-	if($prefix == 'post.php' || $prefix == 'post-new.php'){
+	$screen = get_current_screen();
+	
+	if($prefix == 'post.php' || $prefix == 'post-new.php' && $screen->id == 'post'){
 		wp_enqueue_script('focus-admin-video', get_template_directory_uri().'/js/focus.admin.video.js', array('jquery'), SITEORIGIN_THEME_VERSION);
 		wp_localize_script('focus-admin-video', 'focusVideoSettings', array(
 			'button' => __('Set Video', 'focus')
@@ -60,8 +62,10 @@ function focus_video_field($type, $title){
 			<td class="wp-media-buttons">
 				<strong style="margin-right: 10px" class="video-name"><?php if(!empty($self)) echo $self->post_title ?></strong>
 
-				<a href="#" class="button add_media focus-add-video" data-video-type="<?php echo esc_attr($type) ?>" title="Add Media"><span class="wp-media-buttons-icon"></span> <?php printf(__('Add %s Video', 'focus'), $title) ?></a>
-				<a href="#"><?php printf(__('Remove %s Video', 'focus'), $title) ?></a>
+				<a href="#" class="button add_media focus-add-video" data-video-type="<?php echo esc_attr($type) ?>" title="Add Media" data-choose="<?php esc_attr_e('Select Video File', 'focus') ?>" data-update="<?php esc_attr_e('Set Video', 'focus') ?>">
+					<span class="wp-media-buttons-icon"></span> <?php printf(__('Add %s Video', 'focus'), $title) ?>
+				</a>
+				<a href="#" class="focus-remove-video"><?php printf(__('Remove %s Video', 'focus'), $title) ?></a>
 
 				<input type="hidden" name="focus_video[<?php echo esc_attr($type) ?>][self]" class="regular-text field-video-self" value="<?php if(!empty($self)) echo $self->ID ?>" />
 			</td>
