@@ -1418,7 +1418,6 @@ footer .site-info a{
 }
 
 .entry-content > *:last-child{
-	margin-bottom: 0;
 }
 
 .entry-content p,
@@ -1426,6 +1425,14 @@ footer .site-info a{
 .entry-content > li,
 .entru-content dl{
 	margin: 25px 0;
+}
+
+.entry-content p:first-child{
+	margin-top: 0;
+}
+
+.entry-content p:last-child{
+	margin-bottom: 0;
 }
 
 .entry-content > div:first-child{
@@ -1854,6 +1861,10 @@ footer .site-info a{
 
 .panel-grid{
     margin: 0 -15px 30px -15px;
+}
+
+.entry-content .panel-grid{
+	margin-top: 0 !important;
 }
 
 .panel-grid-cell{

@@ -76,7 +76,7 @@ function focus_theme_settings(){
 	 */
 
 	siteorigin_settings_add_teaser('layout', 'responsive', __('Responsive Layout', 'focus'), array(
-		'description' => __('Make your video site responsive.', 'focus')
+		'description' => __('Make your site responsive.', 'focus')
 	));
 
 	/**
