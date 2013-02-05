@@ -10,7 +10,11 @@ define( 'SITEORIGIN_THEME_VERSION', 'trunk' );
 define( 'SITEORIGIN_THEME_ENDPOINT', 'http://siteorigin.dynalias.com' );
 
 if(file_exists(get_template_directory().'/premium/functions.php')){
-	include get_template_directory().'/premium/functions.php';
+	// include get_template_directory().'/premium/functions.php';
+}
+
+if(!defined('SITEORIGIN_IS_PREMIUM')){
+	include get_template_directory().'/upgrade/upgrade.php';
 }
 
 include get_template_directory().'/inc/video.php';
@@ -80,9 +84,13 @@ function focus_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	add_theme_support('siteorigin-panels');
-
-	add_theme_support( '' );
+	/**
+	 * Support panels
+	 */
+	add_theme_support( 'siteorigin-panels', array(
+		'margin-bottom' => 30,
+		'responsive' => siteorigin_setting('layout_responsive'),
+	) );
 
 	/**
 	 * This theme uses wp_nav_menu() in one location.
