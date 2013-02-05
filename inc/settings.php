@@ -14,9 +14,12 @@ function focus_theme_settings(){
 	 * General Settings
 	 */
 
-	siteorigin_settings_add_field('general', 'logo', 'media',__('Logo', 'focus'));
+	siteorigin_settings_add_field('general', 'logo', 'media',__('Logo', 'focus'), array(
+		'choose' => __('Choose Logo Image', 'focus'),
+		'update' => __('Set Logo', 'focus'),
+	));
 	siteorigin_settings_add_field('general', 'logo_scale', 'checkbox',__('Scale Logo', 'focus'), array(
-		'description' => __('If used, scale the logo to fit the menu bar'),
+		'description' => __('If used, scale the logo to fit the menu bar', 'focus'),
 	));
 	
 	siteorigin_settings_add_field('general', 'display_author', 'checkbox',__('Display Post Author', 'focus'), array(

@@ -10,7 +10,7 @@ define( 'SITEORIGIN_THEME_VERSION', 'trunk' );
 define( 'SITEORIGIN_THEME_ENDPOINT', 'http://siteorigin.dynalias.com' );
 
 if(file_exists(get_template_directory().'/premium/functions.php')){
-	// include get_template_directory().'/premium/functions.php';
+	include get_template_directory().'/premium/functions.php';
 }
 
 if(!defined('SITEORIGIN_IS_PREMIUM')){
@@ -83,6 +83,10 @@ function focus_setup() {
 	 * Enable support for Post Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
+
+	add_theme_support( 'custom-background' , array(
+		'default-color'          => '#F6F4F2',
+	));
 
 	/**
 	 * Support panels
