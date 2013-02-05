@@ -1,3 +1,10 @@
+/**
+ * Focus Theme Javascript.
+ * 
+ * Copyright 2013, Greg Priday
+ * Released under GPL 2.0 - see http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 jQuery(function($){
 
     // Set up fitvids

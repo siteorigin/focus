@@ -82,6 +82,8 @@ function focus_setup() {
 
 	add_theme_support('siteorigin-panels');
 
+	add_theme_support( '' );
+
 	/**
 	 * This theme uses wp_nav_menu() in one location.
 	 */
@@ -254,4 +256,40 @@ add_action('focus_credits', 'focus_theme_credit');
 
 function focus_default_post_thumbnail(){
 	return '<img src="'.get_template_directory_uri().'/images/thumbnail.jpg" width="297" height="160" class="attachment-post-thumbnail wp-post-image" />';
+}
+
+/**
+ * Add the HTML shiv to the header.
+ */
+function focus_html5_shiv(){
+	?>
+	<!--[if lt IE 9]>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+	<?php
+}
+add_action('wp_head', 'focus_html5_shiv');
+
+function focus_display_logo(){
+	$logo = siteorigin_setting('general_logo');
+	
+	if(empty($logo)) {
+		// Just display the site title
+		bloginfo( 'name' );
+		return;
+	}
+	
+	$image = wp_get_attachment_image_src($logo, 'full');
+	
+	if(siteorigin_setting('general_logo_scale')){
+		$height = min($image[2], 28);
+		$width = $height/$image[1] * $image[2];
+	}
+	else{
+		$height = $image[2];
+		$width = $image[1];
+	}
+	
+	// echo $image;
+	?><img src="<?php echo $image[0] ?>" width="<?php echo round($width) ?>" height="<?php echo round($height) ?>" /><?php
 }
