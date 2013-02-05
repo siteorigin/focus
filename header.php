@@ -10,16 +10,13 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width" />
-<title><?php wp_title( '|', true, 'right' ); ?></title>
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
-<![endif]-->
-
-<?php wp_head(); ?>
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
+	<meta name="viewport" content="width=device-width" />
+	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+	
+	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -28,17 +25,28 @@
 	<header id="masthead" class="site-header" role="banner">
 		<section class="container">
 			<hgroup>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<!-- <h2 class="site-description"><?php bloginfo( 'description' ); ?></h2> -->
+				<h1 class="site-title <?php echo siteorigin_setting('general_logo') ? 'image-logo' : 'text-logo' ?>">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+						<?php if(!siteorigin_setting('general_logo')) : ?>
+							<?php  ?>
+						<?php else : ?>
+							<?php focus_display_logo(); ?>
+						<?php endif; ?>
+					</a>
+				</h1>
 			</hgroup>
 	
 			<nav role="navigation" id="main-navigation" class="site-navigation primary">
+				
 				<h1 class="assistive-text"><?php _e( 'Menu', 'focus' ); ?></h1>
 				<div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'focus' ); ?>"><?php _e( 'Skip to content', 'focus' ); ?></a></div>
 				
 				<?php do_action('before_menu'); ?>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+				<div class="menu-wrapper">
+					<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+				</div>
 				<?php do_action('after_menu'); ?>
+				
 			</nav><!-- .site-navigation .main-navigation -->
 			
 			<div class="clear"></div>
