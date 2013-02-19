@@ -871,7 +871,7 @@ body{
 
 .slider,
 .slider .slide{
-	height: 360px;
+	height: 420px;
 }
 
 .slider{
@@ -945,7 +945,7 @@ body{
 	position: absolute;
 	text-indent: -9999px;
 	text-decoration: none;
-	top: 60%;
+	top: 55%;
 	left: 50%;
 	
 	margin: -48px 0 0 -48px;
