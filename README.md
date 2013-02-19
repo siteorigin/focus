@@ -17,3 +17,4 @@ Bug fixes and improved compatibility with WordPress theme unit tests.
 
 **0.9.2**
 Added admin bar for notifications.
+Improved integration with WordPress' new Media Manager.
