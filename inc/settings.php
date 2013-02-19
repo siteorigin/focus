@@ -142,6 +142,7 @@ function focus_theme_settings(){
 add_action('admin_init', 'focus_theme_settings');
 
 function focus_theme_setting_defaults($defaults){
+	$defaults['general_logo'] = '';
 	$defaults['general_logo_scale'] = true;
 	$defaults['general_ajax_comments'] = false;
 	$defaults['general_display_author'] = true;

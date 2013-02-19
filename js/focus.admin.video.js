@@ -28,7 +28,7 @@ jQuery(function($){
                         type: 'video'
                     },
                     button: {
-                        text: $b.data('choose'),
+                        text: $b.data('update'),
                         close: false
                     }
                 });
@@ -37,10 +37,6 @@ jQuery(function($){
                     // Grab the selected attachment.
                     var attachment = frame.state().get('selection').first().attributes;
                     var $f = $$.find(' .field-' + $b.data('video-type') + '-self');
-                    
-                    console.log(attachment);
-                    console.log($f.length);
-                    console.log( $b.data('video-type'));
                     
                     $f.find('strong' ).html(attachment.title);
                     $f.find('.field-video-self' ).val(attachment.id);

@@ -4,7 +4,7 @@ function focus_premium_upgrade_content($content){
 	$content['premium_title'] = __('Upgrade To Focus Premium', 'focus');
 	$content['premium_summary'] = __("If you've enjoyed using Focus, you'll going to love Focus Premium. It's a robust upgrade to Focus that gives you loads of cool features and support. For just a few dollars, it's a cost effective way to give your site a professional edge.", 'focus');
 
-	$content['buy_url'] = 'http://siteorigin.fetchapp.com/sell/aqueifoo';
+	$content['buy_url'] = 'http://siteorigin.fetchapp.com/sell/tghofooh';
 	$content['buy_price'] = '$14';
 	$content['buy_message_1'] = __("If you're not delighted with Focus Premium, I'll give you a full refund", 'focus');
 	$content['buy_message_2'] = __("Buy now and enjoy continued updates", 'focus');
@@ -15,10 +15,10 @@ function focus_premium_upgrade_content($content){
 		'heading' => __("Responsive Layout", 'focus'),
 		'content' => __("Take your videos to the mobile web with a fully responsive site layout.", 'focus'),
 	);
-	
+
 	$content['features'][] = array(
-		'heading' => __('Additional Widgets for Your Panel Pages', 'focus'),
-		'content' => __('Focus Premium has additional widgets that you can use to populate your Panels pages.', 'focus'),
+		'heading' => __("Multiple Video Types", 'focus'),
+		'content' => __("Have multiple versions of a video, showing different version to your paying customers. Easy integrations with membership plugins like S2Member.", 'focus'),
 	);
 	
 	$content['features'][] = array(

@@ -9,5 +9,11 @@ This theme includes various JavaScript tools and libraries in the folder focus/j
 
 Changelog
 =============
-* 0.9 - Initial pre release for quality review.
-* 0.9.1 - Bug fixes and improved compatibility with WordPress theme unit tests.
+**0.9**
+Initial pre release for quality review.
+
+**0.9.1**
+Bug fixes and improved compatibility with WordPress theme unit tests.
+
+**0.9.2**
+Added admin bar for notifications.

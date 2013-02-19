@@ -12,10 +12,10 @@ function focus_admin_scripts($prefix){
 }
 add_action('admin_enqueue_scripts', 'focus_admin_scripts');
 
-function focus_video_premium_teaser_post_types($types){
-	$types[] = 'post';
+function focus_admin_init(){
+	siteorigin_premium_teaser_post_types('post');
 }
-add_filter('siteorigin_premium_teaser_post_types', 'focus_video_premium_teaser_post_types');
+add_action('admin_init', 'focus_admin_init');
 
 function focus_add_metabox(){
 	add_meta_box('focus-video', __('Video', 'focus'), 'focus_video_metabox_render', 'post');
