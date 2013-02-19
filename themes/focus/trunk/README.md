@@ -16,3 +16,4 @@ Initial pre release for quality review.
 Added admin bar for notifications.
 Improved integration with WordPress' new Media Manager.
 Bug fixes and improved compatibility with WordPress theme unit tests.
+Minor CSS changes.
