@@ -31,7 +31,7 @@ class Focus_Post_Author_Widget extends WP_Widget {
 		
 		?>
 		<div class="author-text">
-			<div class="title"><?php esc_html( siteorigin_setting( 'video_by_text', __('Video By', 'focus') ) ) ?></div>
+			<div class="title"><?php echo esc_html( siteorigin_setting( 'video_by_text', __('Video By', 'focus') ) ) ?></div>
 			<div class="author"><?php the_author_meta( 'display_name' ) ?></div>
 		</div>
 		<div class="clear"></div>
