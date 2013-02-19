@@ -13,8 +13,6 @@ Changelog
 Initial pre release for quality review.
 
 **0.9.1**
-Bug fixes and improved compatibility with WordPress theme unit tests.
-
-**0.9.2**
 Added admin bar for notifications.
 Improved integration with WordPress' new Media Manager.
+Bug fixes and improved compatibility with WordPress theme unit tests.
