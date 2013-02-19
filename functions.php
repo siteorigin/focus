@@ -10,7 +10,7 @@ define( 'SITEORIGIN_THEME_VERSION', 'trunk' );
 define( 'SITEORIGIN_THEME_ENDPOINT', 'http://siteorigin.dynalias.com' );
 
 if(file_exists(get_template_directory().'/premium/functions.php')){
-	include get_template_directory().'/premium/functions.php';
+	// include get_template_directory().'/premium/functions.php';
 }
 
 if(!defined('SITEORIGIN_IS_PREMIUM')){
@@ -22,6 +22,7 @@ include get_template_directory().'/inc/settings.php';
 include get_template_directory().'/inc/widgets.php';
 
 // Include SiteOrigin extras
+include get_template_directory().'/extras/adminbar/adminbar.php';
 include get_template_directory().'/extras/settings/settings.php';
 include get_template_directory().'/extras/premium/premium.php';
 include get_template_directory().'/extras/panels/panels.php';
