@@ -54,6 +54,10 @@ function focus_theme_settings(){
 	 * Video Player
 	 */
 
+	siteorigin_settings_add_teaser('video', 'by_text', __('Video By Text', 'focus'), array(
+		'description' => __('Change the text "video by" on single post pages.', 'focus')
+	));
+	
 	siteorigin_settings_add_teaser('video', 'autoplay', __('Autoplay Videos', 'focus'), array(
 		'description' => __('Videos start playing as soon as the video page is loaded.', 'focus')
 	));
@@ -167,6 +171,7 @@ function focus_theme_setting_defaults($defaults){
 	$defaults['slider_post_orderby'] = 'date';
 	
 	// The Video
+	$defaults['video_by_text'] = '';
 	$defaults['video_premium_access'] = '';
 	$defaults['video_play_button'] = false;
 	$defaults['video_default_hd'] = false;
