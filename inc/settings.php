@@ -54,7 +54,7 @@ function focus_theme_settings(){
 	 * Video Player
 	 */
 
-	siteorigin_settings_add_teaser('video', 'by_text', __('Video By Text', 'focus'), array(
+	siteorigin_settings_add_field('video', 'by_text', 'text', __('Video By Text', 'focus'), array(
 		'description' => __('Change the text "video by" on single post pages.', 'focus')
 	));
 	

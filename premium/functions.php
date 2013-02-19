@@ -3,17 +3,19 @@
 define('SITEORIGIN_IS_PREMIUM', true);
 
 include get_template_directory().'/premium/settings.php';
-include get_template_directory().'/premium/widgets.php';
 
 include get_template_directory().'/premium/extras/mobilenav/mobilenav.php';
+include get_template_directory().'/premium/extras/css/css.php';
+include get_template_directory().'/premium/extras/ajax-comments/ajax-comments.php';
 
 function focus_premium_theme_init(){
 	/**
 	 * Add the movile navigation menu if its enabled.
 	 */
 	if(siteorigin_setting('layout_responsive')) add_theme_support('siteorigin-mobilenav');
+	if(siteorigin_setting('general_ajax_comments')) siteorigin_ajax_comments_activate();
 }
-add_action('theme_init', 'focus_premium_theme_init');
+add_action('after_setup_theme', 'focus_premium_theme_init', 11);
 
 
 function focus_premium_filter_video_embed_code($code){
@@ -95,6 +97,9 @@ function focus_premium_before_menu(){
 }
 add_action('before_menu', 'focus_premium_before_menu');
 
+/**
+ * Enqueue premium scripts
+ */
 function focus_premium_enqueue_scripts(){
 	if(siteorigin_setting('layout_responsive')){
 		wp_enqueue_script('fitvids', get_template_directory_uri().'/premium/js/jquery.fitvids.js', array('jquery'), '1.0');
