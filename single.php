@@ -56,7 +56,7 @@ get_header(); the_post(); ?>
 			
 			<div class="clear"></div>
 		</div>
-		<?php if( siteorigin_setting('general_posts_nav') ) focus_content_nav('posts-nav') ?>
+		<?php if(siteorigin_setting('general_posts_nav')) focus_content_nav('posts-nav') ?>
 	</div>
 </div><!-- #primary .content-area -->
 
