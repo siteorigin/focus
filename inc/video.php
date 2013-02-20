@@ -170,10 +170,16 @@ function focus_post_video($id = null, $type = null){
 			break;
 		
 		case 'external' :
+			global $content_width;
+			$old_cw = $content_width;
+			$content_width = 960;
+			
 			$embed = new WP_Embed();
 			$code = $embed->shortcode(array('autoplay' => 1), $video[$type]['external']);
 			$code = apply_filters('focus_video_embed_code', $code);
 			echo $code;
+
+			$content_width = $old_cw;
 			
 			break;
 	}
