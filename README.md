@@ -17,3 +17,6 @@ Added admin bar for notifications.
 Improved integration with WordPress' new Media Manager.
 Bug fixes and improved compatibility with WordPress theme unit tests.
 Minor CSS changes.
+
+**1.0.1**
+Fixed content width issue.
