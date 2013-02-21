@@ -25,7 +25,6 @@ include get_template_directory().'/inc/widgets.php';
 include get_template_directory().'/extras/adminbar/adminbar.php';
 include get_template_directory().'/extras/settings/settings.php';
 include get_template_directory().'/extras/premium/premium.php';
-include get_template_directory().'/extras/panels/panels.php';
 include get_template_directory().'/extras/widgets/widgets.php';
 
 add_action('widgets_init', 'siteorigin_widgets_init');
