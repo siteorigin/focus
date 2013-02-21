@@ -185,11 +185,19 @@ function focus_get_slider_posts(){
 	)));
 }
 
+/**
+ * Change the footer text.
+ * @param $text
+ * @return string
+ */
 function focus_admin_footer_text($text){
 	return '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://wordpress.org/">WordPress</a> and <a href="http://siteorigin.com/theme/focus/">Focus</a>.', 'focus' ) . '</span>';
 }
 add_filter('admin_footer_text', 'focus_admin_footer_text');
 
+/**
+ * Display the footer call to action
+ */
 function focus_display_footer_cta(){
 	$args = array(
 		'text' => siteorigin_setting('cta_text'),
@@ -227,6 +235,11 @@ function focus_page_menu_args( $args ) {
 }
 add_filter( 'wp_page_menu_args', 'focus_page_menu_args' );
 
+/**
+ * Display the post author information in the sidebar.
+ * 
+ * @return bool
+ */
 function focus_post_author_info(){
 	if(!is_single()) return false;
 	if(!siteorigin_setting('general_display_author')) return;
@@ -236,6 +249,9 @@ function focus_post_author_info(){
 }
 add_action('before_sidebar', 'focus_post_author_info');
 
+/**
+ * Add the styles to set the size of the footer widgets
+ */
 function focus_footer_widget_style(){
 	$widgets = wp_get_sidebars_widgets();
 	if(empty($widgets['sidebar-footer'])) return;
@@ -243,10 +259,15 @@ function focus_footer_widget_style(){
 	$count = count($widgets['sidebar-footer']);
 	?> <style type="text/css"> #footer-widgets aside { width : <?php echo round(100/$count,3) ?>%; } </style> <?php
 }
-add_action('before_footer', 'focus_footer_widget_style');
+add_action('wp_head', 'focus_footer_widget_style', 15);
 
+/**
+ * Filter the comment form.
+ * 
+ * @param $defaults
+ * @return mixed
+ */
 function focus_comment_form_defaults($defaults){
-	
 	if(siteorigin_setting('comments_hide_allowed_tags')){
 		$defaults['comment_notes_after'] = null;
 	}
@@ -255,17 +276,28 @@ function focus_comment_form_defaults($defaults){
 }
 add_filter('comment_form_defaults', 'focus_comment_form_defaults', 5);
 
+/**
+ * Display the focus footer information
+ */
 function focus_credits(){
-	echo wp_kses_post(siteorigin_setting('text_footer_copyright'));
+	echo wp_kses_post( siteorigin_setting('text_footer_copyright') );
 }
 add_action('focus_credits', 'focus_credits');
 
+/**
+ * Display the theme credits
+ */
 function focus_theme_credit(){
 	if (siteorigin_setting('text_footer_copyright')) echo ' - ';
 	printf(__('Theme By <a href="%s">SiteOrigin</a>', 'focus'), 'http://siteorigin.com');
 }
 add_action('focus_credits', 'focus_theme_credit');
 
+/**
+ * Display the default post thumbnail
+ * 
+ * @return string
+ */
 function focus_default_post_thumbnail(){
 	return '<img src="'.get_template_directory_uri().'/images/thumbnail.jpg" width="297" height="160" class="attachment-post-thumbnail wp-post-image" />';
 }
@@ -282,6 +314,9 @@ function focus_html5_shiv(){
 }
 add_action('wp_head', 'focus_html5_shiv');
 
+/**
+ * Render the theme logo.
+ */
 function focus_display_logo(){
 	$logo = siteorigin_setting('general_logo');
 	
