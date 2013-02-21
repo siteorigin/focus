@@ -63,13 +63,25 @@ a.mobilenav{
 		/* Keep aspect ratio */
 		height: 168px;
 	}
+    
+    .jp-video .jp-gui{
+        display: none !important;
+    }
 	
 	.loop-container article.post{
 		width: auto;
 		float: none;
 	}
+        
+    #secondary{
+        width: auto;
+        float: none;
+        padding-left: 0;
+        margin-top: 35px;
+    }
 	
-	.single #content{
+	.single #content,
+    .page #content{
 		width: auto;
 		float: none;
 	}
