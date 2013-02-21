@@ -54,6 +54,7 @@ function focus_video_field($type, $title){
 		'type' => '',
 		'external' => '',
 		'self' => '',
+		'remote' => '',
 		'custom' => '',
 	));
 	$self = !empty($video['self']) ? get_post($video['self']) : null;
@@ -68,6 +69,7 @@ function focus_video_field($type, $title){
 				<select name="focus_video[<?php echo esc_attr($type) ?>][type]" class="focus-video-type-select">
 					<option value="external" <?php selected('external', $video['type']) ?>><?php esc_html_e('External (YouTube, Vimeo, etc)', 'focus') ?></option>
 					<option value="self" <?php selected('self', $video['type']) ?>><?php esc_html_e('Self Hosted', 'focus') ?></option>
+					<option value="remote" <?php selected('remote', $video['type']) ?>><?php esc_html_e('Remote Video File', 'focus') ?></option>
 					<option value="custom" <?php selected('custom', $video['type']) ?>><?php esc_html_e('Custom Embed Code', 'focus') ?></option>
 				</select>
 			</td>
@@ -89,7 +91,10 @@ function focus_video_field($type, $title){
 
 				<input type="hidden" name="focus_video[<?php echo esc_attr($type) ?>][self]" class="regular-text field-video-self" value="<?php if(!empty($self)) echo $self->ID ?>" />
 			</td>
-
+		</tr>
+		<tr class="field-<?php echo esc_attr($type) ?>-remote field-remote field">
+			<th scope="row" valign="top"><?php _e('MP4 File URL', 'focus') ?></th>
+			<td><input type="text" name="focus_video[<?php echo esc_attr($type) ?>][remote]" class="regular-text" value="<?php echo esc_attr($video['remote']) ?>" /></td>
 		</tr>
 		<tr class="field-<?php echo esc_attr($type) ?>-custom field-custom field">
 			<th scope="row" valign="top"><?php _e('Custom Embed Code', 'focus') ?></th>
@@ -158,7 +163,8 @@ function focus_post_video($id = null, $type = null){
 	
 	switch($video[$type]['type']){
 		case 'self' :
-			$file = wp_get_attachment_url($video[$type]['self']);
+		case 'remote' :
+			$file = $video[$type]['type'] == 'self' ? wp_get_attachment_url($video[$type]['self']) : esc_url($video[$type]['remote']);
 			?>
 
 			<div class="jp-video">
