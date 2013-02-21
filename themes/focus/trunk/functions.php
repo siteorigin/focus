@@ -29,6 +29,9 @@ include get_template_directory().'/extras/widgets/widgets.php';
 
 add_action('widgets_init', 'siteorigin_widgets_init');
 
+// Set the content width based on the theme's design and stylesheet.
+if ( ! isset( $content_width ) ) $content_width = 648; /* pixels */
+
 if ( ! function_exists( 'focus_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -40,14 +43,6 @@ if ( ! function_exists( 'focus_setup' ) ) :
  * @since focus 1.0
  */
 function focus_setup() {
-	/**
-	 * Set the content width based on the theme's design and stylesheet.
-	 *
-	 * @since focus 1.0
-	 */
-	if ( ! isset( $content_width ) )
-		$content_width = 648; /* pixels */
-	
 	// Use SiteOrigin theme settings
 	siteorigin_settings_init();
 
