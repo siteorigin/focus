@@ -24,3 +24,6 @@ Fixed content width issue.
 **1.0.2**
 Added option for remote video file URL.
 Other minor fixes and updates.
+
+**1.0.4**
+Fixes to responsive CSS.
