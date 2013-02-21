@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Enqueue the video scripts.
+ * 
+ * @param $prefix
+ */
 function focus_admin_scripts($prefix){
 	$screen = get_current_screen();
 	
@@ -12,20 +17,35 @@ function focus_admin_scripts($prefix){
 }
 add_action('admin_enqueue_scripts', 'focus_admin_scripts');
 
+/**
+ * Set which post types we'll display the premium teaser on.
+ */
 function focus_admin_init(){
 	siteorigin_premium_teaser_post_types('post');
 }
 add_action('admin_init', 'focus_admin_init');
 
+/**
+ * Add the video metabox.
+ */
 function focus_add_metabox(){
 	add_meta_box('focus-video', __('Video', 'focus'), 'focus_video_metabox_render', 'post');
 }
 add_action('add_meta_boxes', 'focus_add_metabox');
 
+/**
+ * Render the video metabox.
+ */
 function focus_video_metabox_render(){
 	locate_template(array('admin/metabox-video.php'), true);
 }
 
+/**
+ * Render a single video field.
+ * 
+ * @param $type
+ * @param $title
+ */
 function focus_video_field($type, $title){
 	global $post;
 	$video = get_post_meta($post->ID, 'focus_video', true);
@@ -82,6 +102,11 @@ function focus_video_field($type, $title){
 	<?php
 }
 
+/**
+ * Save the post videos.
+ * 
+ * @param $post_id
+ */
 function focus_video_save($post_id){
 	if(empty($_POST['_focusnonce']) || !wp_verify_nonce($_POST['_focusnonce'], 'save')) return;
 	if(!current_user_can('edit_post', $post_id)) return;
@@ -92,7 +117,14 @@ function focus_video_save($post_id){
 }
 add_action('save_post', 'focus_video_save');
 
-function focus_post_has_video($id = null, $type = null){
+/**
+ * Return true if the post has the given video type
+ * 
+ * @param null $id
+ * @param null $type
+ * @return bool
+ */
+function focus_post_has_video($id = null, $type = 'public'){
 	if(empty($id)) $id = get_the_ID();
 	if(empty($type)) $type = 'public';
 
@@ -106,6 +138,12 @@ function focus_post_has_video($id = null, $type = null){
 	return true;
 }
 
+/**
+ * 
+ * 
+ * @param null $id
+ * @param null $type
+ */
 function focus_post_video($id = null, $type = null){
 	if(empty($id)) $id = get_the_ID();
 	if(empty($type)) $type = 'public';
@@ -179,6 +217,9 @@ function focus_post_video($id = null, $type = null){
 	}
 }
 
+/**
+ * Enqueue scripts for the video player.
+ */
 function focus_video_enqueue_scripts(){
 	if(is_single()){
 		
@@ -192,12 +233,15 @@ function focus_video_enqueue_scripts(){
 			'swfPath' => get_template_directory_uri().'/jplayer/',
 			'videoPoster' => !empty($thumb) ? $thumb[0] : '',
 		));
-		wp_enqueue_style('jplayer-skin-siteorigin', get_template_directory_uri().'/jplayer/skins/siteorigin/jplayer.siteorigin.css');
+		wp_enqueue_style('focus-siteorigin-jplayer-skin', get_template_directory_uri().'/jplayer/skins/siteorigin/jplayer.siteorigin.css');
 	}
 }
 add_action('wp_enqueue_scripts', 'focus_video_enqueue_scripts');
 
 if(!function_exists('focus_video_action_play_button')):
+/**
+ * Display the video play button. 
+ */
 function focus_video_action_play_button(){
 	?>
 	<div class="jp-play jp-play-default">
