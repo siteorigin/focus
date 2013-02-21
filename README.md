@@ -20,3 +20,7 @@ Minor CSS changes.
 
 **1.0.1**
 Fixed content width issue.
+
+**1.0.2**
+Added option for remote video file URL.
+Other minor fixes and updates.
