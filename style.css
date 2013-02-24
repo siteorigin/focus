@@ -1183,6 +1183,7 @@ h2.archive-title{
 	display: block;
 	background: #1a1c1f;
 	line-height: 0;
+    min-height: 42px;
 }
 
 .loop-container article .entry-title{
