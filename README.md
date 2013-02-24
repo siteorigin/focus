@@ -26,4 +26,4 @@ Added option for remote video file URL.
 Other minor fixes and updates.
 
 **1.0.4**
-Fixes to responsive CSS.
+Fixes to responsive CSS in premium.
