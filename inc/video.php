@@ -134,6 +134,7 @@ function focus_post_has_video($id = null, $type = 'public'){
 	if(empty($type)) $type = 'public';
 
 	$video = get_post_meta(get_the_ID(), 'focus_video', true);
+	if(empty($video[$type])) return;
 
 	// Gives child themes a chance to change the video type being displayed
 	$type = apply_filters('focus_video_type', $type, $video, $id);
