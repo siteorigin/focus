@@ -43,7 +43,7 @@ function focus_premium_upgrade_content($content){
 
 	$content['features'][] = array(
 		'heading' => __("Continued Updates", 'focus'),
-		'content' => __("You'll get continued updates, ensuring that your Focus powered site keeps on working with the latest version of WordPress for years to come.", 'focus'),
+		'content' => __("You'll get continued premium updates, ensuring that your Focus powered site keeps on working with the latest version of WordPress for years to come.", 'focus'),
 	);
 	
 	return $content;

@@ -44,12 +44,10 @@ get_header(); the_post(); ?>
 
 				<div class="clear"></div>
 
-				<div id="single-comments-wrapper">
-					<?php
-						// If comments are open or we have at least one comment, load up the comment template
-						if ( comments_open() || '0' != get_comments_number() ) comments_template( '', true );
-					?>
-				</div>
+				<?php
+					// If comments are open or we have at least one comment, load up the comment template
+					if ( comments_open() || '0' != get_comments_number() ) comments_template( '', true );
+				?>
 			</div><!-- #content .site-content.content-container -->
 
 			<?php get_sidebar(); ?>
