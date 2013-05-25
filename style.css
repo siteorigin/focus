@@ -95,6 +95,7 @@ select,
 textarea {
 	color: #404040;
 	font: 13px/1.5em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    word-wrap: break-word;
 }
 
 hr {
@@ -1023,6 +1024,11 @@ body{
 
 #secondary .widget{
 	margin-bottom: 30px;
+}
+
+#secondary .widget img {
+    max-width: 100%;
+    height: auto;
 }
 
 #secondary .widget:last-child{
