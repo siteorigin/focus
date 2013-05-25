@@ -29,11 +29,12 @@ include get_template_directory().'/extras/premium/premium.php';
 include get_template_directory().'/extras/widgets/widgets.php';
 include get_template_directory().'/extras/update/update.php';
 include get_template_directory().'/extras/updater/updater.php';
+include get_template_directory().'/extras/plugin-activation/plugin-activation.php';
 
 add_action('widgets_init', 'siteorigin_widgets_init');
 
 // Set the content width based on the theme's design and stylesheet.
-if ( ! isset( $content_width ) ) $content_width = 648; /* pixels */
+if ( ! isset( $content_width ) ) $content_width = 600; /* pixels */
 
 if ( ! function_exists( 'focus_setup' ) ) :
 /**
@@ -107,6 +108,9 @@ function focus_setup() {
 	add_image_size('slider', 1280, 768, true);
 	
 	set_post_thumbnail_size(297, 160, true);
+
+	// Include the lite version of the page builder
+	if(!defined('SITEORIGIN_PANELS_VERSION')) include get_template_directory().'/extras/panels-lite/panels-lite.php';
 }
 endif; // focus_setup
 add_action( 'after_setup_theme', 'focus_setup' );
