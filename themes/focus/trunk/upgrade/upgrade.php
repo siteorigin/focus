@@ -23,7 +23,7 @@ function focus_premium_upgrade_content($content){
 	
 	$content['features'][] = array(
 		'heading' => __('Remove Attribution Links', 'focus'),
-		'content' => __('Focus premium gives you the option to easily remove the "Powered by WordPress, Theme by SiteOrigin" text from your footer. ', 'focus'),
+		'content' => __('Focus premium gives you the option to easily remove the "Powered by WordPress, Theme by SiteOrigin" text from your footer.', 'focus'),
 	);
 
 	$content['features'][] = array(
@@ -43,7 +43,7 @@ function focus_premium_upgrade_content($content){
 
 	$content['features'][] = array(
 		'heading' => __("Continued Updates", 'focus'),
-		'content' => __("You'll get continued premium updates, ensuring that your Focus powered site keeps on working with the latest version of WordPress for years to come.", 'focus'),
+		'content' => __("You'll be helping to support the continued development of Focus. We'll add more features and ensure Focus keeps working with future versions of WordPress.", 'focus'),
 	);
 	
 	return $content;
