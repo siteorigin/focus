@@ -27,3 +27,8 @@ Other minor fixes and updates.
 
 **1.0.4**
 Fixes to responsive CSS in premium.
+
+**1.1.1**
+Added theme settings.
+Fixed CSS issues.
+Fixed widget sidebars.
