@@ -697,6 +697,7 @@ body{
     background-image: -moz-gradient(linear, left bottom, left top, from(#212326), to(#181818));
     background-image: -ms-gradient(linear, left bottom, left top, from(#212326), to(#181818));
     background-image: -o-gradient(linear, left bottom, left top, from(#212326), to(#181818));
+    background: #212326;
 	color: #CBCBCB;
 }
 
@@ -986,6 +987,7 @@ body{
 	opacity: 0.65;
 	color: transparent;
 	text-decoration: none;
+    text-indent: -9999px;
 	
 	cursor: pointer;
 	
