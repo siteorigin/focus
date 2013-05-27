@@ -34,6 +34,10 @@ function focus_theme_settings(){
 		'description' => __('Lets your users post comments without interrupting video play.', 'focus')
 	));
 
+	siteorigin_settings_add_teaser('general', 'siteorigin_credits', __('Display Credit Link', 'focus'), array(
+		'description' => __('Display "Theme by SiteOrigin" in your footer.', 'focus')
+	));
+
 	/**
 	 * Home Page Slider
 	 */
@@ -151,7 +155,8 @@ function focus_theme_setting_defaults($defaults){
 	$defaults['general_ajax_comments'] = false;
 	$defaults['general_display_author'] = true;
 	$defaults['general_posts_nav'] = true;
-	
+	$defaults['general_siteorigin_credits'] = true;
+
 	$defaults['menu_home'] = true;
 	$defaults['menu_search'] = false;
 	

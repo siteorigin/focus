@@ -3,7 +3,8 @@
 function focus_premium_init_settings(){
 	// Activate all the teaser settings
 	siteorigin_settings_add_field('general', 'ajax_comments', 'checkbox');
-	
+	siteorigin_settings_add_field('general', 'siteorigin_credits', 'checkbox');
+
 	siteorigin_settings_add_field('video', 'autoplay', 'checkbox');
 	siteorigin_settings_add_field('video', 'hide_related', 'checkbox');
 	siteorigin_settings_add_field('video', 'default_hd', 'checkbox');
