@@ -289,6 +289,7 @@ add_action('focus_credits', 'focus_credits');
  * Display the theme credits
  */
 function focus_theme_credit(){
+	if (!siteorigin_setting('general_siteorigin_credits')) return;
 	if (siteorigin_setting('text_footer_copyright')) echo ' - ';
 	printf(__('Theme By <a href="%s">SiteOrigin</a>', 'focus'), 'http://siteorigin.com');
 }
