@@ -11,7 +11,7 @@ define('SITEORIGIN_THEME_UPDATE_ID', 295);
 define( 'SITEORIGIN_THEME_ENDPOINT', 'http://siteorigin.localhost' );
 
 if(file_exists(get_template_directory().'/premium/functions.php')){
-	include get_template_directory().'/premium/functions.php';
+	// include get_template_directory().'/premium/functions.php';
 }
 
 if(!defined('SITEORIGIN_IS_PREMIUM')){
@@ -95,6 +95,10 @@ function focus_setup() {
 		'responsive' => siteorigin_setting('layout_responsive'),
 	) );
 
+	add_theme_support( 'siteorigin-premium-teaser', array(
+		'post-type' => array('post')
+	) );
+
 	/**
 	 * This theme uses wp_nav_menu() in one location.
 	 */
@@ -110,7 +114,9 @@ function focus_setup() {
 	set_post_thumbnail_size(297, 160, true);
 
 	// Include the lite version of the page builder
-	if(!defined('SITEORIGIN_PANELS_VERSION')) include get_template_directory().'/extras/panels-lite/panels-lite.php';
+	if(!defined('SITEORIGIN_PANELS_VERSION')) {
+		include get_template_directory().'/extras/panels-lite/panels-lite.php';
+	}
 }
 endif; // focus_setup
 add_action( 'after_setup_theme', 'focus_setup' );
