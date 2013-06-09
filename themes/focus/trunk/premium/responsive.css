@@ -1,9 +1,5 @@
 a.mobilenav{
-	display: none;
-	position: absolute;
-	top: 50%;
-	right: 0;
-	margin-top: -0.5em;
+    display: block;
 	line-height: 1;
 	text-decoration: none;
 	color: inherit;
@@ -31,14 +27,6 @@ a.mobilenav{
 	.jp-video .jp-type-single {
 		/* Keep aspect ratio */
 		height: 348px;
-	}
-	
-	#main-navigation{
-		display: none;
-	}
-	
-	a.mobilenav{
-		display: block;
 	}
 	
 	.loop-container article.post{
