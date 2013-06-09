@@ -2,13 +2,17 @@
 
 function focus_premium_upgrade_content($content){
 	$content['premium_title'] = __('Upgrade To Focus Premium', 'focus');
-	$content['premium_summary'] = __("If you've enjoyed using Focus, you'll going to love Focus Premium. It's a robust upgrade to Focus that gives you loads of cool features and support. For just a few dollars, it's a cost effective way to give your site a professional edge.", 'focus');
+	$content['premium_summary'] = __("If you've enjoyed using Focus, you'll going to love Focus Premium. It's a robust upgrade to Focus that gives you loads of cool features and support. You name the price, so you can decide what its worth for you to get that professional edge.", 'focus');
 
 	$content['buy_url'] = 'http://siteorigin.fetchapp.com/sell/tghofooh';
-	$content['buy_price'] = '9';
-	$content['buy_message_1'] = __("If you're not delighted with Focus Premium, I'll give you a full refund", 'focus');
-	$content['buy_message_2'] = __("Buy now and enjoy continued updates", 'focus');
-	
+	$content['buy_price'] = 15;
+	$content['variable_pricing'] = array(
+		array(10, __("If you're creating your site on a budget", 'focus')),
+		array(15, __("A good fair price", 'focus')),
+		array(25, __("We'll love and support you forever", 'focus')),
+	);
+	$content['buy_message_1'] = __("Name Your Price", 'focus');
+
 	$content['features'] = array();
 
 	$content['features'][] = array(
