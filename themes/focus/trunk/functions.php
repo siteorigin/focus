@@ -10,7 +10,7 @@ define( 'SITEORIGIN_THEME_VERSION', 'trunk' );
 define('SITEORIGIN_THEME_UPDATE_ID', 295);
 define( 'SITEORIGIN_THEME_ENDPOINT', 'http://siteorigin.localhost' );
 
-if(file_exists(get_template_directory().'/premium/functions.php')){
+if(file_exists(get_template_directory().'/premium/functions.php') && false ){
 	include get_template_directory().'/premium/functions.php';
 }
 
