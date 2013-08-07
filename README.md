@@ -7,6 +7,8 @@ Focus is a GPL 2.0 theme. See license.txt
 
 This theme includes various JavaScript tools and libraries in the folder focus/js/ and focus/jplayer/- all JavaScript files include their original license headers. All JS is GPL 2.0 compatible.
 
+Focus uses Open Sans from Google Web Fonts. Licensed under Apache License, version 2.0 http://www.google.com/fonts/specimen/Open+Sans
+
 Changelog
 =============
 **0.9**
@@ -32,3 +34,6 @@ Fixes to responsive CSS in premium.
 Added theme settings.
 Fixed CSS issues.
 Fixed widget sidebars.
+
+**1.1.3**
+Updated to latest version of SiteOrigin Framework.
