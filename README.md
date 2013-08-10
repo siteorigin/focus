@@ -9,6 +9,8 @@ This theme includes various JavaScript tools and libraries in the folder focus/j
 
 Focus uses Open Sans from Google Web Fonts. Licensed under Apache License, version 2.0 http://www.google.com/fonts/specimen/Open+Sans
 
+This theme is originally based on Underscores (_s) starter theme http://underscores.me/
+
 Changelog
 =============
 **0.9**
@@ -37,3 +39,6 @@ Fixed widget sidebars.
 
 **1.1.3**
 Updated to latest version of SiteOrigin Framework.
+
+**1.1.4**
+Fixed a small issue with element overflow in the sidebar.
