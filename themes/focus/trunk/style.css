@@ -1032,6 +1032,7 @@ body{
 	margin-bottom: 30px;
 }
 
+#secondary .widget *,
 #secondary .widget img {
     max-width: 100%;
     height: auto;
@@ -1055,10 +1056,16 @@ body{
 	padding: 0;
 }
 
+.widget ul ul,
+.widget ol ol,
+.widget ul ol,
+.widget ol ul{
+    margin-left: 0.75em;
+}
+
 .widget ul li,
 .widget ol li{
-	line-height: 1.2em;
-	margin-bottom: 5px;
+	line-height: 1.5em;
 }
 
 .widget ul li:last-child,
