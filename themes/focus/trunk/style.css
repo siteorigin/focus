@@ -1414,6 +1414,12 @@ footer .site-info a{
 	color: #999;
 }
 
+#footer-widgets aside img,
+#footer-widgets aside *{
+    max-width: 100%;
+    height: auto;
+}
+
 #footer-widgets aside a {
 	color: #CCC;
 }
