@@ -42,3 +42,6 @@ Updated to latest version of SiteOrigin Framework.
 
 **1.1.4**
 Fixed a small issue with element overflow in the sidebar.
+
+**1.1.5**
+Updated to latest version of FitVids to fix responsive videos.
