@@ -8,7 +8,9 @@
 jQuery(function($){
 
     // Set up fitvids
-    if( typeof $.fn.fitVids != 'undefined') $('#single-header .video' ).fitVids();
+    if( typeof $.fn.fitVids != 'undefined') {
+        $('#single-header .video, .entry-content' ).fitVids();
+    }
     if( typeof $.fn.fitText != 'undefined') {
         $('.post-heading h1' ).fitText(1.2, {
             minFontSize: '26px', maxFontSize: '48px'
