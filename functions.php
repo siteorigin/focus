@@ -34,7 +34,7 @@ include get_template_directory().'/extras/plugin-activation/plugin-activation.ph
 add_action('widgets_init', 'siteorigin_widgets_init');
 
 // Set the content width based on the theme's design and stylesheet.
-if ( ! isset( $content_width ) ) $content_width = 600; /* pixels */
+if ( ! isset( $content_width ) ) $content_width = 648; /* pixels */
 
 if ( ! function_exists( 'focus_setup' ) ) :
 /**
