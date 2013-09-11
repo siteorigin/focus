@@ -45,3 +45,4 @@ Fixed a small issue with element overflow in the sidebar.
 
 **1.1.5**
 Updated to latest version of FitVids to fix responsive videos.
+Updated to latest SiteOrigin framework.
