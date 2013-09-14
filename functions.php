@@ -114,7 +114,7 @@ function focus_setup() {
 	set_post_thumbnail_size(297, 160, true);
 
 	// Include the lite version of the page builder
-	if(!defined('SITEORIGIN_PANELS_VERSION')) {
+	if( !defined('SITEORIGIN_PANELS_VERSION') && !siteorigin_plugin_activation_is_activating('siteorigin-panels') ){
 		include get_template_directory().'/extras/panels-lite/panels-lite.php';
 	}
 }
