@@ -62,7 +62,7 @@ function focus_post_video($id = null, $type = null){
 	
 	if(empty($video[$type]['type'])) return;
 	if(empty($video[$type][$video[$type]['type']])) return;
-	
+
 	switch($video[$type]['type']){
 		case 'self' :
 		case 'remote' :
@@ -120,7 +120,12 @@ function focus_post_video($id = null, $type = null){
 			$code = $embed->shortcode(array('autoplay' => 1, 'width' => 960), $video[$type]['external']);
 			$code = apply_filters('focus_video_embed_code', $code);
 			echo $code;
-			
+			break;
+
+		case 'custom' :
+			if(!empty($video[$type]['custom'])) {
+				echo apply_filters('focus_video_embed_code', $video[$type]['custom']);
+			}
 			break;
 	}
 }
