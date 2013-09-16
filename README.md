@@ -47,6 +47,7 @@ Fixed a small issue with element overflow in the sidebar.
 Updated to latest version of FitVids to fix responsive videos.
 Updated to latest SiteOrigin framework.
 
-**1.1.6 - 1.1.7**
+**1.1.6 - 1.1.8**
 * Fixed Flex Slider issue.
 * Fixed Page Builder integration.
+* Fixed custom embed code for videos.
