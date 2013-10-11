@@ -7,7 +7,6 @@
  */
 
 define( 'SITEORIGIN_THEME_VERSION', 'trunk' );
-define('SITEORIGIN_THEME_UPDATE_ID', 295);
 define( 'SITEORIGIN_THEME_ENDPOINT', 'http://siteorigin.localhost' );
 
 if( file_exists(get_template_directory().'/premium/functions.php') ){
@@ -28,7 +27,6 @@ include get_template_directory().'/extras/settings/settings.php';
 include get_template_directory().'/extras/premium/premium.php';
 include get_template_directory().'/extras/widgets/widgets.php';
 include get_template_directory().'/extras/update/update.php';
-include get_template_directory().'/extras/updater/updater.php';
 include get_template_directory().'/extras/plugin-activation/plugin-activation.php';
 
 add_action('widgets_init', 'siteorigin_widgets_init');

@@ -13,41 +13,44 @@ This theme is originally based on Underscores (_s) starter theme http://undersco
 
 Changelog
 =============
-**0.9**
-Initial pre release for quality review.
+#### 1.1.9
+* Premium: Fixed issue with HD video embed setting.
 
-**1.0**
-Added admin bar for notifications.
-Improved integration with WordPress' new Media Manager.
-Bug fixes and improved compatibility with WordPress theme unit tests.
-Minor CSS changes.
-
-**1.0.1**
-Fixed content width issue.
-
-**1.0.2**
-Added option for remote video file URL.
-Other minor fixes and updates.
-
-**1.0.4**
-Fixes to responsive CSS in premium.
-
-**1.1.1**
-Added theme settings.
-Fixed CSS issues.
-Fixed widget sidebars.
-
-**1.1.3**
-Updated to latest version of SiteOrigin Framework.
-
-**1.1.4**
-Fixed a small issue with element overflow in the sidebar.
-
-**1.1.5**
-Updated to latest version of FitVids to fix responsive videos.
-Updated to latest SiteOrigin framework.
-
-**1.1.6 - 1.1.8**
+#### 1.1.6 - 1.1.8
 * Fixed Flex Slider issue.
 * Fixed Page Builder integration.
 * Fixed custom embed code for videos.
+
+#### 1.1.5
+* Updated to latest version of FitVids to fix responsive videos.
+* Updated to latest SiteOrigin framework.
+
+#### 1.1.4
+* Fixed a small issue with element overflow in the sidebar.
+
+#### 1.1.3
+* Updated to latest version of SiteOrigin Framework.
+
+#### 1.1.1
+* Added theme settings.
+* Fixed CSS issues.
+* Fixed widget sidebars.
+
+#### 1.0.4
+* Fixes to responsive CSS in premium.
+
+#### 1.0.2
+* Added option for remote video file URL.
+* Other minor fixes and updates.
+
+#### 1.0.1
+* Fixed content width issue.
+
+#### 1.0
+* Added admin bar for notifications.
+* Improved integration with WordPress' new Media Manager.
+* Bug fixes and improved compatibility with WordPress theme unit tests.
+* Minor CSS changes.
+
+#### 0.9
+* Initial pre release for quality review.
