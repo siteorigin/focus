@@ -18,7 +18,7 @@ add_action('after_setup_theme', 'focus_premium_theme_init', 11);
 
 
 function focus_premium_filter_video_embed_code($code){
-	if(siteorigin_setting('video_autoplay') || siteorigin_setting('video_hide_related')) {
+	if(siteorigin_setting('video_autoplay') || siteorigin_setting('video_hide_related') || siteorigin_setting('video_default_hd')) {
 		$code = preg_replace_callback('/src="([^"]*)"/', 'focus_premium_video_change_autoplay_callback', $code);
 	}
 	echo $code;
@@ -34,7 +34,7 @@ function focus_premium_video_change_autoplay_callback($matches){
 		$url = add_query_arg('rel', 0, $url);
 	}
 	if(siteorigin_setting('video_default_hd')){
-		$url = add_query_arg('hd', 1, $url);
+		$url = add_query_arg('vq', 'hd1080', $url);
 	}
 	
 	return 'src="' .$url. '"';
