@@ -13,6 +13,11 @@ This theme is originally based on Underscores (_s) starter theme http://undersco
 
 Changelog
 =============
+
+#### 1.1.10
+* Updated SiteOrigin Framework
+
+
 #### 1.1.9
 * Updated SiteOrigin Framework
 * Premium: Fixed bug that was causing additional requests to updates server.
