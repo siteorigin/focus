@@ -15,8 +15,12 @@ Changelog
 =============
 
 #### 1.1.10
-* Updated SiteOrigin Framework
+* Fixed title issue in RSS feed.
+* Updated to latest version of jPlayer.
+* Updated SiteOrigin Framework.
 
+#### 1.1.10
+* Updated SiteOrigin Framework
 
 #### 1.1.9
 * Updated SiteOrigin Framework
