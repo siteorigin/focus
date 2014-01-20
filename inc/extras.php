@@ -51,6 +51,8 @@ if(!function_exists('focus_wp_title')) :
  * @filter wp_title
  */
 function focus_wp_title($title, $sep, $seplocation){
+	if( is_feed() ) return $title;
+
 	if(trim($sep) != ''){
 		if(!empty($title)) {
 			$title_array = explode($sep, $title);
