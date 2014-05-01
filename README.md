@@ -18,6 +18,7 @@ Changelog
 * Updated to latest framework.
 * Added setting to disable responsive layout.
 * Fixed slider count setting.
+* Fixed layout on mobile phones when responsive is disabled.
 
 #### 1.1.11
 * Fixed title issue in RSS feed.
