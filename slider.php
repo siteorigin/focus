@@ -1,10 +1,10 @@
-<?php $query = focus_get_slider_posts(); ?>
+<?php $query = focus_get_slider_posts(); $i = 0; ?>
 
 <?php if($query->have_posts()) : ?>
 	<section id="home-slider" class="slider">
 		<ul class="slides">
 			<?php while($query->have_posts()) : $query->the_post(); ?>
-				<?php if(has_post_thumbnail()) : ?>
+				<?php if(has_post_thumbnail()) : if( $i == siteorigin_setting('slider_post_count') ) break; $i++; ?>
 					<li class="slide" id="slide-post-<?php the_ID() ?>">
 						<?php the_post_thumbnail('slider') ?>
 						<div class="overlay"></div>
@@ -19,7 +19,6 @@
 		</ul>
 		
 		<div class="slider-decoration"></div>
-		
 	</section>
 	
 	<?php wp_reset_postdata(); ?>

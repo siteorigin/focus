@@ -12,8 +12,9 @@
  * @since focus 1.0
  */
 
-get_header(); ?>
-	
+get_header();
+?>
+
 <?php get_template_part('slider') ?>
 
 <div id="primary" class="content-area">

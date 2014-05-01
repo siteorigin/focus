@@ -38,6 +38,10 @@ function focus_theme_settings(){
 		'description' => __('Display "Theme by SiteOrigin" in your footer.', 'focus')
 	));
 
+	siteorigin_settings_add_field('general', 'responsive', 'checkbox',__('Responsive Layout', 'focus'), array(
+		'description' => __('Should we use the responsive layout.', 'focus'),
+	));
+
 	/**
 	 * Home Page Slider
 	 */
@@ -156,6 +160,7 @@ function focus_theme_setting_defaults($defaults){
 	$defaults['general_display_author'] = true;
 	$defaults['general_posts_nav'] = true;
 	$defaults['general_siteorigin_credits'] = true;
+	$defaults['general_responsive'] = true;
 
 	$defaults['menu_home'] = true;
 	$defaults['menu_search'] = false;
