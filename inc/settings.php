@@ -38,10 +38,6 @@ function focus_theme_settings(){
 		'description' => __('Display "Theme by SiteOrigin" in your footer.', 'focus')
 	));
 
-	siteorigin_settings_add_field('general', 'responsive', 'checkbox',__('Responsive Layout', 'focus'), array(
-		'description' => __('Should we use the responsive layout.', 'focus'),
-	));
-
 	/**
 	 * Home Page Slider
 	 */
@@ -75,7 +71,7 @@ function focus_theme_settings(){
 	));
 
 	siteorigin_settings_add_teaser('video', 'default_hd', __('Play Videos in HD', 'focus'), array(
-		'description' => __('Play YouTube oEmbed videos in HD. Vimeo HD playback is controlled on Vimeo itself.', 'focus')
+		'description' => __("Unfortunately setting video quality has been depreciated by YouTube. You can set HD video settings on Vimeo itself.", 'focus')
 	));
 
 	siteorigin_settings_add_teaser('video', 'play_button', __('Play Button', 'focus'), array(
@@ -160,7 +156,6 @@ function focus_theme_setting_defaults($defaults){
 	$defaults['general_display_author'] = true;
 	$defaults['general_posts_nav'] = true;
 	$defaults['general_siteorigin_credits'] = true;
-	$defaults['general_responsive'] = true;
 
 	$defaults['menu_home'] = true;
 	$defaults['menu_search'] = false;
@@ -192,7 +187,8 @@ function focus_theme_setting_defaults($defaults){
 	$defaults['comments_page_hide'] = false;
 	$defaults['comments_hide_allowed_tags'] = false;
 
-	$defaults['layout_responsive'] = false;
+	// Layoyt
+	$defaults['layout_responsive'] = true;
 	
 	return $defaults;
 }
