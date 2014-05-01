@@ -121,13 +121,3 @@ function focus_premium_filter_cta_args($args){
 	return $args;
 }
 add_filter('focus_cta_args', 'focus_premium_filter_cta_args');
-
-function focus_premium_responsive_head(){
-	if( siteorigin_setting('layout_responsive') ){
-		?><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale = 1.0, user-scalable=0' /><?php
-	}
-	else {
-		?><meta name='viewport' content='width=1100' /><?php
-	}
-}
-add_action('wp_head', 'focus_premium_responsive_head');
