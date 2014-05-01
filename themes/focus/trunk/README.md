@@ -14,7 +14,12 @@ This theme is originally based on Underscores (_s) starter theme http://undersco
 Changelog
 =============
 
-#### 1.1.10
+#### 1.1.12
+* Updated to latest framework.
+* Added setting to disable responsive layout.
+* Fixed slider count setting.
+
+#### 1.1.11
 * Fixed title issue in RSS feed.
 * Updated to latest version of jPlayer.
 * Updated SiteOrigin Framework.
