@@ -184,7 +184,7 @@ function focus_get_slider_posts(){
 	return new WP_Query(apply_filters('focus_slider_posts_query', array(
 		'post_type' => 'post',
 		'post_status' => 'publish',
-		'numberposts' => siteorigin_setting('slider_post_count'),
+		'posts_per_page' => siteorigin_setting('slider_post_count'),
 		'orderby' => 'post_date',
 		'order' => 'DESC',
 	)));
@@ -346,3 +346,17 @@ function focus_display_logo(){
 	// echo $image;
 	?><img src="<?php echo $image[0] ?>" width="<?php echo round($width) ?>" height="<?php echo round($height) ?>" /><?php
 }
+
+function focus_wp_header(){
+	if( siteorigin_setting('general_responsive') ) {
+		?><meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0' /><?php
+	}
+	else {
+		?><meta name='viewport' content='width=1200' /><?php
+	}
+
+	// Make sure we don't use compatibility mode
+	?><meta http-equiv="X-UA-Compatible" content="IE=edge" /><?php
+
+}
+add_action('wp_head', 'focus_wp_header');
