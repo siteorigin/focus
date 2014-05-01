@@ -18,7 +18,7 @@ add_action('after_setup_theme', 'focus_premium_theme_init', 11);
 
 
 function focus_premium_filter_video_embed_code($code){
-	if(siteorigin_setting('video_autoplay') || siteorigin_setting('video_hide_related') || siteorigin_setting('video_default_hd')) {
+	if( siteorigin_setting('video_autoplay') || siteorigin_setting('video_hide_related') || siteorigin_setting('video_default_hd') ) {
 		$code = preg_replace_callback('/src="([^"]*)"/', 'focus_premium_video_change_autoplay_callback', $code);
 	}
 	echo $code;
@@ -33,8 +33,9 @@ function focus_premium_video_change_autoplay_callback($matches){
 	if(siteorigin_setting('video_hide_related')){
 		$url = add_query_arg('rel', 0, $url);
 	}
-	if(siteorigin_setting('video_default_hd')){
+	if( siteorigin_setting('video_default_hd') ){
 		$url = add_query_arg('vq', 'hd1080', $url);
+		$url = add_query_arg('hd', '1', $url);
 	}
 	
 	return 'src="' .$url. '"';
@@ -122,8 +123,11 @@ function focus_premium_filter_cta_args($args){
 add_filter('focus_cta_args', 'focus_premium_filter_cta_args');
 
 function focus_premium_responsive_head(){
-	if(siteorigin_setting('layout_responsive')){
+	if( siteorigin_setting('layout_responsive') ){
 		?><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale = 1.0, user-scalable=0' /><?php
+	}
+	else {
+		?><meta name='viewport' content='width=1100' /><?php
 	}
 }
 add_action('wp_head', 'focus_premium_responsive_head');

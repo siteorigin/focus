@@ -348,7 +348,7 @@ function focus_display_logo(){
 }
 
 function focus_wp_header(){
-	if( siteorigin_setting('general_responsive') ) {
+	if( siteorigin_setting('layout_responsive') ) {
 		?><meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0' /><?php
 	}
 	else {
