@@ -14,6 +14,9 @@ This theme is originally based on Underscores (_s) starter theme http://undersco
 Changelog
 =============
 
+#### 1.2
+* Updated to latest framework.
+
 #### 1.1.12
 * Updated to latest framework.
 * Added setting to disable responsive layout.
