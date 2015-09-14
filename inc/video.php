@@ -141,7 +141,7 @@ function focus_video_enqueue_scripts(){
 			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'slider' );
 		}
 		
-		wp_enqueue_script('jplayer', get_template_directory_uri().'/jplayer/jquery.jplayer.js', array('jquery'), '2.1.0');
+		wp_enqueue_script('jplayer', get_template_directory_uri().'/jplayer/jquery.jplayer.js', array('jquery'), '2.9.2');
 		wp_localize_script('jplayer', 'jplayerSettings', array(
 			'swfPath' => get_template_directory_uri().'/jplayer/',
 			'videoPoster' => !empty($thumb) ? $thumb[0] : '',
