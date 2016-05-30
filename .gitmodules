@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [submodule "build"]
 	path = build
 	url = git@github.com:siteorigin/theme-build.git
@@ -8,11 +7,3 @@
 [submodule "inc/panels-lite"]
 	path = inc/panels-lite
 	url = git@github.com:siteorigin/panels-lite.git
-=======
-[submodule "premium/extras"]
-	path = premium/extras
-	url = git@github.com:siteorigin/extras-premium.git
-[submodule "extras"]
-	path = extras
-	url = git@github.com:siteorigin/extras.git
->>>>>>> b397c973a88bb3c41f3fbadacb36c7de3cfdd687
