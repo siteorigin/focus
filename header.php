@@ -23,13 +23,13 @@
 	<?php do_action( 'before' ); ?>
 	<header id="masthead" class="site-header" role="banner">
 		<section class="container">
-			<hgroup>
+			<div class="hgroup">
 				<h1 class="site-title <?php echo siteorigin_setting('general_logo') ? 'image-logo' : 'text-logo' ?>">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 						<?php focus_display_logo(); ?>
 					</a>
 				</h1>
-			</hgroup>
+			</div>
 	
 			<nav role="navigation" id="main-navigation" class="site-navigation primary">
 				

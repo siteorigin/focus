@@ -42,4 +42,10 @@ class Focus_Post_Author_Widget extends WP_Widget {
 	}
 
 }
-register_widget( 'Focus_Post_Author_Widget' );
+
+
+function focus_widgets_init(){
+	register_widget( 'Focus_Post_Author_Widget' );
+}
+
+add_action( 'widgets_init', 'focus_widgets_init' );
