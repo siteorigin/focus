@@ -12,16 +12,16 @@ function siteorigin_mobilenav_enqueue_scripts() {
 	wp_enqueue_script( 'siteorigin-mobilenav', $root_uri . 'js/mobilenav' . SITEORIGIN_THEME_JS_PREFIX . '.js', array( 'jquery' ), SITEORIGIN_THEME_VERSION );
 
 	$text = array(
-		'navigate' => __( 'Menu', 'origami' ),
-		'back' => __( 'Back', 'origami' ),
-		'close' => __( 'Close', 'origami' ),
+		'navigate' => __( 'Menu', 'focus' ),
+		'back' => __( 'Back', 'focus' ),
+		'close' => __( 'Close', 'focus' ),
 	);
 	if( siteorigin_setting('navigation_responsive_menu_text') ) {
 		$text['navigate'] = siteorigin_setting('navigation_responsive_menu_text');
 	}
 	$text = apply_filters('siteorigin_mobilenav_text', $text);
 
-	$search = array( 'url' => get_home_url(), 'placeholder' => __( 'Search', 'origami' ) );
+	$search = array( 'url' => get_home_url(), 'placeholder' => __( 'Search', 'focus' ) );
 	$search = apply_filters('siteorigin_mobilenav_search', $search);
 
 	wp_localize_script( 'siteorigin-mobilenav', 'mobileNav', array(
@@ -60,9 +60,9 @@ function siteorigin_mobilenav_nav_filter($nav_menu, $args){
 	$nav_menu .= '<'. $args->container . $id . $class . '>';
 
 	$text = array(
-		'navigate' => __( 'Menu', 'origami' ),
-		'back' => __( 'Back', 'origami' ),
-		'close' => __( 'Close', 'origami' ),
+		'navigate' => __( 'Menu', 'focus' ),
+		'back' => __( 'Back', 'focus' ),
+		'close' => __( 'Close', 'focus' ),
 	);
 	$text = apply_filters('siteorigin_mobilenav_text', $text);
 
