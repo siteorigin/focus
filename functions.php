@@ -77,10 +77,6 @@ function focus_setup() {
 		'responsive' => siteorigin_setting('layout_responsive'),
 	) );
 
-	add_theme_support( 'siteorigin-premium-teaser', array(
-		'post-type' => array('post')
-	) );
-
 	add_theme_support( 'title-tag' );
 
 	/**
