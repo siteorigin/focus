@@ -169,7 +169,7 @@ function focus_theme_settings(){
 		'label' => __('Hide', 'focus'),
 	));
 }
-add_action('admin_init', 'focus_theme_settings');
+add_action('siteorigin_settings_init', 'focus_theme_settings');
 
 function focus_theme_setting_defaults($defaults){
 	$defaults['general_logo'] = '';
