@@ -81,6 +81,8 @@ function focus_setup() {
 		'post-type' => array('post')
 	) );
 
+	add_theme_support( 'title-tag' );
+
 	/**
 	 * This theme uses wp_nav_menu() in one location.
 	 */
