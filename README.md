@@ -14,6 +14,14 @@ This theme is originally based on Underscores (_s) starter theme http://undersco
 Changelog
 =============
 
+#### 1.3 - 30 May 2016
+* Updated jPlayer.
+* Updated to new SiteOrigin frameworks.
+* Added about page.
+* Use minified versions of JS
+* Translation domain fixes.
+* Added WordPress title tab support.
+
 #### 1.2
 * Updated to latest framework.
 
