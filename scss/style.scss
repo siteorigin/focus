@@ -738,7 +738,10 @@ body {
  * #.# Post Archive
  */
 
-.sticky, .bypostauthor {}
+.sticky,
+.bypostauthor {
+	display: block;
+}
 
 /**
  * #.# Comments
@@ -938,7 +941,7 @@ body {
 		left: 0;
 		width: 100%;
 		text-align: center;
-		font: "Open Sans", sans-serif;
+		font-family: "Open Sans", sans-serif;
 		font-weight: 200;
 		color: #FFF;
 	}
@@ -1282,7 +1285,7 @@ h2.archive-title {
 		line-height: 1;
 		width: 100%;
 		text-align: center;
-		font: "Open Sans", sans-serif;
+		font-family: "Open Sans", sans-serif;
 		font-weight: 200;
 		color: #FFF;
 		margin-bottom: 30px;
@@ -1611,6 +1614,7 @@ footer .site-info {
 			padding: 0;
 		}
 	}
+
 }
 
 /**
