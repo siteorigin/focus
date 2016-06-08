@@ -13,14 +13,12 @@ add_action('add_meta_boxes', 'focus_add_metabox');
  * Render the video metabox.
  */
 function focus_video_metabox_render(){
-	$install_url = siteorigin_plugin_activation_install_url(
-		'focus-videos',
-		__('Focus Videos', 'focus'),
+	?><p><?php
+	printf(
+		__('Please <a href="%s">install</a> the focus video plugin to edit this video setting.', 'focus'),
 		'http://gpriday.s3.amazonaws.com/plugins/focus-videos.zip'
 	)
-	?>
-	<p><?php printf(__('Please <a href="%s">install</a> the focus video plugin to edit this video setting.', 'focus'), $install_url) ?></p>
-	<?php
+	?></p><?php
 }
 
 /**
@@ -141,7 +139,7 @@ function focus_video_enqueue_scripts(){
 			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'slider' );
 		}
 		
-		wp_enqueue_script('jplayer', get_template_directory_uri().'/jplayer/jquery.jplayer.js', array('jquery'), '2.1.0');
+		wp_enqueue_script('jplayer', get_template_directory_uri().'/jplayer/jquery.jplayer' . SITEORIGIN_THEME_JS_PREFIX . '.js', array('jquery'), '2.9.2');
 		wp_localize_script('jplayer', 'jplayerSettings', array(
 			'swfPath' => get_template_directory_uri().'/jplayer/',
 			'videoPoster' => !empty($thumb) ? $thumb[0] : '',
@@ -150,17 +148,3 @@ function focus_video_enqueue_scripts(){
 	}
 }
 add_action('wp_enqueue_scripts', 'focus_video_enqueue_scripts');
-
-if(!function_exists('focus_video_action_play_button')):
-/**
- * Display the video play button. 
- */
-function focus_video_action_play_button(){
-	?>
-	<div class="jp-play jp-play-default">
-		<img src="<?php echo get_template_directory_uri() ?>/images/play.png" width="97" height="97" />
-	</div>
-	<?php
-}
-endif;
-add_action('focus_video_play_button', 'focus_video_action_play_button');

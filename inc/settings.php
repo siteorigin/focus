@@ -1,92 +1,114 @@
 <?php
 
 function focus_theme_settings(){
-	siteorigin_settings_add_section('general', __('General', 'focus'));
-	siteorigin_settings_add_section('slider', __('Slider', 'focus'));
-	siteorigin_settings_add_section('video', __('Video', 'focus'));
-	siteorigin_settings_add_section('layout', __('Layout', 'focus'));
-	siteorigin_settings_add_section('text', __('Text', 'focus'));
-	siteorigin_settings_add_section('menu', __('Main Menu', 'focus'));
-	siteorigin_settings_add_section('cta', __('Call To Action', 'focus'));
-	siteorigin_settings_add_section('comments', __('Comments', 'focus'));
+	$settings = SiteOrigin_Settings::single();
+
+	$settings->add_section('general', __('General', 'focus'));
+	$settings->add_section('slider', __('Slider', 'focus'));
+	$settings->add_section('video', __('Video', 'focus'));
+	$settings->add_section('layout', __('Layout', 'focus'));
+	$settings->add_section('text', __('Text', 'focus'));
+	$settings->add_section('menu', __('Main Menu', 'focus'));
+	$settings->add_section('cta', __('Call To Action', 'focus'));
+	$settings->add_section('comments', __('Comments', 'focus'));
 
 	/**
 	 * General Settings
 	 */
 
-	siteorigin_settings_add_field('general', 'logo', 'media',__('Logo', 'focus'), array(
+	$settings->add_field('general', 'logo', 'media',__('Logo', 'focus'), array(
 		'choose' => __('Choose Logo Image', 'focus'),
 		'update' => __('Set Logo', 'focus'),
 	));
-	siteorigin_settings_add_field('general', 'logo_scale', 'checkbox',__('Scale Logo', 'focus'), array(
+	$settings->add_field('general', 'logo_scale', 'checkbox',__('Scale Logo', 'focus'), array(
 		'description' => __('If used, scale the logo to fit the menu bar', 'focus'),
 	));
 	
-	siteorigin_settings_add_field('general', 'display_author', 'checkbox',__('Display Post Author', 'focus'), array(
+	$settings->add_field('general', 'display_author', 'checkbox',__('Display Post Author', 'focus'), array(
 		'description' => __('Displays post author information on a post page.', 'focus')
 	));
 
-	siteorigin_settings_add_field('general', 'posts_nav', 'checkbox',__('Display Post Navigation', 'focus'), array(
+	$settings->add_field('general', 'posts_nav', 'checkbox',__('Display Post Navigation', 'focus'), array(
 		'description' => __('Display next and previous post links on post single pages.', 'focus')
 	));
 	
-	siteorigin_settings_add_teaser('general', 'ajax_comments', __('Ajax Comments', 'focus'), array(
-		'description' => __('Lets your users post comments without interrupting video play.', 'focus')
-	));
-
-	siteorigin_settings_add_teaser('general', 'siteorigin_credits', __('Display Credit Link', 'focus'), array(
-		'description' => __('Display "Theme by SiteOrigin" in your footer.', 'focus')
-	));
+//	$settings->add_teaser('general', 'ajax_comments', 'checkbox', __('Ajax Comments', 'focus'), array(
+//		'description' => __('Lets your users post comments without interrupting video play.', 'focus')
+//	));
+//
+//	$settings->add_teaser('general', 'siteorigin_credits', 'checkbox', __('Display Credit Link', 'focus'), array(
+//		'description' => __('Display "Theme by SiteOrigin" in your footer.', 'focus')
+//	));
 
 	/**
 	 * Home Page Slider
 	 */
 
-	siteorigin_settings_add_field('slider', 'post_count', 'number', __('Post Count', 'focus'), array(
+	$settings->add_field('slider', 'post_count', 'number', __('Post Count', 'focus'), array(
 		'description' => __('The number of posts to display.', 'focus')
 	));
 
-	siteorigin_settings_add_teaser('slider', 'post_cat', __('Post Category', 'focus'), array(
-		'description' => __('Which category to fetch the video posts from.', 'focus')
+	$category_options = array(
+		0 => __('All', 'focus'),
+	);
+	$cats = get_categories();
+	if(!empty($cats)){
+		foreach(get_categories() as $cat){
+			$category_options[$cat->term_id] = $cat->name;
+		}
+	}
+
+	$settings->add_field('slider', 'post_cat', 'select', __('Post Category', 'focus'), array(
+		'description' => __('Which category to fetch the video posts from.', 'focus'),
+		'options' => $category_options,
 	));
 
-	siteorigin_settings_add_teaser('slider', 'post_orderby', __('Posts Order', 'focus'), array(
-		'description' => __('The order in which to display the posts.', 'focus')
+	$settings->add_field('slider', 'post_orderby', 'select', __('Posts Order', 'focus'), array(
+		'description' => __('The order in which to display the posts.', 'focus'),
+		'options' => array(
+			'date' => __('Date', 'focus'),
+			'title' => __('Title', 'focus'),
+			'rand' => __('Random', 'focus'),
+			'comment_count' => __('Comment Count', 'focus'),
+		),
 	));
 
 	/**
 	 * Video Player
 	 */
 
-	siteorigin_settings_add_field('video', 'by_text', 'text', __('Video By Text', 'focus'), array(
+	$settings->add_field('video', 'by_text', 'text', __('Video By Text', 'focus'), array(
 		'description' => __('Change the text "video by" on single post pages.', 'focus')
 	));
 	
-	siteorigin_settings_add_teaser('video', 'autoplay', __('Autoplay Videos', 'focus'), array(
+	$settings->add_field('video', 'autoplay', 'checkbox', __('Autoplay Videos', 'focus'), array(
 		'description' => __('Videos start playing as soon as the video page is loaded.', 'focus')
 	));
 
-	siteorigin_settings_add_teaser('video', 'hide_related', __('Hide Related Videos', 'focus'), array(
+	$settings->add_field('video', 'hide_related', 'checkbox', __('Hide Related Videos', 'focus'), array(
 		'description' => __('Hides related videos after a YouTube or Vimeo Plus video finishes.', 'focus')
 	));
 
-	siteorigin_settings_add_teaser('video', 'default_hd', __('Play Videos in HD', 'focus'), array(
-		'description' => __("Unfortunately setting video quality has been depreciated by YouTube. You can set HD video settings on Vimeo itself.", 'focus')
-	));
-
-	siteorigin_settings_add_teaser('video', 'play_button', __('Play Button', 'focus'), array(
+	$settings->add_field('video', 'play_button', 'media', __('Play Button', 'focus'), array(
 		'description' => __('Add a custom play button to self hosted video.', 'focus')
 	));
 
-	siteorigin_settings_add_teaser('video', 'premium_access', __('Premium Access Rights', 'focus'), array(
-		'description' => __('The access rights required to view the premium version of a video. Can be used to integrate with plugins like <a href="http://www.s2member.com/3000.html">S2Member</a>', 'focus')
+	$settings->add_field('video', 'premium_access', 'text', __('Premium Access Rights', 'focus'), array(
+		'description' => __('The access rights required to view the premium version of a video. Can be used to integrate with plugins like <a href="http://www.s2member.com/3000.html">S2Member</a>', 'focus'),
+		'options' => array(
+			's2member_level4' => __('S2Member - Level 4 Members', 'focus'),
+			's2member_level3' => __('S2Member - Level 3 Members', 'focus'),
+			's2member_level2' => __('S2Member - Level 2 Members', 'focus'),
+			's2member_level1' => __('S2Member - Level 1 Members', 'focus'),
+			's2member_level0' => __('S2Member - Free Subscribers', 'focus'),
+		)
 	));
 
 	/**
 	 * Page Layout
 	 */
 
-	siteorigin_settings_add_teaser('layout', 'responsive', __('Responsive Layout', 'focus'), array(
+	$settings->add_field('layout', 'responsive', 'true', __('Responsive Layout', 'focus'), array(
 		'description' => __('Make your site responsive.', 'focus')
 	));
 
@@ -94,29 +116,29 @@ function focus_theme_settings(){
 	 * Site Text
 	 */
 
-	siteorigin_settings_add_field('text', 'no_results', 'text', __('No Search Results', 'focus'), array(
+	$settings->add_field('text', 'no_results', 'text', __('No Search Results', 'focus'), array(
 		'description' => __('Text displayed on your no search results pages.', 'focus')
 	));
 
-	siteorigin_settings_add_field('text', 'not_found', 'text', __('Page Not Found', 'focus'), array(
+	$settings->add_field('text', 'not_found', 'text', __('Page Not Found', 'focus'), array(
 		'description' => __('Text displayed on your 404 pages.', 'focus')
 	));
 
-	siteorigin_settings_add_field('text', 'footer_copyright', 'text', __('Footer Copyright', 'focus'), array(
+	$settings->add_field('text', 'footer_copyright', 'text', __('Footer Copyright', 'focus'), array(
 		'description' => __('Text in your site footer.', 'focus')
 	));
 
-	siteorigin_settings_add_field('text', 'latest_posts', 'text', __('Latest Posts Headline', 'focus'));
+	$settings->add_field('text', 'latest_posts', 'text', __('Latest Posts Headline', 'focus'));
 	
 	/**
 	 * Main Menu
 	 */
 
-	siteorigin_settings_add_field('menu', 'home', 'checkbox', __('Home Link', 'focus'), array(
+	$settings->add_field('menu', 'home', 'checkbox', __('Home Link', 'focus'), array(
 		'description' => __('Add a home link to your menu bar.', 'focus')
 	));
 
-	siteorigin_settings_add_teaser('menu', 'search', __('Search', 'focus'), array(
+	$settings->add_teaser('menu', 'search', __('Search', 'focus'), array(
 		'description' => __('Adds a small search box in your menu bar.', 'focus'),
 		'teaser-image' => get_template_directory_uri().'/upgrade/features/search-bar.jpg'
 	));
@@ -125,11 +147,11 @@ function focus_theme_settings(){
 	 * Footer CTA
 	 */
 
-	siteorigin_settings_add_field('cta', 'text', 'text', __('CTA Text', 'focus'));
-	siteorigin_settings_add_field('cta', 'button_text', 'text', __('CTA Button Text', 'focus'));
-	siteorigin_settings_add_field('cta', 'button_url', 'text', __('CTA Button URL', 'focus'));
+	$settings->add_field('cta', 'text', 'text', __('CTA Text', 'focus'));
+	$settings->add_field('cta', 'button_text', 'text', __('CTA Button Text', 'focus'));
+	$settings->add_field('cta', 'button_url', 'text', __('CTA Button URL', 'focus'));
 
-	siteorigin_settings_add_teaser('cta', 'hide', __('Hide CTA', 'focus'), array(
+	$settings->add_teaser('cta', 'hide', __('Hide CTA', 'focus'), array(
 		'description' => __('Comma separated list of capabilities from which to hide the CTA.', 'focus')
 	));
 	
@@ -137,17 +159,17 @@ function focus_theme_settings(){
 	 * Comments
 	 */
 
-	siteorigin_settings_add_field('comments', 'page_hide', 'checkbox',__('Hide Page Comments', 'focus'), array(
+	$settings->add_field('comments', 'page_hide', 'checkbox',__('Hide Page Comments', 'focus'), array(
 		'description' => __('Automatically hides the comments and comment form on pages.', 'focus'),
 		'label' => __('Hide', 'focus'),
 	));
 
-	siteorigin_settings_add_field('comments', 'hide_allowed_tags', 'checkbox',__('Hide Allowed Tags', 'focus'), array(
+	$settings->add_field('comments', 'hide_allowed_tags', 'checkbox',__('Hide Allowed Tags', 'focus'), array(
 		'description' => __('Hides allowed tags from the comment form.', 'focus'),
 		'label' => __('Hide', 'focus'),
 	));
 }
-add_action('admin_init', 'focus_theme_settings');
+add_action('siteorigin_settings_init', 'focus_theme_settings');
 
 function focus_theme_setting_defaults($defaults){
 	$defaults['general_logo'] = '';
@@ -193,3 +215,17 @@ function focus_theme_setting_defaults($defaults){
 	return $defaults;
 }
 add_filter('siteorigin_theme_default_settings', 'focus_theme_setting_defaults');
+
+function focus_about_page_setup( $about ){
+	$about['description'] = __( ' Focus is a great theme for showing off your videos. It supports videos hosted on other sites like YouTube and Vimeo through oEmbed. You can even self host your videos.', 'focus' );
+
+	$about[ 'sections' ] = array(
+		'free',
+		'support',
+		'page-builder',
+		'github',
+	);
+
+	return $about;
+}
+add_filter( 'siteorigin_about_page', 'focus_about_page_setup' );

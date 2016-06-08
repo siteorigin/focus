@@ -6,33 +6,16 @@
  * @since focus 1.0
  */
 
-define( 'SITEORIGIN_THEME_VERSION', 'trunk' );
-define( 'SITEORIGIN_THEME_ENDPOINT', 'http://siteorigin.localhost' );
+define( 'SITEORIGIN_THEME_VERSION', 'dev' );
+define('SITEORIGIN_THEME_JS_PREFIX', '');
 
-if( file_exists(get_template_directory().'/premium/functions.php') ){
-	include get_template_directory().'/premium/functions.php';
-}
+include get_template_directory().'/inc/settings/settings.php';
 
-if(!defined('SITEORIGIN_IS_PREMIUM')){
-	include get_template_directory().'/upgrade/upgrade.php';
-}
-
+include get_template_directory().'/inc/plus.php';
 include get_template_directory().'/inc/video.php';
 include get_template_directory().'/inc/settings.php';
 include get_template_directory().'/inc/widgets.php';
-
-// Include SiteOrigin extras
-include get_template_directory().'/extras/adminbar/adminbar.php';
-include get_template_directory().'/extras/settings/settings.php';
-include get_template_directory().'/extras/premium/premium.php';
-include get_template_directory().'/extras/widgets/widgets.php';
-include get_template_directory().'/extras/update/update.php';
-include get_template_directory().'/extras/plugin-activation/plugin-activation.php';
-
-add_action('widgets_init', 'siteorigin_widgets_init');
-
-// Set the content width based on the theme's design and stylesheet.
-if ( ! isset( $content_width ) ) $content_width = 648; /* pixels */
+include get_template_directory().'/inc/legacy.php';
 
 if ( ! function_exists( 'focus_setup' ) ) :
 /**
@@ -45,8 +28,10 @@ if ( ! function_exists( 'focus_setup' ) ) :
  * @since focus 1.0
  */
 function focus_setup() {
-	// Use SiteOrigin theme settings
-	siteorigin_settings_init();
+
+	if( empty( $GLOBALS['content_width'] ) ) {
+		$GLOBALS['content_width'] = 648;
+	}
 
 	/**
 	 * Custom template tags for this theme.
@@ -93,9 +78,7 @@ function focus_setup() {
 		'responsive' => siteorigin_setting('layout_responsive'),
 	) );
 
-	add_theme_support( 'siteorigin-premium-teaser', array(
-		'post-type' => array('post')
-	) );
+	add_theme_support( 'title-tag' );
 
 	/**
 	 * This theme uses wp_nav_menu() in one location.
@@ -111,9 +94,14 @@ function focus_setup() {
 	
 	set_post_thumbnail_size(297, 160, true);
 
+	if( siteorigin_setting('layout_responsive') ) {
+		// Add the movile navigation menu if responsive layout is enabled.
+		include get_template_directory().'/inc/mobilenav/mobilenav.php';
+	}
+
 	// Include the lite version of the page builder
-	if( !defined('SITEORIGIN_PANELS_VERSION') && !siteorigin_plugin_activation_is_activating('siteorigin-panels') ){
-		include get_template_directory().'/extras/panels-lite/panels-lite.php';
+	if( !defined('SITEORIGIN_PANELS_VERSION') ){
+		include get_template_directory().'/inc/panels-lite/panels-lite.php';
 	}
 }
 endif; // focus_setup
@@ -124,7 +112,7 @@ add_action( 'after_setup_theme', 'focus_setup' );
  *
  * @since focus 1.0
  */
-function focus_widgets_init() {
+function focus_sidebars_init() {
 	register_sidebar( array(
 		'name' => __( 'Post Sidebar', 'focus' ),
 		'id' => 'sidebar-post',
@@ -152,7 +140,7 @@ function focus_widgets_init() {
 		'after_title' => '</h1>',
 	) );
 }
-add_action( 'widgets_init', 'focus_widgets_init' );
+add_action( 'widgets_init', 'focus_sidebars_init' );
 
 /**
  * Enqueue scripts and styles
@@ -160,9 +148,9 @@ add_action( 'widgets_init', 'focus_widgets_init' );
 function focus_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() , array() , SITEORIGIN_THEME_VERSION);
 	
-	wp_enqueue_script('flexslider', get_template_directory_uri().'/js/jquery.flexslider.js', array('jquery'), '2.1');
+	wp_enqueue_script('flexslider', get_template_directory_uri().'/js/jquery.flexslider' . SITEORIGIN_THEME_JS_PREFIX . '.js', array('jquery'), '2.1');
 	
-	wp_enqueue_script('focus', get_template_directory_uri().'/js/focus.js', array('jquery'), SITEORIGIN_THEME_VERSION);
+	wp_enqueue_script('focus', get_template_directory_uri().'/js/focus' . SITEORIGIN_THEME_JS_PREFIX . '.js', array('jquery'), SITEORIGIN_THEME_VERSION);
 	wp_localize_script('focus', 'focus', array(
 		'mobile' => wp_is_mobile(),
 	));
@@ -172,7 +160,7 @@ function focus_scripts() {
 	}
 
 	if ( is_singular() && wp_attachment_is_image() ) {
-		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
+		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation' . SITEORIGIN_THEME_JS_PREFIX . '.js', array( 'jquery' ), '20120202' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'focus_scripts' );
@@ -189,16 +177,6 @@ function focus_get_slider_posts(){
 		'order' => 'DESC',
 	)));
 }
-
-/**
- * Change the footer text.
- * @param $text
- * @return string
- */
-function focus_admin_footer_text($text){
-	return '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://wordpress.org/">WordPress</a> and <a href="http://siteorigin.com/theme/focus/">Focus</a>.', 'focus' ) . '</span>';
-}
-add_filter('admin_footer_text', 'focus_admin_footer_text');
 
 /**
  * Display the footer call to action
