@@ -20,7 +20,7 @@ Changelog
 * Added about page.
 * Use minified versions of JS
 * Translation domain fixes.
-* Added WordPress title tab support.
+* Added WordPress title tag support.
 
 #### 1.2
 * Updated to latest framework.
