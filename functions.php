@@ -15,6 +15,7 @@ include get_template_directory().'/inc/plus.php';
 include get_template_directory().'/inc/video.php';
 include get_template_directory().'/inc/settings.php';
 include get_template_directory().'/inc/widgets.php';
+include get_template_directory().'/inc/legacy.php';
 
 if ( ! function_exists( 'focus_setup' ) ) :
 /**
