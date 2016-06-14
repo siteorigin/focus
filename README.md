@@ -14,6 +14,9 @@ This theme is originally based on Underscores (_s) starter theme http://undersco
 Changelog
 =============
 
+#### 1.3.1 - 13 June 2016
+* Fixed build script to ensure all minified JS is properly included.
+
 #### 1.3 - 30 May 2016
 * Updated jPlayer.
 * Updated to new SiteOrigin frameworks.

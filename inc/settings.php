@@ -218,6 +218,7 @@ add_filter('siteorigin_theme_default_settings', 'focus_theme_setting_defaults');
 
 function focus_about_page_setup( $about ){
 	$about['description'] = __( ' Focus is a great theme for showing off your videos. It supports videos hosted on other sites like YouTube and Vimeo through oEmbed. You can even self host your videos.', 'focus' );
+	$about['premium_url'] = false;
 
 	$about[ 'sections' ] = array(
 		'free',
