@@ -138,11 +138,6 @@ function focus_theme_settings(){
 		'description' => __('Add a home link to your menu bar.', 'focus')
 	));
 
-	$settings->add_teaser('menu', 'search', __('Search', 'focus'), array(
-		'description' => __('Adds a small search box in your menu bar.', 'focus'),
-		'teaser-image' => get_template_directory_uri().'/upgrade/features/search-bar.jpg'
-	));
-	
 	/**
 	 * Footer CTA
 	 */
@@ -151,10 +146,6 @@ function focus_theme_settings(){
 	$settings->add_field('cta', 'button_text', 'text', __('CTA Button Text', 'focus'));
 	$settings->add_field('cta', 'button_url', 'text', __('CTA Button URL', 'focus'));
 
-	$settings->add_teaser('cta', 'hide', __('Hide CTA', 'focus'), array(
-		'description' => __('Comma separated list of capabilities from which to hide the CTA.', 'focus')
-	));
-	
 	/**
 	 * Comments
 	 */
