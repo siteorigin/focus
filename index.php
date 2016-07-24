@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-<?php if( !siteorigin_setting( 'slider_disable' ) ) {
+<?php if( siteorigin_setting( 'slider_homepage' ) ) {
 	get_template_part( 'slider' );
 } ?>
 
