@@ -200,7 +200,7 @@ function focus_theme_setting_defaults($defaults){
 	$defaults['comments_page_hide'] = false;
 	$defaults['comments_hide_allowed_tags'] = false;
 
-	// Layoyt
+	// Layout
 	$defaults['layout_responsive'] = true;
 
 	return $defaults;
