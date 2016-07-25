@@ -44,6 +44,10 @@ function focus_theme_settings(){
 	 * Home Page Slider
 	 */
 
+	$settings->add_field('slider', 'homepage', 'checkbox', __('Home Page Slider', 'focus'), array(
+ 		'description' => __('Display a posts slider on the home page.', 'focus')
+ 	));
+
 	$settings->add_field('slider', 'post_count', 'number', __('Post Count', 'focus'), array(
 		'description' => __('The number of posts to display.', 'focus')
 	));
@@ -184,6 +188,7 @@ function focus_theme_setting_defaults($defaults){
 	$defaults['cta_hide'] = '';
 
 	// The slider
+	$defaults['slider_homepage'] = true;
 	$defaults['slider_post_count'] = 5;
 	$defaults['slider_post_cat'] = '';
 	$defaults['slider_post_orderby'] = 'date';
