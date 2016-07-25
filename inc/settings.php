@@ -23,7 +23,7 @@ function focus_theme_settings(){
 	$settings->add_field('general', 'logo_scale', 'checkbox',__('Scale Logo', 'focus'), array(
 		'description' => __('If used, scale the logo to fit the menu bar', 'focus'),
 	));
-	
+
 	$settings->add_field('general', 'display_author', 'checkbox',__('Display Post Author', 'focus'), array(
 		'description' => __('Displays post author information on a post page.', 'focus')
 	));
@@ -31,7 +31,7 @@ function focus_theme_settings(){
 	$settings->add_field('general', 'posts_nav', 'checkbox',__('Display Post Navigation', 'focus'), array(
 		'description' => __('Display next and previous post links on post single pages.', 'focus')
 	));
-	
+
 //	$settings->add_teaser('general', 'ajax_comments', 'checkbox', __('Ajax Comments', 'focus'), array(
 //		'description' => __('Lets your users post comments without interrupting video play.', 'focus')
 //	));
@@ -80,7 +80,7 @@ function focus_theme_settings(){
 	$settings->add_field('video', 'by_text', 'text', __('Video By Text', 'focus'), array(
 		'description' => __('Change the text "video by" on single post pages.', 'focus')
 	));
-	
+
 	$settings->add_field('video', 'autoplay', 'checkbox', __('Autoplay Videos', 'focus'), array(
 		'description' => __('Videos start playing as soon as the video page is loaded.', 'focus')
 	));
@@ -108,7 +108,7 @@ function focus_theme_settings(){
 	 * Page Layout
 	 */
 
-	$settings->add_field('layout', 'responsive', 'true', __('Responsive Layout', 'focus'), array(
+	$settings->add_field('layout', 'responsive', 'checkbox', __('Responsive Layout', 'focus'), array(
 		'description' => __('Make your site responsive.', 'focus')
 	));
 
@@ -129,7 +129,7 @@ function focus_theme_settings(){
 	));
 
 	$settings->add_field('text', 'latest_posts', 'text', __('Latest Posts Headline', 'focus'));
-	
+
 	/**
 	 * Main Menu
 	 */
@@ -172,12 +172,12 @@ function focus_theme_setting_defaults($defaults){
 
 	$defaults['menu_home'] = true;
 	$defaults['menu_search'] = false;
-	
+
 	$defaults['text_not_found'] = false;
 	$defaults['text_no_results'] = false;
 	$defaults['text_latest_posts'] = false;
 	$defaults['text_footer_copyright'] = false;
-	
+
 	$defaults['cta_text'] = '';
 	$defaults['cta_button_url'] = '';
 	$defaults['cta_button_text'] = '';
@@ -187,7 +187,7 @@ function focus_theme_setting_defaults($defaults){
 	$defaults['slider_post_count'] = 5;
 	$defaults['slider_post_cat'] = '';
 	$defaults['slider_post_orderby'] = 'date';
-	
+
 	// The Video
 	$defaults['video_by_text'] = '';
 	$defaults['video_premium_access'] = '';
@@ -195,14 +195,14 @@ function focus_theme_setting_defaults($defaults){
 	$defaults['video_default_hd'] = false;
 	$defaults['video_autoplay'] = false;
 	$defaults['video_hide_related'] = false;
-	
+
 	// Comments
 	$defaults['comments_page_hide'] = false;
 	$defaults['comments_hide_allowed_tags'] = false;
 
-	// Layoyt
+	// Layout
 	$defaults['layout_responsive'] = true;
-	
+
 	return $defaults;
 }
 add_filter('siteorigin_theme_default_settings', 'focus_theme_setting_defaults');
