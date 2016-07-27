@@ -162,6 +162,9 @@ function focus_scripts() {
 	if ( is_singular() && wp_attachment_is_image() ) {
 		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation' . SITEORIGIN_THEME_JS_PREFIX . '.js', array( 'jquery' ), '20120202' );
 	}
+
+	wp_enqueue_script( 'focus-html5', get_template_directory_uri() . '/js/html5.js', array(), '3.7.3' );
+	wp_script_add_data( 'focus-html5', 'conditional', 'lt IE 9' );	
 }
 add_action( 'wp_enqueue_scripts', 'focus_scripts' );
 
@@ -285,18 +288,6 @@ add_action('focus_credits', 'focus_theme_credit');
 function focus_default_post_thumbnail(){
 	return '<img src="'.get_template_directory_uri().'/images/thumbnail.jpg" width="297" height="160" class="attachment-post-thumbnail wp-post-image" />';
 }
-
-/**
- * Add the HTML shiv to the header.
- */
-function focus_html5_shiv(){
-	?>
-	<!--[if lt IE 9]>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
-	<![endif]-->
-	<?php
-}
-add_action('wp_head', 'focus_html5_shiv');
 
 /**
  * Render the theme logo.
