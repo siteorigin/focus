@@ -164,7 +164,7 @@ function focus_scripts() {
 	}
 
 	wp_enqueue_script( 'focus-html5', get_template_directory_uri() . '/js/html5' . SITEORIGIN_THEME_JS_PREFIX . '.js', array(), '3.7.3' );
-	wp_script_add_data( 'focus-html5', 'conditional', 'lt IE 9' );	
+	wp_script_add_data( 'focus-html5', 'conditional', 'lt IE 9' );
 }
 add_action( 'wp_enqueue_scripts', 'focus_scripts' );
 
@@ -292,28 +292,33 @@ function focus_default_post_thumbnail(){
 /**
  * Render the theme logo.
  */
-function focus_display_logo(){
-	$logo = siteorigin_setting('general_logo');
+function focus_display_logo() {
+	$logo = siteorigin_setting( 'general_logo' );
+	$retina_logo = siteorigin_setting( 'general_retina_logo' );
 
-	if(empty($logo)) {
+	if( empty( $logo ) ) {
 		// Just display the site title
 		bloginfo( 'name' );
 		return;
 	}
 
-	$image = wp_get_attachment_image_src($logo, 'full');
+	$image = wp_get_attachment_image_src( $logo, 'full' );
 
-	if(siteorigin_setting('general_logo_scale')){
-		$height = min($image[2], 26);
+	if( siteorigin_setting( 'general_logo_scale' ) ) {
+		$height = min( $image[2], 26 );
 		$width = $height/$image[1] * $image[2];
-	}
-	else{
+	} else {
 		$height = $image[2];
 		$width = $image[1];
 	}
 
+	if( $retina_logo ) {
+		$image_2x = wp_get_attachment_image_src( $retina_logo, 'full' );
+		$srcset = 'srcset="' . $image[0] . ' 1x, ' . $image_2x[0] . ' 2x"';
+	}
+
 	// echo $image;
-	?><img src="<?php echo $image[0] ?>" width="<?php echo round($width) ?>" height="<?php echo round($height) ?>" /><?php
+	?><img src="<?php echo $image[0] ?>" <?php echo $srcset ?> width="<?php echo round($width) ?>" height="<?php echo round($height) ?>" /><?php
 }
 
 function focus_wp_header(){

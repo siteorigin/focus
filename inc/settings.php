@@ -19,7 +19,15 @@ function focus_theme_settings(){
 	$settings->add_field('general', 'logo', 'media',__('Logo', 'focus'), array(
 		'choose' => __('Choose Logo Image', 'focus'),
 		'update' => __('Set Logo', 'focus'),
+		'description' => __('Logo displayed in your masthead.', 'focus')
 	));
+
+	$settings->add_field('general', 'retina_logo', 'media',__('Retina Logo', 'focus'), array(
+		'choose' => __('Choose Retina Logo Image', 'focus'),
+		'update' => __('Set Logo', 'focus'),
+		'description' => __('A double sized logo to use on retina devices.', 'focus')
+	));
+
 	$settings->add_field('general', 'logo_scale', 'checkbox',__('Scale Logo', 'focus'), array(
 		'description' => __('If used, scale the logo to fit the menu bar', 'focus'),
 	));
@@ -167,42 +175,43 @@ function focus_theme_settings(){
 add_action('siteorigin_settings_init', 'focus_theme_settings');
 
 function focus_theme_setting_defaults($defaults){
-	$defaults['general_logo'] = '';
-	$defaults['general_logo_scale'] = true;
-	$defaults['general_ajax_comments'] = false;
-	$defaults['general_display_author'] = true;
-	$defaults['general_posts_nav'] = true;
+	$defaults['general_logo']               = '';
+	$defaults['general_retina_logo']        = '';
+	$defaults['general_logo_scale']         = true;
+	$defaults['general_ajax_comments']      = false;
+	$defaults['general_display_author']     = true;
+	$defaults['general_posts_nav']          = true;
 	$defaults['general_siteorigin_credits'] = true;
 
-	$defaults['menu_home'] = true;
+	$defaults['menu_home']   = true;
 	$defaults['menu_search'] = false;
 
-	$defaults['text_not_found'] = false;
-	$defaults['text_no_results'] = false;
-	$defaults['text_latest_posts'] = false;
+	$defaults['text_not_found']        = false;
+	$defaults['text_no_results']       = false;
+	$defaults['text_latest_posts']     = false;
 	$defaults['text_footer_copyright'] = false;
 
-	$defaults['cta_text'] = '';
-	$defaults['cta_button_url'] = '';
+	$defaults['cta_text']        = '';
+	$defaults['cta_button_url']  = '';
 	$defaults['cta_button_text'] = '';
-	$defaults['cta_hide'] = '';
+	$defaults['cta_hide']        = '';
 
 	// The slider
-	$defaults['slider_homepage'] = true;
-	$defaults['slider_post_count'] = 5;
-	$defaults['slider_post_cat'] = '';
+	$defaults['slider_homepage']     = true;
+	$defaults['slider_post_count']   = 5;
+	$defaults['slider_post_cat']     = '';
 	$defaults['slider_post_orderby'] = 'date';
 
 	// The Video
-	$defaults['video_by_text'] = '';
+	$defaults['video_by_text']        = '';
 	$defaults['video_premium_access'] = '';
-	$defaults['video_play_button'] = false;
-	$defaults['video_default_hd'] = false;
-	$defaults['video_autoplay'] = false;
-	$defaults['video_hide_related'] = false;
+	$defaults['video_play_button']    = false;
+	$defaults['video_default_hd']     = false;
+	$defaults['video_autoplay']       = false;
+	$defaults['video_hide_related']   = false;
 
 	// Comments
-	$defaults['comments_page_hide'] = false;
+	$defaults['comments_page_hide']         = false;
 	$defaults['comments_hide_allowed_tags'] = false;
 
 	// Layout
