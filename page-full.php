@@ -25,6 +25,12 @@ get_header(); the_post(); ?>
 					<h1><?php the_title() ?></h1>
 					<?php if(has_excerpt()) : ?><p><?php the_excerpt() ?></p><?php endif; ?>
 				</div>
+
+				<?php if(focus_post_has_video()) : ?>
+					<div class="video">
+						<?php focus_post_video() ?>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 
