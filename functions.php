@@ -86,12 +86,12 @@ function focus_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'focus' ),
 	) );
-	
+
 	/**
 	 * Add custom image sizes
 	 */
 	add_image_size('slider', 1280, 768, true);
-	
+
 	set_post_thumbnail_size(297, 160, true);
 
 	if( siteorigin_setting('layout_responsive') ) {
@@ -118,8 +118,8 @@ function focus_sidebars_init() {
 		'id' => 'sidebar-post',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => '</aside>',
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 
 	register_sidebar( array(
@@ -127,8 +127,8 @@ function focus_sidebars_init() {
 		'id' => 'sidebar-page',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => '</aside>',
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 
 	register_sidebar( array(
@@ -136,8 +136,8 @@ function focus_sidebars_init() {
 		'id' => 'sidebar-footer',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => '</aside>',
-		'before_title' => '<h1 class="widget-title">',
-		'after_title' => '</h1>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
 	) );
 }
 add_action( 'widgets_init', 'focus_sidebars_init' );
@@ -147,14 +147,14 @@ add_action( 'widgets_init', 'focus_sidebars_init' );
  */
 function focus_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() , array() , SITEORIGIN_THEME_VERSION);
-	
+
 	wp_enqueue_script('flexslider', get_template_directory_uri().'/js/jquery.flexslider' . SITEORIGIN_THEME_JS_PREFIX . '.js', array('jquery'), '2.1');
-	
+
 	wp_enqueue_script('focus', get_template_directory_uri().'/js/focus' . SITEORIGIN_THEME_JS_PREFIX . '.js', array('jquery'), SITEORIGIN_THEME_VERSION);
 	wp_localize_script('focus', 'focus', array(
 		'mobile' => wp_is_mobile(),
 	));
-	
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -162,6 +162,9 @@ function focus_scripts() {
 	if ( is_singular() && wp_attachment_is_image() ) {
 		wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation' . SITEORIGIN_THEME_JS_PREFIX . '.js', array( 'jquery' ), '20120202' );
 	}
+
+	wp_enqueue_script( 'focus-html5', get_template_directory_uri() . '/js/html5' . SITEORIGIN_THEME_JS_PREFIX . '.js', array(), '3.7.3' );
+	wp_script_add_data( 'focus-html5', 'conditional', 'lt IE 9' );	
 }
 add_action( 'wp_enqueue_scripts', 'focus_scripts' );
 
@@ -189,9 +192,9 @@ function focus_display_footer_cta(){
 	);
 	$args['button_url'] = do_shortcode($args['button_url']);
 	$args = apply_filters('focus_cta_args', $args);
-	
+
 	if(empty($args['text']) && empty($args['button_text']) && empty($args['button_url'])) return;
-	
+
 	?>
 	<div id="footer-cta">
 		<div class="container">
@@ -220,14 +223,14 @@ add_filter( 'wp_page_menu_args', 'focus_page_menu_args' );
 
 /**
  * Display the post author information in the sidebar.
- * 
+ *
  * @return bool
  */
 function focus_post_author_info(){
 	if(!is_single()) return false;
 	if(!siteorigin_setting('general_display_author')) return;
 	if(get_post_type() != 'post') return;
-	
+
 	the_widget('Focus_Post_Author_Widget');
 }
 add_action('before_sidebar', 'focus_post_author_info');
@@ -238,7 +241,7 @@ add_action('before_sidebar', 'focus_post_author_info');
 function focus_footer_widget_style(){
 	$widgets = wp_get_sidebars_widgets();
 	if(empty($widgets['sidebar-footer'])) return;
-	
+
 	$count = count($widgets['sidebar-footer']);
 	?> <style type="text/css"> #footer-widgets aside { width : <?php echo round(100/$count,3) ?>%; } </style> <?php
 }
@@ -246,7 +249,7 @@ add_action('wp_head', 'focus_footer_widget_style', 15);
 
 /**
  * Filter the comment form.
- * 
+ *
  * @param $defaults
  * @return mixed
  */
@@ -254,7 +257,7 @@ function focus_comment_form_defaults($defaults){
 	if(siteorigin_setting('comments_hide_allowed_tags')){
 		$defaults['comment_notes_after'] = null;
 	}
-	
+
 	return $defaults;
 }
 add_filter('comment_form_defaults', 'focus_comment_form_defaults', 5);
@@ -279,7 +282,7 @@ add_action('focus_credits', 'focus_theme_credit');
 
 /**
  * Display the default post thumbnail
- * 
+ *
  * @return string
  */
 function focus_default_post_thumbnail(){
@@ -287,31 +290,19 @@ function focus_default_post_thumbnail(){
 }
 
 /**
- * Add the HTML shiv to the header.
- */
-function focus_html5_shiv(){
-	?>
-	<!--[if lt IE 9]>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
-	<![endif]-->
-	<?php
-}
-add_action('wp_head', 'focus_html5_shiv');
-
-/**
  * Render the theme logo.
  */
 function focus_display_logo(){
 	$logo = siteorigin_setting('general_logo');
-	
+
 	if(empty($logo)) {
 		// Just display the site title
 		bloginfo( 'name' );
 		return;
 	}
-	
+
 	$image = wp_get_attachment_image_src($logo, 'full');
-	
+
 	if(siteorigin_setting('general_logo_scale')){
 		$height = min($image[2], 26);
 		$width = $height/$image[1] * $image[2];
@@ -320,7 +311,7 @@ function focus_display_logo(){
 		$height = $image[2];
 		$width = $image[1];
 	}
-	
+
 	// echo $image;
 	?><img src="<?php echo $image[0] ?>" width="<?php echo round($width) ?>" height="<?php echo round($height) ?>" /><?php
 }

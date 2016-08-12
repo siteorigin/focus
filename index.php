@@ -15,17 +15,19 @@
 get_header();
 ?>
 
-<?php get_template_part('slider') ?>
+<?php if( siteorigin_setting( 'slider_homepage' ) ) {
+	get_template_part( 'slider' );
+} ?>
 
 <div id="primary" class="content-area">
 	<div id="content" class="site-content" role="main">
-		
+
 		<div class="container">
-			
+
 			<h2 class="archive-title"><?php echo esc_html(siteorigin_setting('text_latest_posts', __("Latest Videos", 'focus'))) ?></h2>
-			
+
 			<?php get_template_part('loop') ?>
-			
+
 		</div>
 	</div><!-- #content .site-content -->
 	</div><!-- #primary .content-area -->
