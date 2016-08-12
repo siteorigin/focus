@@ -15,6 +15,12 @@ get_header(); ?>
 					<?php wp_title(' ') ?>
 				</h2>
 
+				<?php if( is_category() ) : ?>
+					<p class="category-description">
+						<?php echo category_description(); ?>
+					</p>
+				<?php endif; ?>
+
 				<?php get_template_part('loop') ?>
 
 			</div>
