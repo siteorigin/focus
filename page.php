@@ -22,6 +22,12 @@ get_header(); the_post(); ?>
 				<h1><?php the_title() ?></h1>
 				<?php if(has_excerpt()) : ?><p><?php the_excerpt() ?></p><?php endif; ?>
 			</div>
+
+			<?php if(focus_post_has_video()) : ?>
+				<div class="video">
+					<?php focus_post_video() ?>
+				</div>
+			<?php endif; ?>
 		</div>
 	</div>
 
@@ -34,7 +40,7 @@ get_header(); the_post(); ?>
 				<div class="entry-content">
 					<?php the_content() ?>
 				</div>
-				
+
 				<div class="clear"></div>
 				<?php wp_link_pages() ?>
 
@@ -45,7 +51,7 @@ get_header(); the_post(); ?>
 			</div><!-- #content .site-content.content-container -->
 
 			<?php get_sidebar(); ?>
-			
+
 			<div class="clear"></div>
 		</div>
 
