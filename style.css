@@ -856,6 +856,17 @@ body {
 .widget .loop-container .entry-title {
   margin-bottom: 0; }
 
+.widget .slider-container li.slide {
+  margin-left: 0; }
+  .widget .slider-container li.slide .slide-text {
+    color: #fff; }
+  .widget .slider-container li.slide h1 {
+    margin: 0 0 20px 0;
+    font-size: 42px; }
+
+.widget .slider-container .flex-control-nav .container {
+  max-width: 100%; }
+
 /**
  * #.# Post Author
  */
