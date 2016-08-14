@@ -136,11 +136,11 @@ function focus_theme_settings(){
 		'description' => __('Text displayed on your 404 pages.', 'focus')
 	));
 
+	$settings->add_field('text', 'latest_posts', 'text', __('Latest Posts Headline', 'focus'));
+
 	$settings->add_field('text', 'footer_copyright', 'text', __('Footer Copyright', 'focus'), array(
 		'description' => __('Text in your site footer.', 'focus')
-	));
-
-	$settings->add_field('text', 'latest_posts', 'text', __('Latest Posts Headline', 'focus'));
+	));	
 
 	/**
 	 * Main Menu
