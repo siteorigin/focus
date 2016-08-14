@@ -186,10 +186,10 @@ function focus_theme_setting_defaults($defaults){
 	$defaults['menu_home']   = true;
 	$defaults['menu_search'] = false;
 
-	$defaults['text_not_found']        = false;
-	$defaults['text_no_results']       = false;
-	$defaults['text_latest_posts']     = false;
-	$defaults['text_footer_copyright'] = false;
+	$defaults['text_not_found'] = __('We couldn\'t find the page you were looking for.', 'focus');
+	$defaults['text_no_results'] = __('We couldn\'t find any results for your query.', 'focus');
+	$defaults['text_latest_posts'] = __('Latest Videos', 'focus');
+	$defaults['text_footer_copyright'] = '';
 
 	$defaults['cta_text']        = '';
 	$defaults['cta_button_url']  = '';
