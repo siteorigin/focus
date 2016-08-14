@@ -853,6 +853,9 @@ body {
   color: #333;
   text-decoration: none; }
 
+.widget .loop-container .entry-title {
+  margin-bottom: 0; }
+
 /**
  * #.# Post Author
  */
