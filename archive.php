@@ -15,7 +15,7 @@ get_header(); ?>
 					<?php wp_title(' ') ?>
 				</h2>
 
-				<?php if( is_category() ) : ?>
+				<?php if ( is_category() ) : ?>
 					<p class="category-description">
 						<?php echo category_description(); ?>
 					</p>
