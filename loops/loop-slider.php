@@ -1,6 +1,6 @@
 <?php
 /**
- * Loop Name: Homepage Slider
+ * Loop Name: Posts Slider
  */
 ?>
 <?php $i = 0; ?>
