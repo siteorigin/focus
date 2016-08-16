@@ -1066,6 +1066,38 @@ body {
 		color: #333;
 		text-decoration: none;
 	}
+
+	.loop-container {
+		.entry-title {
+			margin-bottom: 0;
+		}
+	}
+
+	.slider-container {
+		li.slide {
+			margin-left: 0;
+
+			.slide-text {
+				color: #fff;
+			}
+
+			h1 {
+				margin: 0 0 20px 0;
+				font-size: 42px;
+				color: #fff;
+			}
+		}
+
+		.flex-control-nav {
+			.container {
+				max-width: 100%;
+
+				li:last-child {
+					margin-right: 5px;
+				}
+			}
+		}
+	}
 }
 
 /**
