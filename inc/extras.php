@@ -80,7 +80,7 @@ add_filter('wp_title', 'focus_wp_title', 10, 3);
  */
  function focus_infinite_scroll_init() {
 	 add_theme_support( 'infinite-scroll', array(
-		'container' => 'content',
+		'container' => 'main-loop',
 		'render' => 'focus_infinite_scroll_render',
 		'footer' => 'page',
 	) );
@@ -88,5 +88,5 @@ add_filter('wp_title', 'focus_wp_title', 10, 3);
 add_action( 'init', 'focus_infinite_scroll_init' );
 
 function focus_infinite_scroll_render() {
-	get_template_part( 'loop' );
+	get_template_part( 'infinite-loop' );
 }

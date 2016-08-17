@@ -988,20 +988,6 @@ h2.archive-title {
 .infinite-scroll .paging-navigation {
   display: none; }
 
-.infinite-scroll .infinite-wrap {
-  width: 960px;
-  margin: 20px auto 0 auto;
-  position: relative; }
-  @media (max-width: 980px) {
-    .infinite-scroll .infinite-wrap {
-      width: 720px; } }
-  @media (max-width: 760px) {
-    .infinite-scroll .infinite-wrap {
-      width: 600px; } }
-  @media (max-width: 640px) {
-    .infinite-scroll .infinite-wrap {
-      width: 300px; } }
-
 /**
  * #.# Single
  */
