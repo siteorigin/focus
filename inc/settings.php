@@ -140,7 +140,7 @@ function focus_theme_settings(){
 
 	$settings->add_field('text', 'footer_copyright', 'text', __('Footer Copyright', 'focus'), array(
 		'description' => __('Text in your site footer.', 'focus')
-	));	
+	));
 
 	/**
 	 * Main Menu
@@ -148,6 +148,10 @@ function focus_theme_settings(){
 
 	$settings->add_field('menu', 'home', 'checkbox', __('Home Link', 'focus'), array(
 		'description' => __('Add a home link to your menu bar.', 'focus')
+	));
+
+	$settings->add_field('menu', 'search', 'checkbox', __('Menu Search', 'focus'), array(
+		'description' => __('Add search box to menu bar.', 'focus')
 	));
 
 	/**
