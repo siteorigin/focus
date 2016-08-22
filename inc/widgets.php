@@ -6,7 +6,7 @@ class Focus_Post_Author_Widget extends WP_Widget {
 		// widget actual processes
 		parent::__construct(
 			'focus_post_author_widget', // Base ID
-			'Focus Post Author Widget', // Name
+			__( 'Focus Post Author Widget', 'focus' ), // Name
 			array( 'description' => __( 'Displays the post author.', 'focus' ), ) // Args
 		);
 	}
