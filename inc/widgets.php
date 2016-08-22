@@ -6,7 +6,7 @@ class Focus_Post_Author_Widget extends WP_Widget {
 		// widget actual processes
 		parent::__construct(
 			'focus_post_author_widget', // Base ID
-			'Focus_Post_Author_Widget', // Name
+			'Focus Post Author Widget', // Name
 			array( 'description' => __( 'Displays the post author.', 'focus' ), ) // Args
 		);
 	}
@@ -25,10 +25,10 @@ class Focus_Post_Author_Widget extends WP_Widget {
 		// outputs the content of the widget
 		global $post;
 		if(!empty($post));
-		
+
 		echo $args['before_widget'];
 		echo get_avatar(get_the_author_meta('ID'), 40);
-		
+
 		?>
 		<div class="author-text">
 			<div class="title"><?php echo esc_html( siteorigin_setting( 'video_by_text', __('Video By', 'focus') ) ) ?></div>
@@ -38,7 +38,7 @@ class Focus_Post_Author_Widget extends WP_Widget {
 		<div class="post-info"><?php focus_posted_on() ?></div>
 		<?php
 		echo $args['after_widget'];
-		
+
 	}
 
 }
