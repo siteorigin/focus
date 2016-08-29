@@ -988,6 +988,10 @@ h2.archive-title {
 .infinite-scroll .paging-navigation {
   display: none; }
 
+.infinite-scroll #infinite-handle {
+  margin: 20px 0;
+  text-align: center; }
+
 /**
  * #.# Single
  */
