@@ -74,3 +74,19 @@ function focus_wp_title($title, $sep, $seplocation){
 }
 endif;
 add_filter('wp_title', 'focus_wp_title', 10, 3);
+
+/**
+ * Adds support for Jetpack's Infinite Scroll.
+ */
+ function focus_infinite_scroll_init() {
+	 add_theme_support( 'infinite-scroll', array(
+		'container' => 'main-loop',
+		'render' => 'focus_infinite_scroll_render',
+		'footer' => 'page',
+	) );
+}
+add_action( 'init', 'focus_infinite_scroll_init' );
+
+function focus_infinite_scroll_render() {
+	get_template_part( 'infinite-loop' );
+}

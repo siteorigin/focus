@@ -1000,6 +1000,16 @@ h2.archive-title {
     border-radius: 3px; }
 
 /**
+ * #.# Infinite Scroll
+ */
+.infinite-scroll .paging-navigation {
+  display: none; }
+
+.infinite-scroll #infinite-handle {
+  margin: 20px 0;
+  text-align: center; }
+
+/**
  * #.# Single
  */
 .content-container {

@@ -85,7 +85,7 @@ function focus_comment( $comment, $args, $depth ) {
 			<div class="comment-author vcard">
 				<?php echo get_avatar( $comment, $depth == 1 ? 60 : 35 ); ?>
 			</div><!-- .comment-author .vcard -->
-			
+
 			<?php if ( $comment->comment_approved == '0' ) : ?>
 				<em><?php _e( 'Your comment is awaiting moderation.', 'focus' ); ?></em>
 				<br />
@@ -94,14 +94,14 @@ function focus_comment( $comment, $args, $depth ) {
 			<div class="comment-text-area">
 				<div class="comment-meta commentmetadata">
 					<cite class="fn"><?php comment_author_link() ?></cite>
-					
+
 					<div class="comment-text-area-right">
 						<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>" class="comment-permalink"><time pubdate datetime="<?php comment_time( 'c' ); ?>">
 							<?php
 							/* translators: 1: date, 2: time */
 							echo get_comment_date(); ?>
 						</time></a>
-						
+
 						<?php if(current_user_can( 'edit_comment', $comment->comment_ID ) || ($depth != 0 && $args['max_depth'] > $depth) ) : ?>
 							<span class="comment-links">
 								-
@@ -113,7 +113,7 @@ function focus_comment( $comment, $args, $depth ) {
 						<?php endif ?>
 					</div><!-- .comment-text-area-right -->
 				</div><!-- .comment-meta .commentmetadata -->
-				
+
 				<div class="comment-content entry-content">
 					<?php comment_text(); ?>
 				</div>
@@ -139,7 +139,7 @@ function focus_posted_on() {
 		get_the_category_list(', '),
 		sprintf(_n( 'One Comment', '%s Comments', get_comments_number(), 'focus' ), get_comments_number())
 	);
-	
+
 	the_tags(__('Tagged: ', 'focus'), ', ', '.');
 }
 endif;
