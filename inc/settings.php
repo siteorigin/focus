@@ -249,17 +249,14 @@ function focus_add_page_meta_boxes() {
 
 	if ( !empty( $post ) ) {
 
-		$pageTemplate = get_post_meta( $post->ID, '_wp_page_template', true );
+		add_meta_box(
+			'focus-page-header',
+			__( 'Focus Page Header', 'focus' ),
+			'focus_display_page_header_meta_box',
+			'page',
+			'side'
+		);
 
-		if ( $pageTemplate == 'page-full-no-title.php' ) {
-			add_meta_box(
-				'focus-page-header',
-				__( 'Focus Page Header', 'focus' ),
-				'focus_display_page_header_meta_box',
-				'page',
-				'side'
-			);
-		}
 	}
 
 }
