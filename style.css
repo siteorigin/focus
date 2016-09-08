@@ -1462,6 +1462,12 @@ footer .site-info {
 .page-template-page-full-no-title-php .content-container {
   margin-top: 0; }
 
+.page-template-page-full-no-title-php.no-title-page-title #masthead {
+  margin-bottom: 0; }
+
+.page-template-page-full-no-title-php.no-title-page-title .content-container {
+  margin-top: 25px; }
+
 #nav-below, #posts-nav {
   height: 1em;
   line-height: 1;

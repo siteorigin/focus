@@ -182,3 +182,50 @@ function focus_category_transient_flusher() {
 }
 add_action( 'edit_category', 'focus_category_transient_flusher' );
 add_action( 'save_post', 'focus_category_transient_flusher' );
+
+/**
+ * Filter the Page Builder data to remove the first row of widgets in the Full Width - No Title template.
+ *
+ * @param $data
+ * @param $post_id
+ *
+ * @return mixed
+ */
+function focus_replace_panels_data( $data, $post_id ){
+
+	if ( is_page() && is_page_template( 'page-full-no-title.php' ) && get_the_ID() == $post_id ) {
+
+		$page_template = get_post_meta( get_the_ID(), 'focus_page_header', true );
+		if ( isset( $page_template['move'] ) && $page_template['move'] ) {
+
+			unset( $data['grids'][0] );
+			$data['grids'] = array_values( $data['grids'] );
+
+			$to = count( $data['grid_cells'] );
+			for ( $i = 0; $i < $to; $i++ ) {
+				if ( $data['grid_cells'][$i]['grid'] == 0 ){
+					unset( $data['grid_cells'][$i] );
+				}
+				else {
+					$data['grid_cells'][$i]['grid']--;
+				}
+			}
+			$data['grid_cells'] = array_values( $data['grid_cells'] );
+
+			$to = count( $data['widgets'] );
+			for ( $i = 0; $i < $to; $i++ ) {
+				if ( $data['widgets'][$i]['panels_info']['grid'] == 0 ) {
+					unset( $data['widgets'][$i] );
+				} else {
+					$data['widgets'][$i]['panels_info']['grid']--;
+				}
+			}
+			$data['widgets'] = array_values( $data['widgets'] );
+
+		}
+
+	}
+
+	return $data;
+}
+add_filter( 'siteorigin_panels_data', 'focus_replace_panels_data', 10, 2 );

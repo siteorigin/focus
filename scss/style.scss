@@ -1818,6 +1818,16 @@ footer .site-info {
 	.content-container {
 		margin-top: 0;
 	}
+
+	&.no-title-page-title {
+		#masthead {
+			margin-bottom: 0;
+		}
+
+		.content-container {
+			margin-top: 25px;
+		}
+	}
 }
 
 #nav-below, #posts-nav {
