@@ -289,7 +289,7 @@ function focus_display_page_header_meta_box() {
 		</label>
 		<br/>
 		<small class="description">
-			<?php _e( 'Moves first row into the header', 'focus' ) ?>
+			<?php _e( 'Moves first row into the header. Page template must be set to Full Width - No Title.', 'focus' ) ?>
 		</small>
 	</p>
 	<?php
