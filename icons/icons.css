@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'focus';
-  src:  url('fonts/focus.eot?cds821');
-  src:  url('fonts/focus.eot?cds821#iefix') format('embedded-opentype'),
-    url('fonts/focus.ttf?cds821') format('truetype'),
-    url('fonts/focus.woff?cds821') format('woff'),
-    url('fonts/focus.svg?cds821#focus') format('svg');
+  src:  url('focus.eot?cds821');
+  src:  url('focus.eot?cds821#iefix') format('embedded-opentype'),
+    url('focus.ttf?cds821') format('truetype'),
+    url('focus.woff?cds821') format('woff'),
+    url('focus.svg?cds821#focus') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -33,4 +33,3 @@
 .focus-icon-long-arrow-right:before {
   content: "\f178";
 }
-
