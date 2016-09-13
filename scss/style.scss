@@ -1300,6 +1300,62 @@ h2.archive-title {
 		width: 70%;
 		float: left;
 	}
+	.nav-previous-post,
+	.nav-next-post {
+		display: inline-block;
+
+		a {
+			text-decoration: none;
+
+			i {
+				font-size: 35px;
+			}
+		}
+	}
+	#single-header {
+		> .nav-previous-post,
+		> .nav-next-post {
+			position: absolute;
+			top: 40%;
+
+			@media ( max-width: 1150px ) {
+				display: none;
+			}
+		}
+
+		.nav-previous-post {
+			left: 40px;
+		}
+
+		.nav-next-post {
+			right: 40px;
+		}
+
+		.nav-arrow-links {
+			&:after {
+				clear: both;
+				content: "";
+				display: block;
+			}
+
+			.nav-previous-post,
+			.nav-next-post {
+				@media ( min-width: 1151px ) {
+					display: none;
+				}
+			}
+
+			.nav-previous-post {
+				float: left;
+				margin-left: 20px;
+			}
+
+			.nav-next-post {
+				float: right;
+				margin-right: 20px;
+			}
+		}
+	}
 }
 
 /**

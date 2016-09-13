@@ -1036,6 +1036,49 @@ h2.archive-title {
   width: 70%;
   float: left; }
 
+.single .nav-previous-post,
+.single .nav-next-post {
+  display: inline-block; }
+  .single .nav-previous-post a,
+  .single .nav-next-post a {
+    text-decoration: none; }
+    .single .nav-previous-post a i,
+    .single .nav-next-post a i {
+      font-size: 35px; }
+
+.single #single-header > .nav-previous-post,
+.single #single-header > .nav-next-post {
+  position: absolute;
+  top: 40%; }
+  @media (max-width: 1150px) {
+    .single #single-header > .nav-previous-post,
+    .single #single-header > .nav-next-post {
+      display: none; } }
+
+.single #single-header .nav-previous-post {
+  left: 40px; }
+
+.single #single-header .nav-next-post {
+  right: 40px; }
+
+.single #single-header .nav-arrow-links:after {
+  clear: both;
+  content: "";
+  display: block; }
+
+@media (min-width: 1151px) {
+  .single #single-header .nav-arrow-links .nav-previous-post,
+  .single #single-header .nav-arrow-links .nav-next-post {
+    display: none; } }
+
+.single #single-header .nav-arrow-links .nav-previous-post {
+  float: left;
+  margin-left: 20px; }
+
+.single #single-header .nav-arrow-links .nav-next-post {
+  float: right;
+  margin-right: 20px; }
+
 /**
  * #.# Single Header
  */
