@@ -19,6 +19,12 @@ function focus_body_classes( $classes ) {
 		$classes[] = 'group-blog';
 	}
 
+	$page_header = get_post_meta( get_the_ID(), 'focus_page_header', true );
+
+	if ( isset( $page_header['move'] ) && $page_header['move'] ) {
+		$classes[] = 'no-title-page-title';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'focus_body_classes' );
