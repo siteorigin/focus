@@ -182,3 +182,66 @@ function focus_category_transient_flusher() {
 }
 add_action( 'edit_category', 'focus_category_transient_flusher' );
 add_action( 'save_post', 'focus_category_transient_flusher' );
+
+if ( !function_exists( 'focus_navigation_arrows' ) ):
+/**
+ * Display a custom icons from the settings
+ */
+function focus_navigation_arrows() {
+	$previous_icon = focus_display_icon( 'previous' );
+	$next_icon = focus_display_icon( 'next' );
+	previous_post_link( '<div class="nav-previous-post">%link</div>', $previous_icon );
+	next_post_link( '<div class="nav-next-post">%link</div>', $next_icon );
+}
+endif;
+
+if ( !function_exists( 'focus_custom_icon' ) ):
+/**
+ * Display a custom icons from the settings
+ */
+function focus_custom_icon( $icon ) {
+	$image_id = siteorigin_setting( $icon );
+
+	if ( $icon == 'icons_search' ) {
+		$attrs['id'] = "masthead-search-icon";
+	} else {
+		$attrs  = '';
+	}
+
+	return wp_get_attachment_image( $image_id, 'full', false, $attrs );
+}
+endif;
+
+if ( !function_exists( 'focus_display_icon' ) ) :
+/**
+ * Displays icons or images.
+ */
+function focus_display_icon( $type ) {
+	switch( $type ) {
+		case 'search':
+			if ( siteorigin_setting( 'icons_search' ) ) :
+				echo focus_custom_icon( 'icons_search' );
+			else :
+				echo '<i class="focus-icon-search" id="masthead-search-icon"></i>';
+			endif;
+			break;
+
+		case 'previous' :
+			if ( siteorigin_setting( 'icons_post_previous' ) ) :
+				return focus_custom_icon( 'icons_post_previous' );
+			else :
+				return '<i class="focus-icon-long-arrow-left"></i>';
+			endif;
+			break;
+
+		case 'next' :
+			if ( siteorigin_setting( 'icons_post_next' ) ) :
+				return focus_custom_icon( 'icons_post_next' );
+			else :
+				return '<i class="focus-icon-long-arrow-right"></i>';
+			endif;
+			break;
+
+	}
+}
+endif;

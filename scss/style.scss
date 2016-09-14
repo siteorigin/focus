@@ -765,6 +765,13 @@ body {
 		margin-right: 15px;
 		cursor: pointer;
 	}
+	img#masthead-search-icon {
+		max-width: 14px;
+		max-height: 14px;
+		position: relative;
+		top: 3px;
+		z-index: 0;
+	}
 	#searchform {
 		display: inline-block;
 		.field {
@@ -794,6 +801,7 @@ body {
 				width: 150px;
 				opacity: 1;
 				visibility: visible;
+				z-index: 5;
 			}
 		}
 		.submit {
@@ -1309,6 +1317,11 @@ h2.archive-title {
 
 			i {
 				font-size: 35px;
+			}
+
+			img {
+				position: relative !important;
+				width: auto;
 			}
 		}
 	}

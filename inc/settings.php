@@ -6,7 +6,7 @@ function focus_theme_settings(){
 	$settings->add_section( 'general', __( 'General', 'focus' ) );
 	$settings->add_section( 'slider', __( 'Slider', 'focus' ) );
 	$settings->add_section( 'video', __( 'Video', 'focus' ) );
-	$settings->add_section( 'icon', __( 'Icons', 'focus' ) );
+	$settings->add_section( 'icons', __( 'Icons', 'focus' ) );
 	$settings->add_section( 'layout', __( 'Layout', 'focus' ) );
 	$settings->add_section( 'text', __( 'Text', 'focus' ) );
 	$settings->add_section( 'menu', __( 'Main Menu', 'focus' ) );
@@ -121,8 +121,20 @@ function focus_theme_settings(){
 	 * Icons
 	 */
 
-	$settings->add_field( 'icon', 'post_navigation', 'checkbox', __( 'Post Navigation Arrows', 'focus' ), array(
+	$settings->add_field( 'icons', 'post_navigation', 'checkbox', __( 'Post Navigation Arrows', 'focus' ), array(
 		'description' => __( 'Display next and previous arrows in the post single header for easier navigation.', 'focus' )
+	) );
+
+	$settings->add_field( 'icons', 'search', 'media', __( 'Masthead Search Icon', 'focus' ), array(
+		'description' => __( 'Replace the search icon with an image.', 'focus' )
+	) );
+
+	$settings->add_field( 'icons', 'post_previous', 'media', __( 'Previous Post Icon', 'focus' ), array(
+		'description' => __( 'Replace the previous arrow icon with an image in single posts.', 'focus' )
+	) );
+
+	$settings->add_field( 'icons', 'post_next', 'media', __( 'Next Post Icon', 'focus' ), array(
+		'description' => __( 'Replace the next arrow icon with an image in single posts.', 'focus' )
 	) );
 
 	/**
@@ -228,7 +240,10 @@ function focus_theme_setting_defaults( $defaults ) {
 	$defaults['video_hide_related']   = false;
 
 	// Icons
-	$defaults['icon_post_navigation'] = false;
+	$defaults['icons_post_navigation'] = false;
+	$defaults['icons_search']          = false;
+	$defaults['icons_post_previous']   = false;
+	$defaults['icons_post_next']       = false;
 
 	// Comments
 	$defaults['comments_page_hide']         = false;

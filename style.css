@@ -603,6 +603,12 @@ body {
   #masthead #masthead-search-icon {
     margin-right: 15px;
     cursor: pointer; }
+  #masthead img#masthead-search-icon {
+    max-width: 14px;
+    max-height: 14px;
+    position: relative;
+    top: 3px;
+    z-index: 0; }
   #masthead #searchform {
     display: inline-block; }
     #masthead #searchform .field {
@@ -631,7 +637,8 @@ body {
         color: #666;
         width: 150px;
         opacity: 1;
-        visibility: visible; }
+        visibility: visible;
+        z-index: 5; }
     #masthead #searchform .submit {
       display: none; }
   #masthead .hgroup img {
@@ -1045,6 +1052,10 @@ h2.archive-title {
     .single .nav-previous-post a i,
     .single .nav-next-post a i {
       font-size: 35px; }
+    .single .nav-previous-post a img,
+    .single .nav-next-post a img {
+      position: relative !important;
+      width: auto; }
 
 .single #single-header > .nav-previous-post,
 .single #single-header > .nav-next-post {

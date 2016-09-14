@@ -17,13 +17,13 @@ get_header(); the_post(); ?>
 			<div class="overlay"></div>
 		<?php endif; ?>
 
-		<?php if( siteorigin_setting( 'icon_post_navigation' ) ) : ?>
-			<?php previous_post_link( '<div class="nav-previous-post">%link</div>', '<i class="focus-icon-long-arrow-left"></i>' ); ?>
-			<?php next_post_link( '<div class="nav-next-post">%link</div>', '<i class="focus-icon-long-arrow-right"></i>' ); ?>
+		<?php if( siteorigin_setting( 'icons_post_navigation' ) ) : ?>
+			<?php focus_navigation_arrows(); ?>
 		<?php endif; ?>
 
 		<div class="container">
 			<div class="post-heading">
+				<?php focus_display_icon( 'icons_post_previous' ); ?>
 				<h1><?php the_title() ?></h1>
 				<?php if(has_excerpt()) : ?><p><?php the_excerpt() ?></p><?php endif; ?>
 			</div>
@@ -34,10 +34,9 @@ get_header(); the_post(); ?>
 				</div>
 			<?php endif; ?>
 
-			<?php if( siteorigin_setting( 'icon_post_navigation' ) ) : ?>
+			<?php if( siteorigin_setting( 'icons_post_navigation' ) ) : ?>
 				<div class="nav-arrow-links">
-					<?php previous_post_link( '<div class="nav-previous-post">%link</div>', '<i class="focus-icon-long-arrow-left"></i>' ); ?>
-					<?php next_post_link( '<div class="nav-next-post">%link</div>', '<i class="focus-icon-long-arrow-right"></i>' ); ?>
+					<?php focus_navigation_arrows(); ?>
 				</div>
 			<?php endif; ?>
 		</div>
