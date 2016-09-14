@@ -270,3 +270,72 @@ function focus_about_page_setup( $about ){
 	return $about;
 }
 add_filter( 'siteorigin_about_page', 'focus_about_page_setup' );
+
+/**
+ * Add the meta box for the Full Width - No Title template.
+ */
+function focus_add_page_meta_boxes() {
+
+	global $post;
+
+	if ( !empty( $post ) ) {
+
+		add_meta_box(
+			'focus-page-header',
+			__( 'Focus Page Header', 'focus' ),
+			'focus_display_page_header_meta_box',
+			'page',
+			'side'
+		);
+
+	}
+
+}
+add_action( 'add_meta_boxes', 'focus_add_page_meta_boxes' );
+
+/**
+ * Display the meta box for the Full Width - No Title template.
+ *
+ * @param $post
+ * @param $args
+ */
+function focus_display_page_header_meta_box() {
+
+	global $post;
+	$page_header = get_post_meta( $post->ID, 'focus_page_header', true );
+	$page_header = wp_parse_args(
+		!empty( $page_header ) ? $page_header : array(),
+		array(
+			'move' => false,
+		)
+	);
+	?>
+	<p>
+		<label>
+			<input type="checkbox" name="focus_page_header[move]" class="widefat" <?php checked( $page_header['move'] ) ?> />
+			<?php _e( 'Use First Page Builder Row', 'focus' ) ?>
+		</label>
+		<br/>
+		<small class="description">
+			<?php _e( 'Moves first row into the header. Page template must be set to Full Width - No Title.', 'focus' ) ?>
+		</small>
+	</p>
+	<?php
+	wp_nonce_field( 'save', '_focus_page_header_nonce' );
+}
+
+/**
+ * Save the meta box for the Full Width - No Title template.
+ *
+ * @param $post_id
+ */
+function focus_display_page_header_save_post( $post_id ) {
+	if ( !current_user_can( 'edit_post', $post_id ) ) return;
+	if ( !isset( $_POST['_focus_page_header_nonce'] ) || !wp_verify_nonce( $_POST['_focus_page_header_nonce'], 'save' ) ) return;
+
+	$page_header = $_POST['focus_page_header'];
+	$page_header['move'] = !empty( $page_header['move'] );
+
+	update_post_meta( $post_id, 'focus_page_header', $page_header );
+}
+add_action( 'save_post', 'focus_display_page_header_save_post' );

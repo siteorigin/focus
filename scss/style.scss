@@ -1889,6 +1889,31 @@ footer .site-info {
 	float: none;
 }
 
+.page-template-page-full-no-title-php {
+	#content {
+		width: auto;
+		float: none;
+	}
+
+	#masthead {
+		margin-bottom: 25px;
+	}
+
+	.content-container {
+		margin-top: 0;
+	}
+
+	&.no-title-page-title {
+		#masthead {
+			margin-bottom: 0;
+		}
+
+		.content-container {
+			margin-top: 25px;
+		}
+	}
+}
+
 #nav-below, #posts-nav {
 	height: 1em;
 	line-height: 1;
