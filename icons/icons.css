@@ -27,9 +27,9 @@
 .focus-icon-search:before {
   content: "\f002";
 }
-.focus-icon-long-arrow-left:before {
-  content: "\f177";
+.focus-icon-arrow-circle-left:before {
+  content: "\f0a8";
 }
-.focus-icon-long-arrow-right:before {
-  content: "\f178";
+.focus-icon-arrow-circle-right:before {
+  content: "\f0a9";
 }

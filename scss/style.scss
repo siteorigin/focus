@@ -1316,12 +1316,20 @@ h2.archive-title {
 			text-decoration: none;
 
 			i {
-				font-size: 35px;
+				font-size: 40px;
+				color: #fff;
+				opacity: 0.5;
+
+				&:hover {
+					opacity: 1;
+				}
 			}
 
 			img {
 				position: relative !important;
 				width: auto;
+				max-width: 38px;
+				height: auto;
 			}
 		}
 	}

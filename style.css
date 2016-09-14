@@ -1051,11 +1051,18 @@ h2.archive-title {
     text-decoration: none; }
     .single .nav-previous-post a i,
     .single .nav-next-post a i {
-      font-size: 35px; }
+      font-size: 40px;
+      color: #fff;
+      opacity: 0.5; }
+      .single .nav-previous-post a i:hover,
+      .single .nav-next-post a i:hover {
+        opacity: 1; }
     .single .nav-previous-post a img,
     .single .nav-next-post a img {
       position: relative !important;
-      width: auto; }
+      width: auto;
+      max-width: 38px;
+      height: auto; }
 
 .single #single-header > .nav-previous-post,
 .single #single-header > .nav-next-post {

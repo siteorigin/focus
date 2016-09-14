@@ -38,7 +38,7 @@ function focus_theme_settings(){
 	) );
 
 	$settings->add_field( 'general', 'posts_nav', 'checkbox',__( 'Display Post Navigation', 'focus' ), array(
-		'description' => __( 'Display next and previous post links on post single pages.', 'focus' )
+		'description' => __( 'Display next and previous post links on at the bottom of post single pages.', 'focus' )
 	) );
 
 //	$settings->add_teaser( 'general', 'ajax_comments', 'checkbox', __( 'Ajax Comments', 'focus' ), array(
