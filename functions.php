@@ -251,18 +251,19 @@ add_action('wp_head', 'focus_footer_widget_style', 15);
 
 /**
  * Filter the comment form.
+ * Remove comment form allowed tags if theme option is disabled. 
  *
  * @param $defaults
  * @return mixed
  */
-function focus_comment_form_defaults($defaults){
-	if(siteorigin_setting('comments_hide_allowed_tags')){
-		$defaults['comment_notes_after'] = null;
+function focus_comment_form_defaults( $defaults ) {
+	if ( ! siteorigin_setting( 'comments_hide_allowed_tags' ) ) {
+		$defaults['comment_notes_after'] = '<p class="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'ultra' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>';	
 	}
-
+	
 	return $defaults;
 }
-add_filter('comment_form_defaults', 'focus_comment_form_defaults', 5);
+add_filter( 'comment_form_defaults', 'focus_comment_form_defaults', 5 );
 
 /**
  * Display the focus footer information
