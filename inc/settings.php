@@ -34,7 +34,8 @@ function focus_theme_settings(){
 	) );
 
 	$settings->add_teaser( 'general', 'attribution', 'checkbox', __( 'SiteOrigin Attribution', 'focus' ), array(
-		'description' => __( 'Add or remove a link to SiteOrigin in your footer.', 'focus' )
+		'description' => __( 'Add or remove a link to SiteOrigin in your footer.', 'focus' ),
+		'featured' => 'theme/no-attribution',
 	) );	
 
 	$settings->add_field( 'general', 'display_author', 'checkbox',__( 'Display Post Author', 'focus' ), array(
@@ -204,10 +205,9 @@ function focus_theme_setting_defaults( $defaults ) {
 	$defaults['general_logo']               = '';
 	$defaults['general_retina_logo']        = '';
 	$defaults['general_logo_scale']         = true;
-	$defaults['general_attribution']       = true;
+	$defaults['general_attribution']        = true;
 	$defaults['general_display_author']     = true;
 	$defaults['general_posts_nav']          = true;
-	$defaults['general_attribution'] = true;
 
 	// Main Menu
 	$defaults['menu_home']   = true;
@@ -258,8 +258,9 @@ function focus_theme_setting_defaults( $defaults ) {
 add_filter( 'siteorigin_settings_defaults', 'focus_theme_setting_defaults' );
 
 function focus_about_page_setup( $about ){
-	$about['description'] = __( ' Focus is a great theme for showing off your videos. It supports videos hosted on other sites like YouTube and Vimeo through oEmbed. You can even self host your videos.', 'focus' );
-	$about['premium_url'] = false;
+	$about['description'] = __( 'Focus is a great theme for showing off your videos. It supports videos hosted on other sites like YouTube and Vimeo through oEmbed. You can even self host your videos.', 'focus' );
+
+	$about['documentation_url'] = 'https://siteorigin.com/focus-documentation/';
 
 	$about[ 'sections' ] = array(
 		'free',
