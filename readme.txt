@@ -1,11 +1,11 @@
 === Focus ===
 
-Contributors: Greg Priday
+Contributors: gpriday, iamadi, misplon
 
 Tags: gray, right-sidebar, two-columns, full-width-template,  featured-images, translation-ready, threaded-comments, theme-options, responsive-layout
 
 Requires at least: 4.1
-Tested up to: 4.5.3
+Tested up to: 4.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
