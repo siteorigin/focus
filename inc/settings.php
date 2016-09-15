@@ -168,7 +168,7 @@ function focus_theme_settings(){
 	 */
 
 	$settings->add_field( 'menu', 'home', 'checkbox', __( 'Home Link', 'focus' ), array(
-		'description' => __( 'Add a home link to your menu bar.', 'focus' )
+		'description' => __( 'Add a home link to your menu bar. Only applicable a custom menu hasn\'t been saved to the Primary Menu location.', 'focus' )
 	) );
 
 	$settings->add_field( 'menu', 'search', 'checkbox', __( 'Menu Search', 'focus' ), array(
