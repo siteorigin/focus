@@ -33,6 +33,10 @@ function focus_theme_settings(){
 		'description' => __( 'If used, scale the logo to fit the menu bar', 'focus' ),
 	) );
 
+	$settings->add_teaser( 'general', 'attribution', 'checkbox', __( 'SiteOrigin Attribution', 'focus' ), array(
+		'description' => __( 'Add or remove a link to SiteOrigin in your footer.', 'focus' )
+	) );	
+
 	$settings->add_field( 'general', 'display_author', 'checkbox',__( 'Display Post Author', 'focus' ), array(
 		'description' => __( 'Displays post author information on a post page.', 'focus' )
 	) );
@@ -40,14 +44,6 @@ function focus_theme_settings(){
 	$settings->add_field( 'general', 'posts_nav', 'checkbox',__( 'Display Post Navigation', 'focus' ), array(
 		'description' => __( 'Display next and previous post links on at the bottom of post single pages.', 'focus' )
 	) );
-
-//	$settings->add_teaser( 'general', 'ajax_comments', 'checkbox', __( 'Ajax Comments', 'focus' ), array(
-//		'description' => __( 'Lets your users post comments without interrupting video play.', 'focus' )
-//	) );
-//
-//	$settings->add_teaser( 'general', 'siteorigin_credits', 'checkbox', __( 'Display Credit Link', 'focus' ), array(
-//		'description' => __( 'Display "Theme by SiteOrigin" in your footer.', 'focus' )
-//	) );
 
 	/**
 	 * Home Page Slider
@@ -187,6 +183,10 @@ function focus_theme_settings(){
 	 * Comments
 	 */
 
+	$settings->add_teaser( 'general', 'ajax_comments', 'checkbox', __( 'Ajax Comments', 'focus' ), array(
+		'description' => __( 'Lets your users post comments without interrupting video play.', 'focus' )
+	) );	
+
 	$settings->add_field( 'comments', 'page_hide', 'checkbox',__( 'Hide Page Comments', 'focus' ), array(
 		'description' => __( 'Automatically hides the comments and comment form on pages.', 'focus' ),
 		'label' => __( 'Hide', 'focus' ),
@@ -204,7 +204,7 @@ function focus_theme_setting_defaults( $defaults ) {
 	$defaults['general_logo']               = '';
 	$defaults['general_retina_logo']        = '';
 	$defaults['general_logo_scale']         = true;
-	$defaults['general_ajax_comments']      = false;
+	$defaults['general_attribution']       = true;
 	$defaults['general_display_author']     = true;
 	$defaults['general_posts_nav']          = true;
 	$defaults['general_siteorigin_credits'] = true;
@@ -246,6 +246,7 @@ function focus_theme_setting_defaults( $defaults ) {
 	$defaults['icons_post_next']       = false;
 
 	// Comments
+	$defaults['comments_ajax_comments']     = false;
 	$defaults['comments_page_hide']         = false;
 	$defaults['comments_hide_allowed_tags'] = false;
 
