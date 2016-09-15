@@ -24,12 +24,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.focus-icon-circle-right:before {
+  content: "\ea42";
+}
+.focus-icon-circle-left:before {
+  content: "\ea44";
+}
 .focus-icon-search:before {
   content: "\f002";
-}
-.focus-icon-arrow-circle-left:before {
-  content: "\f0a8";
-}
-.focus-icon-arrow-circle-right:before {
-  content: "\f0a9";
 }

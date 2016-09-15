@@ -230,7 +230,7 @@ function focus_display_icon( $type ) {
 			if ( siteorigin_setting( 'icons_post_previous' ) ) :
 				return focus_custom_icon( 'icons_post_previous' );
 			else :
-				return '<i class="focus-icon-arrow-circle-left"></i>';
+				return '<i class="focus-icon-circle-left"></i>';
 			endif;
 			break;
 
@@ -238,7 +238,7 @@ function focus_display_icon( $type ) {
 			if ( siteorigin_setting( 'icons_post_next' ) ) :
 				return focus_custom_icon( 'icons_post_next' );
 			else :
-				return '<i class="focus-icon-arrow-circle-right"></i>';
+				return '<i class="focus-icon-circle-right"></i>';
 			endif;
 			break;
 
