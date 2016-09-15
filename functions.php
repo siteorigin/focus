@@ -7,7 +7,8 @@
  */
 
 define( 'SITEORIGIN_THEME_VERSION', 'dev' );
-define('SITEORIGIN_THEME_JS_PREFIX', '');
+define( 'SITEORIGIN_THEME_JS_PREFIX', '' );
+define( 'SITEORIGIN_THEME_PREMIUM_URL', 'https://siteorigin.com/downloads/premium/' );
 
 include get_template_directory().'/inc/settings/settings.php';
 
@@ -106,6 +107,27 @@ function focus_setup() {
 }
 endif; // focus_setup
 add_action( 'after_setup_theme', 'focus_setup' );
+
+if ( ! function_exists( 'focus_premium_setup' ) ) :
+/**
+ * Add support for premium theme components.
+ */
+function focus_premium_setup(){
+	// This theme supports the No Attribution addon.
+	add_theme_support( 'siteorigin-premium-no-attribution', array(
+		'filter'  => 'focus_footer_attribution',
+		'enabled' => siteorigin_setting( 'general_attribution' ),
+		'siteorigin_setting' => 'general_attribution'
+	) );
+
+	// This theme supports the Ajax comments addon.
+	add_theme_support( 'siteorigin-premium-ajax-comments', array(
+		'enabled' => siteorigin_setting( 'comments_ajax_comments' ),
+		'siteorigin_setting' => 'comments_ajax_comments'
+	) );
+}
+endif;
+add_action( 'after_setup_theme', 'focus_premium_setup' );
 
 /**
  * Register widgetized area and update sidebar with default widgets

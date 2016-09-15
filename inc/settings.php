@@ -183,7 +183,7 @@ function focus_theme_settings(){
 	 * Comments
 	 */
 
-	$settings->add_teaser( 'general', 'ajax_comments', 'checkbox', __( 'Ajax Comments', 'focus' ), array(
+	$settings->add_teaser( 'comments', 'ajax_comments', 'checkbox', __( 'Ajax Comments', 'focus' ), array(
 		'description' => __( 'Lets your users post comments without interrupting video play.', 'focus' )
 	) );	
 
@@ -207,7 +207,7 @@ function focus_theme_setting_defaults( $defaults ) {
 	$defaults['general_attribution']       = true;
 	$defaults['general_display_author']     = true;
 	$defaults['general_posts_nav']          = true;
-	$defaults['general_siteorigin_credits'] = true;
+	$defaults['general_attribution'] = true;
 
 	// Main Menu
 	$defaults['menu_home']   = true;
