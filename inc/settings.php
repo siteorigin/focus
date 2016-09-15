@@ -240,7 +240,7 @@ function focus_theme_setting_defaults( $defaults ) {
 	$defaults['video_hide_related']   = false;
 
 	// Icons
-	$defaults['icons_post_navigation'] = false;
+	$defaults['icons_post_navigation'] = true;
 	$defaults['icons_search']          = false;
 	$defaults['icons_post_previous']   = false;
 	$defaults['icons_post_next']       = false;
