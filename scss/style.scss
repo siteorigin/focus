@@ -761,12 +761,23 @@ body {
 	.hgroup {
 		float: left;
 	}
+	#masthead-search-icon {
+		margin-right: 15px;
+		cursor: pointer;
+	}
+	img#masthead-search-icon {
+		max-width: 14px;
+		max-height: 14px;
+		position: relative;
+		top: 3px;
+		z-index: 0;
+	}
 	#searchform {
 		display: inline-block;
-		margin-right: 15px;
 		.field {
-			width: 28px;
-			background: url(images/mag.png) no-repeat 15px center, transparent;
+			width: 0;
+			position: relative;
+			left: 15px;
 			border-color: transparent;
 			color: transparent;
 			-moz-box-sizing: border-box;
@@ -783,10 +794,14 @@ body {
 			padding: 4px 5px;
 			font-size: 12px;
 			font-weight: 500;
-			&:focus {
-				background: center center #EEE;
+			opacity: 0;
+			visibility: hidden;
+			&.search-field-visible {
 				color: #666;
 				width: 150px;
+				opacity: 1;
+				visibility: visible;
+				z-index: 5;
 			}
 		}
 		.submit {
@@ -1292,6 +1307,75 @@ h2.archive-title {
 	#content {
 		width: 70%;
 		float: left;
+	}
+	.nav-previous-post,
+	.nav-next-post {
+		display: inline-block;
+
+		a {
+			text-decoration: none;
+
+			i {
+				font-size: 40px;
+				color: #fff;
+				opacity: 0.5;
+
+				&:hover {
+					opacity: 1;
+				}
+			}
+
+			img {
+				position: relative !important;
+				width: auto;
+				max-width: 38px;
+				height: auto;
+			}
+		}
+	}
+	#single-header {
+		> .nav-previous-post,
+		> .nav-next-post {
+			position: absolute;
+			top: 40%;
+
+			@media ( max-width: 1150px ) {
+				display: none;
+			}
+		}
+
+		.nav-previous-post {
+			left: 40px;
+		}
+
+		.nav-next-post {
+			right: 40px;
+		}
+
+		.nav-arrow-links {
+			&:after {
+				clear: both;
+				content: "";
+				display: block;
+			}
+
+			.nav-previous-post,
+			.nav-next-post {
+				@media ( min-width: 1151px ) {
+					display: none;
+				}
+			}
+
+			.nav-previous-post {
+				float: left;
+				margin-left: 20px;
+			}
+
+			.nav-next-post {
+				float: right;
+				margin-right: 20px;
+			}
+		}
 	}
 }
 
