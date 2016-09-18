@@ -185,7 +185,8 @@ function focus_theme_settings(){
 	 */
 
 	$settings->add_teaser( 'comments', 'ajax_comments', 'checkbox', __( 'Ajax Comments', 'focus' ), array(
-		'description' => __( 'Lets your users post comments without interrupting video play.', 'focus' )
+		'description' => __( 'Lets your users post comments without interrupting video play.', 'focus' ),
+		'featured' => 'theme/ajax-comments',
 	) );	
 
 	$settings->add_field( 'comments', 'page_hide', 'checkbox',__( 'Hide Page Comments', 'focus' ), array(
