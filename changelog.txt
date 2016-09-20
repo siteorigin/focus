@@ -1,9 +1,7 @@
 == Changelog ==
 
-= 1.3.2 - 19 September 2016 =
+= 1.3.3 - 21 September 2016 =
 * Updated settings framework.
-* Fixed responsive layout setting.
-* Added option to disable home page slider.
 * Added Focus Videos plugin capability to pages.
 * Added Retina logo setting.
 * Added category description display.
@@ -17,6 +15,15 @@
 * Added settings for the search and next/previous icons.
 * Fixed comment form allowed tags setting.
 * Added support for SiteOrigin Premium.
+
+= 1.3.2 - 2 August 2016
+* Fixed responsive layout setting.
+* Added option to disable the slider.
+* Changed the widget title element to h2.
+* Update HTML5 and enqueue.
+* Updated to latest settings framework.
+* SiteOrigin Premium integration.
+* Fixed default settings.
 
 = 1.3.1 - 13 June 2016 =
 * Fixed build script to ensure all minified JS is properly included.
