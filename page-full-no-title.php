@@ -16,9 +16,7 @@ get_header(); the_post(); ?>
 
 		<?php $page_header = get_post_meta( get_the_ID(), 'focus_page_header', true );
 
-		if ( isset( $page_header['move'] ) && $page_header['move'] ) {
-			$panels_data = get_post_meta( get_the_ID(), 'panels_data', true );
-			if( empty( $panels_data ) ) return;
+		if ( isset( $page_header['move'] ) && $page_header['move'] && !empty( get_post_meta( get_the_ID(), 'panels_data', true ) ) ) {
 
 			$top_area_widgets = array();
 
