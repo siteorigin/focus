@@ -67,6 +67,11 @@ function focus_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	/**
+	 * Enable support for Custom Logo
+	 */
+	add_theme_support( 'custom-logo' );
+
 	add_theme_support( 'custom-background' , array(
 		'default-color'          => '#F6F4F2',
 	));
@@ -273,16 +278,16 @@ add_action('wp_head', 'focus_footer_widget_style', 15);
 
 /**
  * Filter the comment form.
- * Remove comment form allowed tags if theme option is disabled. 
+ * Remove comment form allowed tags if theme option is disabled.
  *
  * @param $defaults
  * @return mixed
  */
 function focus_comment_form_defaults( $defaults ) {
 	if ( ! siteorigin_setting( 'comments_hide_allowed_tags' ) ) {
-		$defaults['comment_notes_after'] = '<p class="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'ultra' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>';	
+		$defaults['comment_notes_after'] = '<p class="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'ultra' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>';
 	}
-	
+
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'focus_comment_form_defaults', 5 );
@@ -321,15 +326,20 @@ function focus_display_logo() {
 	$logo = siteorigin_setting( 'general_logo' );
 	$retina_logo = siteorigin_setting( 'general_retina_logo' );
 
-	if( empty( $logo ) ) {
-		// Just display the site title
-		bloginfo( 'name' );
-		return;
+	if ( empty( $logo ) ) {
+		if ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) {
+			the_custom_logo();
+			return;
+		} else {
+			// Just display the site title
+			bloginfo( 'name' );
+			return;
+		}
 	}
 
 	$image = wp_get_attachment_image_src( $logo, 'full' );
 
-	if( siteorigin_setting( 'general_logo_scale' ) ) {
+	if ( siteorigin_setting( 'general_logo_scale' ) ) {
 		$height = min( $image[2], 26 );
 		$width = $height/$image[1] * $image[2];
 	} else {
@@ -337,7 +347,7 @@ function focus_display_logo() {
 		$width = $image[1];
 	}
 
-	if( $retina_logo ) {
+	if ( $retina_logo ) {
 		$image_2x = wp_get_attachment_image_src( $retina_logo, 'full' );
 		$srcset = 'srcset="' . $image[0] . ' 1x, ' . $image_2x[0] . ' 2x"';
 	}
