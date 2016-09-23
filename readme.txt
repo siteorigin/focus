@@ -1,11 +1,11 @@
 === Focus ===
 
-Contributors: Greg Priday
+Contributors: gpriday, iamadi, misplon
 
 Tags: gray, right-sidebar, two-columns, full-width-template,  featured-images, translation-ready, threaded-comments, theme-options, responsive-layout
 
 Requires at least: 4.1
-Tested up to: 4.5.3
+Tested up to: 4.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Focus makes your videos explode.
 
 == Description ==
 
-Focus is a video sharing theme that makes it easier than ever to share videos using oEmbed or standard embed code. For those of you who want to stay off the grid, Focus supports self-hosted videos with a delightfully refined custom video player.
+Focus is a great theme for showing off your videos. It supports videos hosted on other sites like YouTube and Vimeo through oEmbed. You can even self host your videos - Focus has a gorgeous custom video player for MP4s. Focus can be used as a standard video blog or even an educational video site. We offer free and premium support on our [support forums](https://siteorigin.com/thread/).
 
 == Installation ==
 	

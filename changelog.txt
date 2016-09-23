@@ -1,5 +1,30 @@
 == Changelog ==
 
+= 1.3.3 - 21 September 2016 =
+* Updated settings framework.
+* Added Focus Videos plugin capability to pages.
+* Added Retina logo setting.
+* Added category description display.
+* Added support for Jetpack Infinite scroll.
+* Added menu search setting.
+* Added a Full Width - No Title page template.
+* Added a slider post loop template for use with the Page Builder Post Loop (PB) widget.
+* Added a thumbnail grid post loop template for use with the Page Builder Post Loop (PB widget).
+* Added page setting to use the first Page Builder row in the theme header area.
+* Added next and previous icons to the header area.
+* Added settings for the search and next/previous icons.
+* Fixed comment form allowed tags setting.
+* Added support for SiteOrigin Premium.
+
+= 1.3.2 - 2 August 2016
+* Fixed responsive layout setting.
+* Added option to disable the slider.
+* Changed the widget title element to h2.
+* Update HTML5 and enqueue.
+* Updated to latest settings framework.
+* SiteOrigin Premium integration.
+* Fixed default settings.
+
 = 1.3.1 - 13 June 2016 =
 * Fixed build script to ensure all minified JS is properly included.
 

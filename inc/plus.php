@@ -76,8 +76,9 @@ function focus_plus_filter_slider_posts_query($args){
 add_filter('focus_slider_posts_query', 'focus_plus_filter_slider_posts_query');
 
 function focus_plus_before_menu(){
-	if(siteorigin_setting('menu_search')){
+	if( siteorigin_setting( 'menu_search' ) ) {
 		get_search_form();
+		focus_display_icon( 'search' );
 	}
 }
 add_action('before_menu', 'focus_plus_before_menu');
