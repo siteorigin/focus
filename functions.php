@@ -10,6 +10,7 @@ define( 'SITEORIGIN_THEME_VERSION', 'dev' );
 define( 'SITEORIGIN_THEME_JS_PREFIX', '' );
 define( 'SITEORIGIN_THEME_PREMIUM_URL', 'https://siteorigin.com/downloads/premium/' );
 
+include get_template_directory() . '/inc/class-tgm-plugin-activation.php';
 include get_template_directory().'/inc/settings/settings.php';
 
 include get_template_directory().'/inc/plus.php';
@@ -369,3 +370,41 @@ function focus_wp_header(){
 
 }
 add_action('wp_head', 'focus_wp_header');
+
+/**
+ * Add some plugins to TGM plugin activation
+ */
+function focus_recommended_plugins(){
+	$plugins = array(
+		array(
+			'name'      => __('SiteOrigin Page Builder', 'focus'),
+			'slug'      => 'siteorigin-panels',
+			'required'  => false,
+		),
+		array(
+			'name'      => __('SiteOrigin Widgets Bundle', 'focus'),
+			'slug'      => 'so-widgets-bundle',
+			'required'  => false,
+		),
+		array(
+			'name'      => __('SiteOrigin CSS', 'focus'),
+			'slug'      => 'so-css',
+			'required'  => false,
+		),
+	);
+
+	$config = array(
+		'id'           => 'tgmpa-focus',         // Unique ID for hashing notices for multiple instances of TGMPA.
+		'menu'         => 'tgmpa-install-plugins', // Menu slug.
+		'parent_slug'  => 'themes.php',            // Parent menu slug.
+		'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
+		'has_notices'  => true,                    // Show admin notices or not.
+		'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+		'message'      => '',                      // Message to output right before the plugins table.
+	);
+
+	tgmpa( $plugins, $config );
+}
+add_action( 'tgmpa_register', 'focus_recommended_plugins' );
