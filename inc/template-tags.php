@@ -85,7 +85,7 @@ function focus_comment( $comment, $args, $depth ) {
 			<div class="comment-author vcard">
 				<?php echo get_avatar( $comment, $depth == 1 ? 60 : 35 ); ?>
 			</div><!-- .comment-author .vcard -->
-			
+
 			<?php if ( $comment->comment_approved == '0' ) : ?>
 				<em><?php _e( 'Your comment is awaiting moderation.', 'focus' ); ?></em>
 				<br />
@@ -94,14 +94,14 @@ function focus_comment( $comment, $args, $depth ) {
 			<div class="comment-text-area">
 				<div class="comment-meta commentmetadata">
 					<cite class="fn"><?php comment_author_link() ?></cite>
-					
+
 					<div class="comment-text-area-right">
 						<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>" class="comment-permalink"><time pubdate datetime="<?php comment_time( 'c' ); ?>">
 							<?php
 							/* translators: 1: date, 2: time */
 							echo get_comment_date(); ?>
 						</time></a>
-						
+
 						<?php if(current_user_can( 'edit_comment', $comment->comment_ID ) || ($depth != 0 && $args['max_depth'] > $depth) ) : ?>
 							<span class="comment-links">
 								-
@@ -113,7 +113,7 @@ function focus_comment( $comment, $args, $depth ) {
 						<?php endif ?>
 					</div><!-- .comment-text-area-right -->
 				</div><!-- .comment-meta .commentmetadata -->
-				
+
 				<div class="comment-content entry-content">
 					<?php comment_text(); ?>
 				</div>
@@ -139,7 +139,7 @@ function focus_posted_on() {
 		get_the_category_list(', '),
 		sprintf(_n( 'One Comment', '%s Comments', get_comments_number(), 'focus' ), get_comments_number())
 	);
-	
+
 	the_tags(__('Tagged: ', 'focus'), ', ', '.');
 }
 endif;
@@ -182,3 +182,113 @@ function focus_category_transient_flusher() {
 }
 add_action( 'edit_category', 'focus_category_transient_flusher' );
 add_action( 'save_post', 'focus_category_transient_flusher' );
+
+if ( !function_exists( 'focus_navigation_arrows' ) ):
+/**
+ * Display a custom icons from the settings
+ */
+function focus_navigation_arrows() {
+	$previous_icon = focus_display_icon( 'previous' );
+	$next_icon = focus_display_icon( 'next' );
+	previous_post_link( '<div class="nav-previous-post">%link</div>', $previous_icon );
+	next_post_link( '<div class="nav-next-post">%link</div>', $next_icon );
+}
+endif;
+
+if ( !function_exists( 'focus_custom_icon' ) ):
+/**
+ * Display a custom icons from the settings
+ */
+function focus_custom_icon( $icon ) {
+	$image_id = siteorigin_setting( $icon );
+
+	if ( $icon == 'icons_search' ) {
+		$attrs['id'] = "masthead-search-icon";
+	} else {
+		$attrs  = '';
+	}
+
+	return wp_get_attachment_image( $image_id, 'full', false, $attrs );
+}
+endif;
+
+if ( !function_exists( 'focus_display_icon' ) ) :
+/**
+ * Displays icons or images.
+ */
+function focus_display_icon( $type ) {
+	switch( $type ) {
+		case 'search':
+			if ( siteorigin_setting( 'icons_search' ) ) :
+				echo focus_custom_icon( 'icons_search' );
+			else :
+				echo '<i class="focus-icon-search" id="masthead-search-icon"></i>';
+			endif;
+			break;
+
+		case 'previous' :
+			if ( siteorigin_setting( 'icons_post_previous' ) ) :
+				return focus_custom_icon( 'icons_post_previous' );
+			else :
+				return '<i class="focus-icon-circle-left"></i>';
+			endif;
+			break;
+
+		case 'next' :
+			if ( siteorigin_setting( 'icons_post_next' ) ) :
+				return focus_custom_icon( 'icons_post_next' );
+			else :
+				return '<i class="focus-icon-circle-right"></i>';
+			endif;
+			break;
+
+	}
+}
+endif;
+
+/**
+ * Filter the Page Builder data to remove the first row of widgets in the Full Width - No Title template.
+ *
+ * @param $data
+ * @param $post_id
+ *
+ * @return mixed
+ */
+function focus_replace_panels_data( $data, $post_id ){
+
+	if ( is_page() && is_page_template( 'page-full-no-title.php' ) && get_the_ID() == $post_id ) {
+
+		$page_template = get_post_meta( get_the_ID(), 'focus_page_header', true );
+		if ( isset( $page_template['move'] ) && $page_template['move'] ) {
+
+			unset( $data['grids'][0] );
+			$data['grids'] = array_values( $data['grids'] );
+
+			$to = count( $data['grid_cells'] );
+			for ( $i = 0; $i < $to; $i++ ) {
+				if ( $data['grid_cells'][$i]['grid'] == 0 ){
+					unset( $data['grid_cells'][$i] );
+				}
+				else {
+					$data['grid_cells'][$i]['grid']--;
+				}
+			}
+			$data['grid_cells'] = array_values( $data['grid_cells'] );
+
+			$to = count( $data['widgets'] );
+			for ( $i = 0; $i < $to; $i++ ) {
+				if ( $data['widgets'][$i]['panels_info']['grid'] == 0 ) {
+					unset( $data['widgets'][$i] );
+				} else {
+					$data['widgets'][$i]['panels_info']['grid']--;
+				}
+			}
+			$data['widgets'] = array_values( $data['widgets'] );
+
+		}
+
+	}
+
+	return $data;
+}
+add_filter( 'siteorigin_panels_data', 'focus_replace_panels_data', 10, 2 );

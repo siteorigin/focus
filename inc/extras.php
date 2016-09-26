@@ -19,6 +19,12 @@ function focus_body_classes( $classes ) {
 		$classes[] = 'group-blog';
 	}
 
+	$page_header = get_post_meta( get_the_ID(), 'focus_page_header', true );
+
+	if ( isset( $page_header['move'] ) && $page_header['move'] ) {
+		$classes[] = 'no-title-page-title';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'focus_body_classes' );
@@ -74,3 +80,19 @@ function focus_wp_title($title, $sep, $seplocation){
 }
 endif;
 add_filter('wp_title', 'focus_wp_title', 10, 3);
+
+/**
+ * Adds support for Jetpack's Infinite Scroll.
+ */
+ function focus_infinite_scroll_init() {
+	 add_theme_support( 'infinite-scroll', array(
+		'container' => 'main-loop',
+		'render' => 'focus_infinite_scroll_render',
+		'footer' => 'page',
+	) );
+}
+add_action( 'init', 'focus_infinite_scroll_init' );
+
+function focus_infinite_scroll_render() {
+	get_template_part( 'infinite-loop' );
+}

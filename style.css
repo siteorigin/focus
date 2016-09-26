@@ -7,7 +7,7 @@ Description: Focus is a great theme for showing off your videos. It supports vid
 Version: dev
 License: GNU General Public License 2.0
 License URI: license.txt
-Tags: gray, right-sidebar, two-columns, full-width-template,  featured-images, translation-ready, threaded-comments, theme-options, responsive-layout
+Tags: one-column, two columns, right-sidebar, grid-layout, custom-background, custom-menu, featured-images, footer-widgets, full-width-template, theme-options, threaded-comments, translation-ready, entertainment
 Text Domain: focus
 */
 @import url(//fonts.googleapis.com/css?family=Open+Sans:400,300);
@@ -600,12 +600,21 @@ body {
   color: #CBCBCB; }
   #masthead .hgroup {
     float: left; }
+  #masthead #masthead-search-icon {
+    margin-right: 15px;
+    cursor: pointer; }
+  #masthead img#masthead-search-icon {
+    max-width: 14px;
+    max-height: 14px;
+    position: relative;
+    top: 3px;
+    z-index: 0; }
   #masthead #searchform {
-    display: inline-block;
-    margin-right: 15px; }
+    display: inline-block; }
     #masthead #searchform .field {
-      width: 28px;
-      background: url(images/mag.png) no-repeat 15px center, transparent;
+      width: 0;
+      position: relative;
+      left: 15px;
       border-color: transparent;
       color: transparent;
       -moz-box-sizing: border-box;
@@ -621,11 +630,15 @@ body {
       border-radius: 2px;
       padding: 4px 5px;
       font-size: 12px;
-      font-weight: 500; }
-      #masthead #searchform .field:focus {
-        background: center center #EEE;
+      font-weight: 500;
+      opacity: 0;
+      visibility: hidden; }
+      #masthead #searchform .field.search-field-visible {
         color: #666;
-        width: 150px; }
+        width: 150px;
+        opacity: 1;
+        visibility: visible;
+        z-index: 5; }
     #masthead #searchform .submit {
       display: none; }
   #masthead .hgroup img {
@@ -853,6 +866,23 @@ body {
   color: #333;
   text-decoration: none; }
 
+.widget .loop-container .entry-title {
+  margin-bottom: 0; }
+
+.widget .slider-container li.slide {
+  margin-left: 0; }
+  .widget .slider-container li.slide .slide-text {
+    color: #fff; }
+  .widget .slider-container li.slide h1 {
+    margin: 0 0 20px 0;
+    font-size: 42px;
+    color: #fff; }
+
+.widget .slider-container .flex-control-nav .container {
+  max-width: 100%; }
+  .widget .slider-container .flex-control-nav .container li:last-child {
+    margin-right: 5px; }
+
 /**
  * #.# Post Author
  */
@@ -983,6 +1013,16 @@ h2.archive-title {
     border-radius: 3px; }
 
 /**
+ * #.# Infinite Scroll
+ */
+.infinite-scroll .paging-navigation {
+  display: none; }
+
+.infinite-scroll #infinite-handle {
+  margin: 20px 0;
+  text-align: center; }
+
+/**
  * #.# Single
  */
 .content-container {
@@ -1002,6 +1042,60 @@ h2.archive-title {
 .single #content {
   width: 70%;
   float: left; }
+
+.single .nav-previous-post,
+.single .nav-next-post {
+  display: inline-block; }
+  .single .nav-previous-post a,
+  .single .nav-next-post a {
+    text-decoration: none; }
+    .single .nav-previous-post a i,
+    .single .nav-next-post a i {
+      font-size: 40px;
+      color: #fff;
+      opacity: 0.5; }
+      .single .nav-previous-post a i:hover,
+      .single .nav-next-post a i:hover {
+        opacity: 1; }
+    .single .nav-previous-post a img,
+    .single .nav-next-post a img {
+      position: relative !important;
+      width: auto;
+      max-width: 38px;
+      height: auto; }
+
+.single #single-header > .nav-previous-post,
+.single #single-header > .nav-next-post {
+  position: absolute;
+  top: 40%; }
+  @media (max-width: 1150px) {
+    .single #single-header > .nav-previous-post,
+    .single #single-header > .nav-next-post {
+      display: none; } }
+
+.single #single-header .nav-previous-post {
+  left: 40px; }
+
+.single #single-header .nav-next-post {
+  right: 40px; }
+
+.single #single-header .nav-arrow-links:after {
+  clear: both;
+  content: "";
+  display: block; }
+
+@media (min-width: 1151px) {
+  .single #single-header .nav-arrow-links .nav-previous-post,
+  .single #single-header .nav-arrow-links .nav-next-post {
+    display: none; } }
+
+.single #single-header .nav-arrow-links .nav-previous-post {
+  float: left;
+  margin-left: 20px; }
+
+.single #single-header .nav-arrow-links .nav-next-post {
+  float: right;
+  margin-right: 20px; }
 
 /**
  * #.# Single Header
@@ -1424,6 +1518,22 @@ footer .site-info {
 .page-template-page-full-php #content {
   width: auto;
   float: none; }
+
+.page-template-page-full-no-title-php #content {
+  width: auto;
+  float: none; }
+
+.page-template-page-full-no-title-php #masthead {
+  margin-bottom: 25px; }
+
+.page-template-page-full-no-title-php .content-container {
+  margin-top: 0; }
+
+.page-template-page-full-no-title-php.no-title-page-title #masthead {
+  margin-bottom: 0; }
+
+.page-template-page-full-no-title-php.no-title-page-title .content-container {
+  margin-top: 25px; }
 
 #nav-below, #posts-nav {
   height: 1em;

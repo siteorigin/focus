@@ -1,4 +1,9 @@
-<div class="content-container loop-container" id="main-loop">
+<?php
+/**
+ * Loop Name: Thumbnail Grid
+ */
+?>
+<div class="grid-container loop-container">
 
 	<?php if ( have_posts() ) : ?>
 

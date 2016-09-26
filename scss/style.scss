@@ -7,7 +7,7 @@ Description: Focus is a great theme for showing off your videos. It supports vid
 Version: trunk
 License: GNU General Public License 2.0
 License URI: license.txt
-Tags: gray, right-sidebar, two-columns, full-width-template,  featured-images, translation-ready, threaded-comments, theme-options, responsive-layout
+Tags: one-column, two columns, right-sidebar, grid-layout, custom-background, custom-menu, featured-images, footer-widgets, full-width-template, theme-options, threaded-comments, translation-ready, entertainment
 Text Domain: focus
 */
 
@@ -761,12 +761,23 @@ body {
 	.hgroup {
 		float: left;
 	}
+	#masthead-search-icon {
+		margin-right: 15px;
+		cursor: pointer;
+	}
+	img#masthead-search-icon {
+		max-width: 14px;
+		max-height: 14px;
+		position: relative;
+		top: 3px;
+		z-index: 0;
+	}
 	#searchform {
 		display: inline-block;
-		margin-right: 15px;
 		.field {
-			width: 28px;
-			background: url(images/mag.png) no-repeat 15px center, transparent;
+			width: 0;
+			position: relative;
+			left: 15px;
 			border-color: transparent;
 			color: transparent;
 			-moz-box-sizing: border-box;
@@ -783,10 +794,14 @@ body {
 			padding: 4px 5px;
 			font-size: 12px;
 			font-weight: 500;
-			&:focus {
-				background: center center #EEE;
+			opacity: 0;
+			visibility: hidden;
+			&.search-field-visible {
 				color: #666;
 				width: 150px;
+				opacity: 1;
+				visibility: visible;
+				z-index: 5;
 			}
 		}
 		.submit {
@@ -1066,6 +1081,38 @@ body {
 		color: #333;
 		text-decoration: none;
 	}
+
+	.loop-container {
+		.entry-title {
+			margin-bottom: 0;
+		}
+	}
+
+	.slider-container {
+		li.slide {
+			margin-left: 0;
+
+			.slide-text {
+				color: #fff;
+			}
+
+			h1 {
+				margin: 0 0 20px 0;
+				font-size: 42px;
+				color: #fff;
+			}
+		}
+
+		.flex-control-nav {
+			.container {
+				max-width: 100%;
+
+				li:last-child {
+					margin-right: 5px;
+				}
+			}
+		}
+	}
 }
 
 /**
@@ -1222,6 +1269,21 @@ h2.archive-title {
 }
 
 /**
+ * #.# Infinite Scroll
+ */
+
+.infinite-scroll {
+	.paging-navigation {
+		display: none;
+	}
+
+	#infinite-handle {
+		margin: 20px 0;
+		text-align: center;
+	}
+}
+
+/**
  * #.# Single
  */
 
@@ -1245,6 +1307,75 @@ h2.archive-title {
 	#content {
 		width: 70%;
 		float: left;
+	}
+	.nav-previous-post,
+	.nav-next-post {
+		display: inline-block;
+
+		a {
+			text-decoration: none;
+
+			i {
+				font-size: 40px;
+				color: #fff;
+				opacity: 0.5;
+
+				&:hover {
+					opacity: 1;
+				}
+			}
+
+			img {
+				position: relative !important;
+				width: auto;
+				max-width: 38px;
+				height: auto;
+			}
+		}
+	}
+	#single-header {
+		> .nav-previous-post,
+		> .nav-next-post {
+			position: absolute;
+			top: 40%;
+
+			@media ( max-width: 1150px ) {
+				display: none;
+			}
+		}
+
+		.nav-previous-post {
+			left: 40px;
+		}
+
+		.nav-next-post {
+			right: 40px;
+		}
+
+		.nav-arrow-links {
+			&:after {
+				clear: both;
+				content: "";
+				display: block;
+			}
+
+			.nav-previous-post,
+			.nav-next-post {
+				@media ( min-width: 1151px ) {
+					display: none;
+				}
+			}
+
+			.nav-previous-post {
+				float: left;
+				margin-left: 20px;
+			}
+
+			.nav-next-post {
+				float: right;
+				margin-right: 20px;
+			}
+		}
 	}
 }
 
@@ -1756,6 +1887,31 @@ footer .site-info {
 .page-template-page-full-php #content {
 	width: auto;
 	float: none;
+}
+
+.page-template-page-full-no-title-php {
+	#content {
+		width: auto;
+		float: none;
+	}
+
+	#masthead {
+		margin-bottom: 25px;
+	}
+
+	.content-container {
+		margin-top: 0;
+	}
+
+	&.no-title-page-title {
+		#masthead {
+			margin-bottom: 0;
+		}
+
+		.content-container {
+			margin-top: 25px;
+		}
+	}
 }
 
 #nav-below, #posts-nav {
