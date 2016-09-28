@@ -14,11 +14,11 @@ get_header(); the_post(); ?>
 
 	<div id="primary" class="content-area">
 
-		<?php $page_header = get_post_meta( get_the_ID(), 'focus_page_header', true );
+		<?php $page_header = get_post_meta( get_the_ID(), 'focus-page-header', true );
 
-		if ( isset( $page_header['move'] ) && $page_header['move'] ) {
+		if ( isset( $page_header ) && $page_header && !empty( get_post_meta( get_the_ID(), 'panels_data', true ) ) ) {
+
 			$panels_data = get_post_meta( get_the_ID(), 'panels_data', true );
-			if( empty( $panels_data ) ) return;
 
 			$top_area_widgets = array();
 
