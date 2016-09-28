@@ -36,7 +36,7 @@ function focus_theme_settings(){
 	$settings->add_teaser( 'general', 'attribution', 'checkbox', __( 'SiteOrigin Attribution', 'focus' ), array(
 		'description' => __( 'Add or remove a link to SiteOrigin in your footer.', 'focus' ),
 		'featured' => 'theme/no-attribution',
-	) );	
+	) );
 
 	$settings->add_field( 'general', 'display_author', 'checkbox',__( 'Display Post Author', 'focus' ), array(
 		'description' => __( 'Displays post author information on a post page.', 'focus' )
@@ -51,8 +51,8 @@ function focus_theme_settings(){
 	 */
 
 	$settings->add_field( 'slider', 'homepage', 'checkbox', __( 'Home Page Slider', 'focus' ), array(
- 		'description' => __( 'Display a posts slider on the home page.', 'focus' )
- 	) );
+		 'description' => __( 'Display a posts slider on the home page.', 'focus' )
+	 ) );
 
 	$settings->add_field( 'slider', 'post_count', 'number', __( 'Post Count', 'focus' ), array(
 		'description' => __( 'The number of posts to display.', 'focus' )
@@ -187,7 +187,7 @@ function focus_theme_settings(){
 	$settings->add_teaser( 'comments', 'ajax_comments', 'checkbox', __( 'Ajax Comments', 'focus' ), array(
 		'description' => __( 'Lets your users post comments without interrupting video play.', 'focus' ),
 		'featured' => 'theme/ajax-comments',
-	) );	
+	) );
 
 	$settings->add_field( 'comments', 'page_hide', 'checkbox',__( 'Hide Page Comments', 'focus' ), array(
 		'description' => __( 'Automatically hides the comments and comment form on pages.', 'focus' ),
@@ -275,47 +275,25 @@ function focus_about_page_setup( $about ){
 add_filter( 'siteorigin_about_page', 'focus_about_page_setup' );
 
 /**
- * Add the meta box for the Full Width - No Title template.
+ * Adds a meta box to the post editing screen
  */
 function focus_add_page_meta_boxes() {
-
-	global $post;
-
-	if ( !empty( $post ) ) {
-
-		add_meta_box(
-			'focus-page-header',
-			__( 'Focus Page Header', 'focus' ),
-			'focus_display_page_header_meta_box',
-			'page',
-			'side'
-		);
-
-	}
-
+	add_meta_box( 'focus_page_header', __( 'Focus Page Header', 'focus' ), 'focus_display_page_header_meta_box', 'page', 'side' );
 }
 add_action( 'add_meta_boxes', 'focus_add_page_meta_boxes' );
 
 /**
- * Display the meta box for the Full Width - No Title template.
- *
- * @param $post
- * @param $args
+ * Outputs the content of the meta box
  */
-function focus_display_page_header_meta_box() {
 
-	global $post;
-	$page_header = get_post_meta( $post->ID, 'focus_page_header', true );
-	$page_header = wp_parse_args(
-		!empty( $page_header ) ? $page_header : array(),
-		array(
-			'move' => false,
-		)
-	);
+function focus_display_page_header_meta_box( $post ) {
+	wp_nonce_field( basename( __FILE__ ), 'focus_page_header_nonce' );
+	$page_header = get_post_meta( $post->ID );
 	?>
+
 	<p>
 		<label>
-			<input type="checkbox" name="focus_page_header[move]" class="widefat" <?php checked( $page_header['move'] ) ?> />
+			<input type="checkbox" name="focus-page-header" id="focus-page-header" value="no" <?php if ( isset ( $page_header['focus-page-header'] ) ) checked( $page_header['focus-page-header'][0], 'yes' ); ?> />
 			<?php _e( 'Use First Page Builder Row', 'focus' ) ?>
 		</label>
 		<br/>
@@ -323,22 +301,32 @@ function focus_display_page_header_meta_box() {
 			<?php _e( 'Moves first row into the header. Page template must be set to Full Width - No Title.', 'focus' ) ?>
 		</small>
 	</p>
+
 	<?php
-	wp_nonce_field( 'save', '_focus_page_header_nonce' );
 }
 
 /**
- * Save the meta box for the Full Width - No Title template.
- *
- * @param $post_id
+ * Saves the custom meta input
  */
-function focus_display_page_header_save_post( $post_id ) {
-	if ( !current_user_can( 'edit_post', $post_id ) ) return;
-	if ( !isset( $_POST['_focus_page_header_nonce'] ) || !wp_verify_nonce( $_POST['_focus_page_header_nonce'], 'save' ) ) return;
+function focus_page_header_save( $post_id ) {
 
-	$page_header = $_POST['focus_page_header'];
-	$page_header['move'] = !empty( $page_header['move'] );
+	// Checks save status - overcome autosave, etc.
+	$is_autosave = wp_is_post_autosave( $post_id );
+	$is_revision = wp_is_post_revision( $post_id );
+	$is_valid_nonce = ( isset( $_POST[ 'focus_page_header_nonce' ] ) && wp_verify_nonce( $_POST[ 'focus_page_header_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
+	$current_user = !current_user_can( 'edit_post', $post_id );
 
-	update_post_meta( $post_id, 'focus_page_header', $page_header );
+	// Exits script depending on save status
+	if ( $is_autosave || $is_revision || !$is_valid_nonce || $current_user ) {
+		return;
+	}
+
+	// Checks for input and saves - save checked as yes and unchecked at no
+	if( isset( $_POST[ 'focus-page-header' ] ) ) {
+		update_post_meta( $post_id, 'focus-page-header', 'yes' );
+	} else {
+		update_post_meta( $post_id, 'focus-page-header', 'no' );
+	}
+
 }
-add_action( 'save_post', 'focus_display_page_header_save_post' );
+add_action( 'save_post', 'focus_page_header_save' );
