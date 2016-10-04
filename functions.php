@@ -10,6 +10,7 @@ define( 'SITEORIGIN_THEME_VERSION', 'dev' );
 define( 'SITEORIGIN_THEME_JS_PREFIX', '' );
 define( 'SITEORIGIN_THEME_PREMIUM_URL', 'https://siteorigin.com/downloads/premium/' );
 
+include get_template_directory() . '/inc/class-tgm-plugin-activation.php';
 include get_template_directory().'/inc/settings/settings.php';
 
 include get_template_directory().'/inc/plus.php';
@@ -66,6 +67,11 @@ function focus_setup() {
 	 * Enable support for Post Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
+
+	/**
+	 * Enable support for Custom Logo
+	 */
+	add_theme_support( 'custom-logo' );
 
 	add_theme_support( 'custom-background' , array(
 		'default-color'          => '#F6F4F2',
@@ -273,16 +279,16 @@ add_action('wp_head', 'focus_footer_widget_style', 15);
 
 /**
  * Filter the comment form.
- * Remove comment form allowed tags if theme option is disabled. 
+ * Remove comment form allowed tags if theme option is disabled.
  *
  * @param $defaults
  * @return mixed
  */
 function focus_comment_form_defaults( $defaults ) {
 	if ( ! siteorigin_setting( 'comments_hide_allowed_tags' ) ) {
-		$defaults['comment_notes_after'] = '<p class="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'ultra' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>';	
+		$defaults['comment_notes_after'] = '<p class="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'focus' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>';
 	}
-	
+
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'focus_comment_form_defaults', 5 );
@@ -321,15 +327,20 @@ function focus_display_logo() {
 	$logo = siteorigin_setting( 'general_logo' );
 	$retina_logo = siteorigin_setting( 'general_retina_logo' );
 
-	if( empty( $logo ) ) {
-		// Just display the site title
-		bloginfo( 'name' );
-		return;
+	if ( empty( $logo ) ) {
+		if ( function_exists( 'has_custom_logo' ) && has_custom_logo() ) {
+			the_custom_logo();
+			return;
+		} else {
+			// Just display the site title
+			bloginfo( 'name' );
+			return;
+		}
 	}
 
 	$image = wp_get_attachment_image_src( $logo, 'full' );
 
-	if( siteorigin_setting( 'general_logo_scale' ) ) {
+	if ( siteorigin_setting( 'general_logo_scale' ) ) {
 		$height = min( $image[2], 26 );
 		$width = $height/$image[1] * $image[2];
 	} else {
@@ -337,7 +348,7 @@ function focus_display_logo() {
 		$width = $image[1];
 	}
 
-	if( $retina_logo ) {
+	if ( $retina_logo ) {
 		$image_2x = wp_get_attachment_image_src( $retina_logo, 'full' );
 		$srcset = 'srcset="' . $image[0] . ' 1x, ' . $image_2x[0] . ' 2x"';
 	}
@@ -359,3 +370,41 @@ function focus_wp_header(){
 
 }
 add_action('wp_head', 'focus_wp_header');
+
+/**
+ * Add some plugins to TGM plugin activation
+ */
+function focus_recommended_plugins(){
+	$plugins = array(
+		array(
+			'name'      => __('SiteOrigin Page Builder', 'focus'),
+			'slug'      => 'siteorigin-panels',
+			'required'  => false,
+		),
+		array(
+			'name'      => __('SiteOrigin Widgets Bundle', 'focus'),
+			'slug'      => 'so-widgets-bundle',
+			'required'  => false,
+		),
+		array(
+			'name'      => __('SiteOrigin CSS', 'focus'),
+			'slug'      => 'so-css',
+			'required'  => false,
+		),
+	);
+
+	$config = array(
+		'id'           => 'tgmpa-focus',         // Unique ID for hashing notices for multiple instances of TGMPA.
+		'menu'         => 'tgmpa-install-plugins', // Menu slug.
+		'parent_slug'  => 'themes.php',            // Parent menu slug.
+		'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
+		'has_notices'  => true,                    // Show admin notices or not.
+		'dismissable'  => true,                    // If false, a user cannot dismiss the nag message.
+		'dismiss_msg'  => '',                      // If 'dismissable' is false, this message will be output at top of nag.
+		'is_automatic' => false,                   // Automatically activate plugins after installation or not.
+		'message'      => '',                      // Message to output right before the plugins table.
+	);
+
+	tgmpa( $plugins, $config );
+}
+add_action( 'tgmpa_register', 'focus_recommended_plugins' );
