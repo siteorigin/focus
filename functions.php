@@ -286,7 +286,7 @@ add_action('wp_head', 'focus_footer_widget_style', 15);
  */
 function focus_comment_form_defaults( $defaults ) {
 	if ( ! siteorigin_setting( 'comments_hide_allowed_tags' ) ) {
-		$defaults['comment_notes_after'] = '<p class="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'ultra' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>';
+		$defaults['comment_notes_after'] = '<p class="form-allowed-tags">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'focus' ), ' <code>' . allowed_tags() . '</code>' ) . '</p>';
 	}
 
 	return $defaults;
