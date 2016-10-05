@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 1.3.4 - 05 October 2016 =
+* Fixed PHP 5.2 issue.
+
 = 1.3.3 - 04 October 2016 =
 * Updated settings framework.
 * Added Focus Videos plugin capability to pages.
