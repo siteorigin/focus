@@ -256,7 +256,7 @@ endif;
  */
 function focus_replace_panels_data( $data, $post_id ){
 
-	if ( is_page() && is_page_template( 'page-full-no-title.php' ) && get_the_ID() == $post_id && !empty( get_post_meta( get_the_ID(), 'panels_data', true ) ) ) {
+	if ( is_page() && is_page_template( 'page-full-no-title.php' ) && get_the_ID() == $post_id && get_post_meta( get_the_ID(), 'panels_data', true ) != '' ) {
 
 		$page_template = get_post_meta( get_the_ID(), 'focus-page-header', true );
 		if ( isset( $page_template ) && $page_template ) {
