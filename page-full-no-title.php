@@ -18,7 +18,7 @@ get_header(); the_post(); ?>
 		$page_header = get_post_meta( get_the_ID(), 'focus-page-header', true );
 		$page_builder_data = get_post_meta( get_the_ID(), 'panels_data', true );
 		
-		if ( isset( $page_header ) && $page_header && !empty( $page_builder_data ) ) {
+		if ( isset( $page_header ) && $page_header == 'yes' && !empty( $page_builder_data ) ) {
 
 			$panels_data = get_post_meta( get_the_ID(), 'panels_data', true );
 
