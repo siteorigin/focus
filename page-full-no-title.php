@@ -16,12 +16,9 @@ get_header(); the_post(); ?>
 
 		<?php
 		$page_header = get_post_meta( get_the_ID(), 'focus-page-header', true );
-		$page_builder_data = get_post_meta( get_the_ID(), 'panels_data', true );
+		$panels_data = get_post_meta( get_the_ID(), 'panels_data', true );
 		
-		if ( isset( $page_header ) && $page_header && !empty( $page_builder_data ) ) {
-
-			$panels_data = get_post_meta( get_the_ID(), 'panels_data', true );
-
+		if ( isset( $page_header ) && $page_header && !empty( $panels_data ) ) {
 			$top_area_widgets = array();
 
 			for ( $i = 0; $i < count( $panels_data['widgets'] ); $i++ ) {
