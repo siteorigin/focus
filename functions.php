@@ -18,6 +18,7 @@ include get_template_directory().'/inc/video.php';
 include get_template_directory().'/inc/settings.php';
 include get_template_directory().'/inc/widgets.php';
 include get_template_directory().'/inc/legacy.php';
+include get_template_directory().'/inc/webfonts/webfonts.php';
 
 if ( ! function_exists( 'focus_setup' ) ) :
 /**
@@ -74,7 +75,7 @@ function focus_setup() {
 	add_theme_support( 'custom-logo' );
 
 	add_theme_support( 'custom-background' , array(
-		'default-color'          => '#F6F4F2',
+		'default-color' => '#F6F4F2',
 	));
 
 	/**
@@ -85,6 +86,17 @@ function focus_setup() {
 		'responsive' => siteorigin_setting('layout_responsive'),
 	) );
 
+	/**
+	 * Add the default webfonts.
+	 */
+	siteorigin_webfonts_add_font( 'Open Sans', array( 300, 400 ) );
+
+	/*
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
 	add_theme_support( 'title-tag' );
 
 	/**
