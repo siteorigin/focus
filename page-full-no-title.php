@@ -19,7 +19,6 @@ get_header(); the_post(); ?>
 		$panels_data = get_post_meta( get_the_ID(), 'panels_data', true );
 		
 		if ( isset( $page_header ) && $page_header == 'yes' && !empty( $panels_data ) ) {
-			
 			$top_area_widgets = array();
 
 			for ( $i = 0; $i < count( $panels_data['widgets'] ); $i++ ) {
