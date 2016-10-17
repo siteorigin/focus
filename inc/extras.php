@@ -91,7 +91,6 @@ function focus_infinite_scroll_init() {
 		'footer'         => 'page',
 		'posts_per_page' => apply_filters( 'focus_infinite_scroll_count', get_option( 'posts_per_page' ) ),
 	) );
-}) );
 }
 add_action( 'init', 'focus_infinite_scroll_init' );
 
