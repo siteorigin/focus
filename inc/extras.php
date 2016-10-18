@@ -84,11 +84,12 @@ add_filter('wp_title', 'focus_wp_title', 10, 3);
 /**
  * Adds support for Jetpack's Infinite Scroll.
  */
- function focus_infinite_scroll_init() {
-	 add_theme_support( 'infinite-scroll', array(
-		'container' => 'main-loop',
-		'render' => 'focus_infinite_scroll_render',
-		'footer' => 'page',
+function focus_infinite_scroll_init() {
+	add_theme_support( 'infinite-scroll', array(
+		'container'      => 'main-loop',
+		'render'         => 'focus_infinite_scroll_render',
+		'footer'         => 'page',
+		'posts_per_page' => apply_filters( 'focus_infinite_scroll_count', get_option( 'posts_per_page' ) ),
 	) );
 }
 add_action( 'init', 'focus_infinite_scroll_init' );
