@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 1.3.5 - 24 October 2016 =
+* Further safeguards for PHP 5.2 issues.
+* Resolve Full Width - No Title header spacing issues.
+* Filter Jetpack Infinite Scroll module to display correct number of posts for Focus grid layout.
+* Ensure iFrames correctly display in the sidebar widget area.
+
 = 1.3.4 - 5 October 2016 =
 * Fixed PHP 5.2 issue.
 
