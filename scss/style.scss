@@ -1871,6 +1871,10 @@ footer .site-info {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	padding-left: 30px;
+	
+	.updated {
+		display: none;	
+	}
 }
 
 /**
