@@ -145,7 +145,7 @@ function focus_posted_on() {
 		'<span class="post-comments">'. sprintf( _n( 'One Comment', '%s Comments', get_comments_number(), 'focus' ), get_comments_number() ) .'</span>'
 	);
 
-	the_tags( '<span class="post-tags">'. __( 'Tagged: ', 'focus' ), ', ', '.</span>' );
+	the_tags( '<span class="post-tags"> '. __( 'Tagged: ', 'focus' ), ', ', '.</span>' );
 }
 endif;
 
