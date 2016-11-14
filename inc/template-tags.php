@@ -135,12 +135,12 @@ if ( ! function_exists( 'focus_posted_on' ) ) :
 function focus_posted_on() {
 	printf(
 		__('Posted On %s in %s with %s.', 'focus'),
-		get_the_date(),
-		get_the_category_list(', '),
-		sprintf(_n( 'One Comment', '%s Comments', get_comments_number(), 'focus' ), get_comments_number())
+		'<span class="post-date">'. get_the_date() .'</span>',
+		'<span class="post-categories">'. get_the_category_list(', ') .'</span>',
+		'<span class="post-comments">'. sprintf(_n( 'One Comment', '%s Comments', get_comments_number(), 'focus' ), get_comments_number()) .'</span>'
 	);
 
-	the_tags(__('Tagged: ', 'focus'), ', ', '.');
+	the_tags('<span class="post-tags">'. __('Tagged: ', 'focus'), ', ', '.</span>');
 }
 endif;
 
