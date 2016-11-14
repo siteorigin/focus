@@ -134,13 +134,18 @@ if ( ! function_exists( 'focus_posted_on' ) ) :
  */
 function focus_posted_on() {
 	printf(
-		__('Posted On %s in %s with %s.', 'focus'),
-		'<span class="post-date">'. get_the_date() .'</span>',
-		'<span class="post-categories">'. get_the_category_list(', ') .'</span>',
-		'<span class="post-comments">'. sprintf(_n( 'One Comment', '%s Comments', get_comments_number(), 'focus' ), get_comments_number()) .'</span>'
+		__( 'Posted On %s in %s with %s.', 'focus' ),
+		sprintf( '<time class="entry-date" datetime="%1$s">%2$s</time> <time class="updated" datetime="%3$s">%4$s</time>',
+			esc_attr( get_the_date( 'c' ) ),
+			apply_filters( 'focus_posted_on_date', esc_html( get_the_date() ) ),
+			esc_attr( get_the_modified_date( 'c' ) ),
+			esc_html( get_the_modified_date() )
+		),
+		'<span class="post-categories">'. get_the_category_list( ', ' ) .'</span>',
+		'<span class="post-comments">'. sprintf( _n( 'One Comment', '%s Comments', get_comments_number(), 'focus' ), get_comments_number() ) .'</span>'
 	);
 
-	the_tags('<span class="post-tags">'. __('Tagged: ', 'focus'), ', ', '.</span>');
+	the_tags( '<span class="post-tags">'. __( 'Tagged: ', 'focus' ), ', ', '.</span>' );
 }
 endif;
 
