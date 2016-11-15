@@ -16,9 +16,9 @@ get_header(); ?>
 				</h2>
 
 				<?php if ( is_category() ) : ?>
-					<p class="category-description">
+					<div class="category-description">
 						<?php echo category_description(); ?>
-					</p>
+					</div>
 				<?php endif; ?>
 
 				<?php get_template_part('loop') ?>
