@@ -11,15 +11,12 @@ get_header(); ?>
 
 			<div class="container">
 
-				<h2 class="archive-title">
-					<?php wp_title(' ') ?>
-				</h2>
-
-				<?php if ( is_category() ) : ?>
-					<p class="category-description">
-						<?php echo category_description(); ?>
-					</p>
-				<?php endif; ?>
+				<header class="page-header">
+					<?php
+					the_archive_title( '<h2 class="archive-title">', '</h1>' );
+					the_archive_description( '<div class="category-description archive-description">', '</div>' );
+					?>
+				</header><!-- .page-header -->
 
 				<?php get_template_part('loop') ?>
 
