@@ -41,10 +41,11 @@ get_header(); the_post(); ?>
 			<?php endif; ?>
 		</div>
 	</div>
-	<?php if( focus_display_content_area() ): ?>
-		<div class="container">
-			<div class="container-decoration"></div>
+	
+	<div class="container">
+		<div class="container-decoration"></div>
 
+		<?php if( focus_display_content_area() ): ?>
 			<div class="content-container">
 				<div id="content" class="site-content" role="main">
 
@@ -65,9 +66,9 @@ get_header(); the_post(); ?>
 
 				<div class="clear"></div>
 			</div>
-			<?php if( siteorigin_setting('general_posts_nav') ) focus_content_nav('posts-nav') ?>
-		</div>
-	<?php endif; ?>
+		<?php endif; ?>
+		<?php if( siteorigin_setting('general_posts_nav') ) focus_content_nav('posts-nav') ?>
+	</div>
 </div><!-- #primary .content-area -->
 
 <?php get_footer(); ?>
