@@ -45,7 +45,7 @@ get_header(); the_post(); ?>
 	<div class="container">
 		<div class="container-decoration"></div>
 
-		<?php if ( focus_display_content_area() ): ?>
+		<?php if ( focus_display_content_area() ) : ?>
 			<div class="content-container">
 				<div id="content" class="site-content" role="main">
 

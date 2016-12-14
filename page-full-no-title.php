@@ -34,7 +34,7 @@ get_header(); the_post(); ?>
 			}
 			echo '<div id="single-header">' . ob_get_clean() . '</div>';
 		} ?>
-		<?php if ( focus_display_content_area() ): ?>
+		<?php if ( focus_display_content_area() ) : ?>
 			<div class="container">
 				<div class="container-decoration"></div>
 

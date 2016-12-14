@@ -33,7 +33,7 @@ get_header(); the_post(); ?>
 				<?php endif; ?>
 			</div>
 		</div>
-		<?php if ( focus_display_content_area() ): ?>
+		<?php if ( focus_display_content_area() ) : ?>
 			<div class="container">
 				<div class="container-decoration"></div>
 
