@@ -1150,6 +1150,8 @@ h2.archive-title {
   margin-top: 25px;
   background: #2A2B2F;
   padding: 25px 0; }
+  .site-footer.no-content {
+    margin-top: 0; }
 
 /**
  * #.# Call To Action
