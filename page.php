@@ -30,32 +30,33 @@ get_header(); the_post(); ?>
 			<?php endif; ?>
 		</div>
 	</div>
+	<?php if ( focus_display_content_area() ) : ?>
+		<div class="container">
+			<div class="container-decoration"></div>
 
-	<div class="container">
-		<div class="container-decoration"></div>
+			<div class="content-container">
+				<div id="content" class="site-content" role="main">
 
-		<div class="content-container">
-			<div id="content" class="site-content" role="main">
+					<div class="entry-content">
+						<?php the_content() ?>
+					</div>
 
-				<div class="entry-content">
-					<?php the_content() ?>
-				</div>
+					<div class="clear"></div>
+					<?php wp_link_pages() ?>
+
+					<?php
+					// If comments are open or we have at least one comment, load up the comment template
+					if ( ( comments_open() || '0' != get_comments_number() ) && !siteorigin_setting( 'comments_page_hide' ) ) comments_template( '', true );
+					?>
+				</div><!-- #content .site-content.content-container -->
+
+				<?php get_sidebar(); ?>
 
 				<div class="clear"></div>
-				<?php wp_link_pages() ?>
+			</div>
 
-				<?php
-				// If comments are open or we have at least one comment, load up the comment template
-				if ( ( comments_open() || '0' != get_comments_number() ) && !siteorigin_setting( 'comments_page_hide' ) ) comments_template( '', true );
-				?>
-			</div><!-- #content .site-content.content-container -->
-
-			<?php get_sidebar(); ?>
-
-			<div class="clear"></div>
 		</div>
-
-	</div>
+	<?php endif; ?>
 </div><!-- #primary .content-area -->
 
 <?php get_footer(); ?>

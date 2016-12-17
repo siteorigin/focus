@@ -297,3 +297,17 @@ function focus_replace_panels_data( $data, $post_id ){
 	return $data;
 }
 add_filter( 'siteorigin_panels_data', 'focus_replace_panels_data', 10, 2 );
+
+/**
+ * Check if content area needs to be displayed
+ *
+ * It'll only ever not be displayed if there's no content, there's a video, the author isn't shown, the sidebar doesn't have any widgets and comments are disabled.
+ */ 
+function focus_display_content_area() {
+	$the_content = get_the_content();
+	if ( ! ( empty( $the_content ) && focus_post_has_video() && !siteorigin_setting( 'general_display_author' ) && !is_active_sidebar( 'sidebar-' . ( is_page() ? 'page' : 'post') ) && !comments_open() ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
