@@ -132,7 +132,7 @@ function focus_post_video($id = null, $type = null){
  * Enqueue scripts for the video player.
  */
 function focus_video_enqueue_scripts() {
-	if( is_single() ){
+	if( is_singular() ){
 		
 		global $post;
 		if ( has_post_thumbnail( $post->ID ) ) {
