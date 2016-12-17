@@ -131,20 +131,20 @@ function focus_post_video($id = null, $type = null){
 /**
  * Enqueue scripts for the video player.
  */
-function focus_video_enqueue_scripts(){
-	if(is_single()){
+function focus_video_enqueue_scripts() {
+	if( is_singular() ){
 		
 		global $post;
-		if(has_post_thumbnail($post->ID)){
-			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'slider' );
+		if ( has_post_thumbnail( $post->ID ) ) {
+			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'slider' );
 		}
 		
-		wp_enqueue_script('jplayer', get_template_directory_uri().'/jplayer/jquery.jplayer' . SITEORIGIN_THEME_JS_PREFIX . '.js', array('jquery'), '2.9.2');
-		wp_localize_script('jplayer', 'jplayerSettings', array(
-			'swfPath' => get_template_directory_uri().'/jplayer/',
-			'videoPoster' => !empty($thumb) ? $thumb[0] : '',
-		));
-		wp_enqueue_style('focus-siteorigin-jplayer-skin', get_template_directory_uri().'/jplayer/skins/siteorigin/jplayer.siteorigin.css');
+		wp_enqueue_script( 'jplayer', get_template_directory_uri() . '/js/jplayer/jquery.jplayer' . SITEORIGIN_THEME_JS_PREFIX . '.js', array( 'jquery' ), '2.9.2' );
+		wp_localize_script( 'jplayer', 'jplayerSettings', array(
+			'swfPath'     => get_template_directory_uri() . '/js/jplayer/',
+			'videoPoster' => !empty( $thumb ) ? $thumb[0] : '',
+		) );
+		wp_enqueue_style( 'focus-siteorigin-jplayer-skin', get_template_directory_uri() . '/js/jplayer/skins/siteorigin/jplayer.siteorigin.css' );
 	}
 }
-add_action('wp_enqueue_scripts', 'focus_video_enqueue_scripts');
+add_action( 'wp_enqueue_scripts', 'focus_video_enqueue_scripts' );
