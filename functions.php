@@ -403,6 +403,11 @@ function focus_recommended_plugins(){
 			'slug'      => 'so-css',
 			'required'  => false,
 		),
+		array(
+			'name'      => __('Focus Videos', 'focus'),
+			'slug'      => 'focus-videos',
+			'required'  => false,
+		),
 	);
 
 	$config = array(
