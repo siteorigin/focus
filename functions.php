@@ -328,8 +328,14 @@ add_action('focus_credits', 'focus_theme_credit');
  *
  * @return string
  */
-function focus_default_post_thumbnail(){
-	return '<img src="'.get_template_directory_uri().'/images/thumbnail.jpg" width="297" height="160" class="attachment-post-thumbnail wp-post-image" />';
+function focus_default_post_thumbnail() {
+	if ( siteorigin_setting( 'video_default_thumb' ) ) {
+		$image = wp_get_attachment_image_src( siteorigin_setting( 'video_default_thumb' ), 'full' );
+		$attachment = $image[0];
+	} else {
+		$attachment = get_template_directory_uri() . '/images/thumbnail.jpg';
+	}
+	return '<img src="' . $attachment . '" width="297" height="160" class="attachment-post-thumbnail wp-post-image" />';
 }
 
 /**
@@ -401,6 +407,11 @@ function focus_recommended_plugins(){
 		array(
 			'name'      => __('SiteOrigin CSS', 'focus'),
 			'slug'      => 'so-css',
+			'required'  => false,
+		),
+		array(
+			'name'      => __('Focus Videos', 'focus'),
+			'slug'      => 'focus-videos',
 			'required'  => false,
 		),
 	);

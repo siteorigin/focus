@@ -1442,6 +1442,10 @@ h2.archive-title {
 	margin-top: 25px;
 	background: #2A2B2F;
 	padding: 25px 0;
+
+	&.no-content {
+	margin-top: 0;
+	}
 }
 
 /**
@@ -1871,6 +1875,10 @@ footer .site-info {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	padding-left: 30px;
+	
+	.updated {
+		display: none;	
+	}
 }
 
 /**

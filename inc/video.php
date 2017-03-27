@@ -15,8 +15,8 @@ add_action('add_meta_boxes', 'focus_add_metabox');
 function focus_video_metabox_render(){
 	?><p><?php
 	printf(
-		__('Please <a href="%s">install</a> the focus video plugin to edit this video setting.', 'focus'),
-		'http://gpriday.s3.amazonaws.com/plugins/focus-videos.zip'
+		__( 'Please <a href="%s">install</a> the focus video plugin to edit this video setting.', 'focus' ),
+		admin_url( 'themes.php?page=tgmpa-install-plugins' )
 	)
 	?></p><?php
 }
@@ -44,20 +44,20 @@ function focus_post_has_video($id = null, $type = 'public'){
 }
 
 /**
- * 
- * 
+ *
+ *
  * @param null $id
  * @param null $type
  */
 function focus_post_video($id = null, $type = null){
 	if(empty($id)) $id = get_the_ID();
 	if(empty($type)) $type = 'public';
-	
+
 	$video = get_post_meta(get_the_ID(), 'focus_video', true);
-	
+
 	// Gives child themes a chance to change the video type being displayed
 	$type = apply_filters('focus_video_type', $type, $video, $id);
-	
+
 	if(empty($video[$type]['type'])) return;
 	if(empty($video[$type][$video[$type]['type']])) return;
 
@@ -77,29 +77,29 @@ function focus_post_video($id = null, $type = null){
 							<li><a href="#" class="jp-play" tabindex="1"><?php esc_html_e('play', 'focus') ?></a></li>
 							<li><a href="#" class="jp-pause" tabindex="1"><?php esc_html_e('pause', 'focus') ?></a></li>
 							<li><a href="#" class="jp-stop" tabindex="1"><?php esc_html_e('stop', 'focus') ?></a></li>
-							
+
 							<li><a href="#" class="jp-full-screen" tabindex="1"><?php esc_html_e('full screen', 'focus') ?></a></li>
 							<li><a href="#" class="jp-restore-screen" tabindex="1"><?php esc_html_e('restore screen', 'focus') ?></a></li>
-							
+
 							<li><a href="#" class="jp-mute" tabindex="1"><?php esc_html_e('mute', 'focus') ?></a></li>
 							<li><a href="#" class="jp-unmute" tabindex="1"><?php esc_html_e('unmute', 'focus') ?></a></li>
 						</ul>
-						
+
 						<div class="sep jp-controls-sep"></div>
-						
+
 						<div class="jp-progress">
 							<div class="jp-seek-bar">
 								<div class="jp-play-bar"><div class="jp-play-bar-marker"></div></div>
 							</div>
 						</div>
-						
+
 						<div class="jp-time-info">
 							<div class="jp-current-time"></div> /
 							<div class="jp-duration"></div>
 						</div>
 
 						<div class="sep jp-time-sep"></div>
-						
+
 						<div class="jp-volume-bar">
 							<div class="jp-volume-bar-value"></div>
 						</div>
@@ -112,7 +112,7 @@ function focus_post_video($id = null, $type = null){
 
 			<?php
 			break;
-		
+
 		case 'external' :
 			$embed = new WP_Embed();
 			$code = $embed->shortcode(array('autoplay' => 1, 'width' => 960), $video[$type]['external']);
@@ -131,20 +131,20 @@ function focus_post_video($id = null, $type = null){
 /**
  * Enqueue scripts for the video player.
  */
-function focus_video_enqueue_scripts(){
-	if(is_single()){
-		
+function focus_video_enqueue_scripts() {
+	if( is_singular() ){
+
 		global $post;
-		if(has_post_thumbnail($post->ID)){
-			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'slider' );
+		if ( has_post_thumbnail( $post->ID ) ) {
+			$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'slider' );
 		}
-		
-		wp_enqueue_script('jplayer', get_template_directory_uri().'/jplayer/jquery.jplayer' . SITEORIGIN_THEME_JS_PREFIX . '.js', array('jquery'), '2.9.2');
-		wp_localize_script('jplayer', 'jplayerSettings', array(
-			'swfPath' => get_template_directory_uri().'/jplayer/',
-			'videoPoster' => !empty($thumb) ? $thumb[0] : '',
-		));
-		wp_enqueue_style('focus-siteorigin-jplayer-skin', get_template_directory_uri().'/jplayer/skins/siteorigin/jplayer.siteorigin.css');
+
+		wp_enqueue_script( 'jplayer', get_template_directory_uri() . '/js/jplayer/jquery.jplayer' . SITEORIGIN_THEME_JS_PREFIX . '.js', array( 'jquery' ), '2.9.2' );
+		wp_localize_script( 'jplayer', 'jplayerSettings', array(
+			'swfPath'     => get_template_directory_uri() . '/js/jplayer/',
+			'videoPoster' => !empty( $thumb ) ? $thumb[0] : '',
+		) );
+		wp_enqueue_style( 'focus-siteorigin-jplayer-skin', get_template_directory_uri() . '/js/jplayer/skins/siteorigin/jplayer.siteorigin.css' );
 	}
 }
-add_action('wp_enqueue_scripts', 'focus_video_enqueue_scripts');
+add_action( 'wp_enqueue_scripts', 'focus_video_enqueue_scripts' );

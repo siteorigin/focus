@@ -13,7 +13,7 @@
 
 	<?php do_action('before_footer'); ?>
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<footer id="colophon" class="site-footer<?php if ( is_singular() && ! focus_display_content_area() ) echo ' no-content'; ?>" role="contentinfo">
 		<div class="container">
 			<div id="footer-widgets">
 				<?php dynamic_sidebar('sidebar-footer') ?>
