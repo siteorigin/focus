@@ -431,3 +431,13 @@ function focus_recommended_plugins(){
 	tgmpa( $plugins, $config );
 }
 add_action( 'tgmpa_register', 'focus_recommended_plugins' );
+
+if ( ! function_exists( 'focus_disable_redirect_canonical' ) ) :
+// Disable automatic redirects to accommodate pagination for thumbnail grid loop
+function focus_disable_redirect_canonical( $redirect_url ) {
+	global $post;
+	if ( get_post_type( $post ) == 'post' ) $redirect_url = false;
+	return $redirect_url;
+}
+endif;
+add_filter( 'redirect_canonical','focus_disable_redirect_canonical' );
