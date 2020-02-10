@@ -79,6 +79,9 @@ Focus WordPress Theme is derived from Underscores WordPress Theme, Copyright 201
 
 == Changelog ==
 
+= 1.3.8.1 - 10 February 2020 =
+* Resolved build script error preventing readme.txt from being included in release.
+
 = 1.3.8 - 10 February 2020 =
 * Updated SiteOrigin Settings.
 * Updated SiteOrigin Panels Lite.
