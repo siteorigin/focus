@@ -1,7 +1,9 @@
 === Focus ===
 
-Contributors: siteorigin
+Contributors: gpriday, iamadi, misplon
+
 Tags: portfolio, two-columns, right-sidebar, custom-background, custom-logo, custom-menu, featured-images, footer-widgets, full-width-template, theme-options, threaded-comments, translation-ready
+
 Requires at least: 4.1
 Tested up to: 5.3.2
 License: GPLv2 or later
@@ -76,6 +78,9 @@ You should have received a copy of the GNU General Public License along with thi
 Focus WordPress Theme is derived from Underscores WordPress Theme, Copyright 2012 Automattic http://underscores.me/ Underscores WordPress Theme is distributed under the terms of the GNU GPL.
 
 == Changelog ==
+
+= 1.3.8.1 - 10 February 2020 =
+* Resolved build script error preventing readme.txt from being included in release.
 
 = 1.3.8 - 10 February 2020 =
 * Updated SiteOrigin Settings.
