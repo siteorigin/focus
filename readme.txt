@@ -1,7 +1,9 @@
 === Focus ===
 
-Contributors: siteorigin
+Contributors: gpriday, iamadi, misplon
+
 Tags: portfolio, two-columns, right-sidebar, custom-background, custom-logo, custom-menu, featured-images, footer-widgets, full-width-template, theme-options, threaded-comments, translation-ready
+
 Requires at least: 4.1
 Tested up to: 5.3.2
 License: GPLv2 or later
