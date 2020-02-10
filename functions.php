@@ -82,8 +82,10 @@ function focus_setup() {
 	 * Support panels
 	 */
 	add_theme_support( 'siteorigin-panels', array(
-		'margin-bottom' => 30,
-		'responsive' => siteorigin_setting('layout_responsive'),
+		'margin-bottom'      => 30,
+		'responsive'         => siteorigin_setting('layout_responsive'),
+		'home-page'          => true,
+		'home-page-default'  => false,
 	) );
 
 	/**
